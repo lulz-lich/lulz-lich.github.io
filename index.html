@@ -1,62 +1,2147 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Henrique da Silva Cunha | Ethical Hacker & Red Team</title><meta name="description" content="Red Team portfolio of Henrique da Silva Cunha."><style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@500;800&display=swap');
-:root{--bg:#070510;--card:rgba(22,18,42,.82);--text:#f7efff;--muted:#c9bce0;--line:rgba(218,193,255,.18);--line2:rgba(218,193,255,.35);--pink:#f2a7d8;--cyan:#91d9ff;--violet:#c8b6ff;--green:#9ef0ce;--shadow:0 24px 80px rgba(0,0,0,.42);--r:28px}
-body.stealth{--bg:#030604;--text:#eafff3;--muted:#a7c8b7;--line:rgba(128,255,187,.18);--line2:rgba(128,255,187,.38);--pink:#80ffbb;--cyan:#76ffea;--violet:#bcffd9}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;color-scheme:dark}body{font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at 15% 10%,color-mix(in srgb,var(--pink) 20%,transparent),transparent 24rem),radial-gradient(circle at 85% 10%,color-mix(in srgb,var(--cyan) 18%,transparent),transparent 24rem),linear-gradient(#05030b,var(--bg),#05030b);color:var(--text);line-height:1.65;overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}.wrap{width:min(1180px,calc(100% - 40px));margin:auto}#fx,.grid,.cursor,.scan{position:fixed;inset:0;pointer-events:none}#fx{z-index:-5}.grid{z-index:-4;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:46px 46px;mask-image:linear-gradient(#000,transparent 92%)}.cursor{z-index:-3;background:radial-gradient(430px circle at var(--x,50%) var(--y,50%),color-mix(in srgb,var(--pink) 13%,transparent),transparent 40%)}.scan{z-index:-2;opacity:.045;background:repeating-linear-gradient(to bottom,transparent 0,transparent 6px,rgba(255,255,255,.16) 7px)}
-.loader{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:#05030a;transition:.55s}.loader.done{opacity:0;visibility:hidden;pointer-events:none}.loader>div{width:min(650px,calc(100% - 32px));border:1px solid var(--line2);border-radius:24px;background:rgba(12,8,22,.92);box-shadow:var(--shadow);padding:26px;font-family:'JetBrains Mono',monospace}.loader h2{font-size:2rem}.loader h2 span{color:var(--pink)}#log{min-height:125px;margin:18px 0;color:var(--muted)}#log b{color:var(--green)}.bar{height:8px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}.bar span{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--cyan));animation:load 1.5s forwards}@keyframes load{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-header{position:sticky;top:0;z-index:10;padding-top:14px}.nav{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 18px;border:1px solid var(--line);border-radius:20px;background:rgba(10,7,18,.72);backdrop-filter:blur(18px);box-shadow:var(--shadow)}.brand{display:flex;align-items:center;gap:12px}.logo{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;border:1px solid var(--line2);background:linear-gradient(135deg,color-mix(in srgb,var(--pink) 20%,transparent),color-mix(in srgb,var(--cyan) 18%,transparent));color:var(--cyan);font:800 1rem 'JetBrains Mono',monospace}.brand small{display:block;color:var(--muted);font-size:.78rem}nav{display:flex;gap:6px}nav a,.btn,.filter,.lab button,.stealth{padding:10px 13px;border:1px solid transparent;border-radius:99px;color:var(--muted);transition:.18s;background:transparent}nav a:hover,.btn:hover,.filter:hover,.lab button:hover{background:rgba(255,255,255,.06);border-color:var(--line2);transform:translateY(-2px)}.pill,.stealth{border-color:var(--line)}.menu{display:none;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.04);padding:10px 12px}
-section{padding:108px 0}.muted{border-block:1px solid rgba(255,255,255,.055);background:linear-gradient(180deg,rgba(255,255,255,.026),rgba(255,255,255,.012))}.hero{min-height:calc(100vh - 88px);display:grid;align-items:center;padding-top:80px}.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:42px;align-items:center}.badge,.kicker{font:800 .86rem 'JetBrains Mono',monospace;color:var(--pink)}.badge{display:inline-flex;gap:10px;align-items:center;padding:9px 12px;margin-bottom:24px;border:1px solid var(--line);border-radius:99px;background:rgba(255,255,255,.035)}.dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 20px var(--green)}h1,h2,h3{letter-spacing:-.065em;line-height:1.02}h1{font-size:clamp(3rem,7vw,6.4rem);margin-bottom:24px}h1 em{display:block;color:var(--violet);font-style:normal}h2{font-size:clamp(2.2rem,5vw,4.2rem);margin-top:10px}p{color:var(--muted)}.lead{font-size:1.08rem;margin-bottom:32px;max-width:760px}.actions,.chips,.tags,.filters{display:flex;flex-wrap:wrap;gap:10px}.btn{min-height:48px;display:inline-flex;align-items:center}.primary,.filter.active{background:linear-gradient(135deg,var(--pink),var(--cyan));color:#130d1f;font-weight:900;border:0}.chips{margin-top:28px}.chips span,.tags span{padding:7px 10px;border:1px solid var(--line);border-radius:99px;background:rgba(255,255,255,.035);color:var(--muted);font:700 .78rem 'JetBrains Mono',monospace}
-.card,.hud,.panel,.project,.value,.op,.timeline article,.contact,.labbox{border:1px solid var(--line);border-radius:var(--r);background:linear-gradient(180deg,rgba(24,20,45,.88),rgba(12,9,24,.84));box-shadow:var(--shadow);backdrop-filter:blur(18px)}.hud{overflow:hidden;transform:rotate(.6deg)}.window,.labtop{min-height:52px;display:flex;align-items:center;gap:10px;padding:0 18px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.03)}.dots{display:flex;gap:8px}.dots i{width:10px;height:10px;border-radius:50%;background:var(--green)}.dots i:nth-child(1){background:#ff7d99}.dots i:nth-child(2){background:#ffd98c}.window strong,.labtop strong{font:700 .88rem 'JetBrains Mono',monospace;color:var(--muted)}.window small{margin-left:auto;color:var(--muted);font:700 .82rem 'JetBrains Mono',monospace}.hudbody{padding:24px;font-family:'JetBrains Mono',monospace}.fetch{display:grid;grid-template-columns:.85fr 1.15fr;gap:22px}.fetch pre{color:var(--cyan);line-height:1.25}.fetch b{color:var(--pink);display:inline-block;min-width:64px}.terminal{margin-top:22px;padding:16px;border:1px solid var(--line);border-radius:16px;background:rgba(0,0,0,.16)}.terminal span{color:var(--green)}.terminal i{color:var(--pink);font-style:normal;animation:blink .9s infinite}@keyframes blink{50%{opacity:0}}.signals{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.signals article{border:1px solid var(--line);border-radius:14px;padding:12px;background:rgba(255,255,255,.03)}.signals span{font-size:.72rem}.grid3,.valuegrid,.arsenal,.ops,.projects{display:grid;gap:18px}.grid3{grid-template-columns:repeat(3,1fr);margin-top:42px}.grid3 article,.value,.op{padding:20px;border-radius:22px;border:1px solid var(--line);background:rgba(255,255,255,.028)}.grid3 span,.value span,.op span{font-family:'JetBrains Mono',monospace;color:var(--pink)}.split{display:grid;grid-template-columns:.82fr 1.18fr;gap:48px}.panel{padding:30px}.identity{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:26px}.identity article{padding:16px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.03)}.head{max-width:820px;margin-bottom:38px}.valuegrid,.arsenal{grid-template-columns:repeat(4,1fr)}.card{min-height:350px;padding:24px;transition:.2s}.top{display:flex;justify-content:space-between;margin-bottom:24px;color:var(--muted);font-family:'JetBrains Mono',monospace}.top span{color:var(--cyan)}.meters{display:grid;gap:12px;margin-top:24px}.meters label{display:grid;gap:6px;color:var(--muted);font-size:.86rem}.meters b{height:8px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}.meters b:before{content:"";display:block;width:var(--w);height:100%;background:linear-gradient(90deg,var(--pink),var(--cyan));animation:grow 1.2s both}@keyframes grow{from{transform:scaleX(0)}}
-.filters{margin-bottom:22px}.projects{grid-template-columns:repeat(3,1fr)}.project{position:relative;min-height:340px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;cursor:pointer}.project.big{grid-column:span 2}.project:before{content:"";position:absolute;inset:-1px;background:radial-gradient(circle at var(--mx,80%) var(--my,20%),color-mix(in srgb,var(--cyan) 14%,transparent),transparent 16rem);opacity:0}.project:hover:before{opacity:1}.project>*{position:relative}.status{position:absolute!important;right:18px;top:18px;padding:5px 9px;border:1px solid var(--line);border-radius:99px;color:var(--cyan);font:700 .7rem 'JetBrains Mono',monospace}.projecttop{display:flex;justify-content:space-between;gap:16px;margin-bottom:16px;padding-right:78px}.projecttop a{color:var(--muted)}.hidden{display:none}.ops{grid-template-columns:repeat(4,1fr)}.op h3{margin:40px 0 12px}.labgrid{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px}.labbox{overflow:hidden}.labtop{justify-content:space-between}.labout{min-height:220px;padding:22px;color:var(--cyan);font-family:'JetBrains Mono',monospace}.labout span{color:var(--green)}.timeline{display:grid;gap:18px}.timeline article{padding:24px}.timeline span{color:var(--pink);font:700 .86rem 'JetBrains Mono',monospace}.contact{text-align:center;padding:clamp(30px,7vw,66px)}.contact p{max-width:760px;margin:18px auto 28px}.contact .actions{justify-content:center}.palette,.modal{position:fixed;inset:0;z-index:30;display:grid;place-items:center;padding:20px;background:rgba(5,3,11,.68);backdrop-filter:blur(18px);opacity:0;visibility:hidden;pointer-events:none}.palette.active,.modal.active{opacity:1;visibility:visible;pointer-events:auto}.box,.modalbox{width:min(720px,100%);border:1px solid var(--line);border-radius:28px;background:rgba(15,11,28,.96);box-shadow:var(--shadow);overflow:hidden}.boxtop{min-height:56px;display:flex;align-items:center;padding:0 18px;border-bottom:1px solid var(--line)}.boxtop button,#modalClose{margin-left:auto;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;background:rgba(255,255,255,.035);font-size:1.4rem}.palette input{width:100%;padding:18px 20px;border:0;border-bottom:1px solid var(--line);outline:none;background:transparent;color:var(--text)}.hint{display:flex;flex-wrap:wrap;gap:10px;padding:18px 20px 8px}.palette p{padding:0 20px 20px}.modalbox{position:relative;padding:30px}#modalClose{position:absolute;right:18px;top:18px}#modalCat{color:var(--pink);font:700 .86rem 'JetBrains Mono',monospace}#modalPoints{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:22px 0}#modalPoints span{padding:12px;border:1px solid var(--line);border-radius:14px;color:var(--muted);background:rgba(255,255,255,.03)}footer{padding:30px 0;border-top:1px solid rgba(255,255,255,.055)}.footer{display:flex;justify-content:space-between;gap:16px;color:var(--muted);font:700 .84rem 'JetBrains Mono',monospace}.reveal{opacity:0;transform:translateY(18px)}.show{opacity:1;transform:translateY(0);transition:opacity .7s,transform .7s cubic-bezier(.2,.8,.2,1)}
-@media(max-width:1100px){nav{display:none}.menu{display:block}nav.active{position:fixed;display:grid;left:20px;right:20px;top:92px;padding:16px;border:1px solid var(--line);border-radius:20px;background:rgba(10,7,18,.96);box-shadow:var(--shadow)}.hero-grid,.split,.labgrid{grid-template-columns:1fr}.hud{transform:none}.arsenal,.ops,.valuegrid,.projects{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr}}
-@media(max-width:760px){.stealth{display:none}section{padding:82px 0}.hero{min-height:auto}.fetch,.identity,.arsenal,.projects,.ops,.valuegrid,#modalPoints,.signals{grid-template-columns:1fr}.project.big{grid-column:auto}.footer{flex-direction:column}}
-@media(max-width:500px){.wrap{width:min(1180px,calc(100% - 28px))}.brand small{display:none}h1{font-size:clamp(2.55rem,15vw,4rem)}.btn,.actions{width:100%}.hudbody{padding:18px}.projecttop{padding-right:0}.status{position:static!important;width:max-content;margin-bottom:12px}}
-</style></head><body>
-<canvas id="fx"></canvas><div class="grid"></div><div class="cursor"></div><div class="scan"></div>
-<div class="loader" id="loader"><div><h2>redteam<span>.profile</span></h2><div id="log"></div><div class="bar"><span></span></div></div></div>
-<header><div class="wrap nav"><a href="#home" class="brand"><span class="logo">RT</span><div><strong>Henrique</strong><small>ethical hacker / red team</small></div></a><button class="menu" id="menuBtn">☰</button><nav id="navMenu"><a href="#sobre">About</a><a href="#valor">Value</a><a href="#arsenal">Arsenal</a><a href="#projetos">Projects</a><a href="#operacao">Operation</a><a href="#roadmap">Roadmap</a><a href="#contato" class="pill">Contact</a></nav><button class="stealth" id="stealth">stealth</button></div></header>
-<main>
-<section id="home" class="hero section"><div class="wrap hero-grid"><div class="reveal"><div class="badge"><i class="dot"></i> ethical hacking · red team · authorized labs only</div><h1>Henrique da Silva Cunha <em>Red Team focused Ethical Hacker.</em></h1><p class="lead">Technical Electronics student, advanced Linux user, and developer focused on pentesting, Red Team, web security, authorized offensive automation, OPSEC, detection awareness, and custom tooling.</p><div class="actions"><a class="btn primary" href="#projetos">View projects</a><a class="btn" href="https://github.com/lulz-lich" target="_blank">GitHub</a><a class="btn" href="https://www.linkedin.com/in/henrique-cunha-802305335/" target="_blank">LinkedIn</a><button class="btn" id="paletteOpen">Ctrl + K</button></div><div class="chips"><span>Web Pentest</span><span>Red Team</span><span>Python Tooling</span><span>Linux / CachyOS</span><span>OPSEC</span><span>Cisco Ethical Hacker</span></div></div><aside class="hud reveal"><div class="window"><div class="dots"><i></i><i></i><i></i></div><strong>mrh@HENRICK:~/redteam</strong><small id="clock">00:06</small></div><div class="hudbody"><div class="fetch"><pre>       /\
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Henrique da Silva Cunha | Ethical Hacker & Red Team</title>
+  <meta name="description" content="Red Team portfolio of Henrique da Silva Cunha: ethical hacking, web pentest, Linux, automation, OPSEC, detection and custom tooling.">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@500;800&display=swap');
+
+    :root {
+      --bg: #070510;
+      --text: #f7efff;
+      --muted: #c9bce0;
+      --muted2: #9588ad;
+      --line: rgba(218,193,255,.18);
+      --line2: rgba(218,193,255,.35);
+      --pink: #f2a7d8;
+      --cyan: #91d9ff;
+      --violet: #c8b6ff;
+      --green: #9ef0ce;
+      --shadow: 0 24px 80px rgba(0,0,0,.42);
+      --r: 28px;
+    }
+
+    body.stealth {
+      --bg: #030604;
+      --text: #eafff3;
+      --muted: #a7c8b7;
+      --muted2: #779480;
+      --line: rgba(128,255,187,.18);
+      --line2: rgba(128,255,187,.38);
+      --pink: #80ffbb;
+      --cyan: #76ffea;
+      --violet: #bcffd9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      color-scheme: dark;
+    }
+
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, color-mix(in srgb, var(--pink) 20%, transparent), transparent 24rem),
+        radial-gradient(circle at 85% 10%, color-mix(in srgb, var(--cyan) 18%, transparent), transparent 24rem),
+        linear-gradient(#05030b, var(--bg), #05030b);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    body.lock {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+      color: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    #fx,
+    .grid,
+    .cursor,
+    .scan {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    #fx {
+      z-index: -5;
+    }
+
+    .grid {
+      z-index: -4;
+      background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: linear-gradient(#000, transparent 92%);
+    }
+
+    .cursor {
+      z-index: -3;
+      background: radial-gradient(
+        430px circle at var(--x,50%) var(--y,50%),
+        color-mix(in srgb, var(--pink) 13%, transparent),
+        transparent 40%
+      );
+    }
+
+    .scan {
+      z-index: -2;
+      opacity: .045;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 6px,
+        rgba(255,255,255,.16) 7px
+      );
+    }
+
+    .loader {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: grid;
+      place-items: center;
+      background: #05030a;
+      transition: .55s;
+    }
+
+    .loader.done {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader > div {
+      width: min(650px, calc(100% - 32px));
+      border: 1px solid var(--line2);
+      border-radius: 24px;
+      background: rgba(12,8,22,.92);
+      box-shadow: var(--shadow);
+      padding: 26px;
+      font-family: "JetBrains Mono", monospace;
+    }
+
+    .loader h2 {
+      font-size: 2rem;
+    }
+
+    .loader h2 span {
+      color: var(--pink);
+    }
+
+    #log {
+      min-height: 125px;
+      margin: 18px 0;
+      color: var(--muted);
+    }
+
+    #log p {
+      margin: 7px 0;
+    }
+
+    #log b {
+      color: var(--green);
+    }
+
+    .bar {
+      height: 8px;
+      border-radius: 99px;
+      background: rgba(255,255,255,.08);
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--pink), var(--cyan));
+      animation: load 1.5s forwards;
+    }
+
+    @keyframes load {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      padding-top: 14px;
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 0 18px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(10,7,18,.72);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      border: 1px solid var(--line2);
+      background: linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--pink) 20%, transparent),
+        color-mix(in srgb, var(--cyan) 18%, transparent)
+      );
+      color: var(--cyan);
+      font: 800 1rem "JetBrains Mono", monospace;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 6px;
+    }
+
+    nav a,
+    .btn,
+    .filter,
+    .lab button,
+    .stealth,
+    .quick,
+    .terminal-form button,
+    .terminal-shortcuts button,
+    .project-actions button,
+    .project-actions a {
+      padding: 10px 13px;
+      border: 1px solid transparent;
+      border-radius: 99px;
+      color: var(--muted);
+      transition: .18s;
+      background: transparent;
+    }
+
+    nav a:hover,
+    .btn:hover,
+    .filter:hover,
+    .lab button:hover,
+    .quick:hover,
+    .terminal-form button:hover,
+    .terminal-shortcuts button:hover,
+    .project-actions button:hover,
+    .project-actions a:hover {
+      background: rgba(255,255,255,.06);
+      border-color: var(--line2);
+      transform: translateY(-2px);
+    }
+
+    .pill,
+    .stealth {
+      border-color: var(--line);
+    }
+
+    .menu {
+      display: none;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,.04);
+      padding: 10px 12px;
+    }
+
+    section {
+      padding: 108px 0;
+    }
+
+    .muted {
+      border-block: 1px solid rgba(255,255,255,.055);
+      background: linear-gradient(180deg, rgba(255,255,255,.026), rgba(255,255,255,.012));
+    }
+
+    .hero {
+      min-height: calc(100vh - 88px);
+      display: grid;
+      align-items: center;
+      padding-top: 80px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, .95fr);
+      gap: 42px;
+      align-items: center;
+    }
+
+    .badge,
+    .kicker {
+      font: 800 .86rem "JetBrains Mono", monospace;
+      color: var(--pink);
+    }
+
+    .badge {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 9px 12px;
+      margin-bottom: 24px;
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 20px var(--green);
+    }
+
+    h1,
+    h2,
+    h3 {
+      letter-spacing: -.065em;
+      line-height: 1.02;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 6.4rem);
+      margin-bottom: 24px;
+    }
+
+    h1 em {
+      display: block;
+      color: var(--violet);
+      font-style: normal;
+    }
+
+    h2 {
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      margin-top: 10px;
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      margin-bottom: 32px;
+      max-width: 760px;
+    }
+
+    .actions,
+    .chips,
+    .tags,
+    .filters,
+    .terminal-shortcuts,
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .primary,
+    .filter.active {
+      background: linear-gradient(135deg, var(--pink), var(--cyan));
+      color: #130d1f;
+      font-weight: 900;
+      border: 0;
+    }
+
+    .chips {
+      margin-top: 28px;
+    }
+
+    .chips span,
+    .tags span {
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      background: rgba(255,255,255,.035);
+      color: var(--muted);
+      font: 700 .78rem "JetBrains Mono", monospace;
+    }
+
+    .card,
+    .hud,
+    .panel,
+    .project,
+    .value,
+    .op,
+    .timeline article,
+    .contact,
+    .labbox,
+    .quick {
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      background: linear-gradient(180deg, rgba(24,20,45,.88), rgba(12,9,24,.84));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .hud {
+      overflow: hidden;
+      transform: rotate(.6deg);
+    }
+
+    .window,
+    .labtop {
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 18px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+
+    .dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dots i {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .dots i:nth-child(1) {
+      background: #ff7d99;
+    }
+
+    .dots i:nth-child(2) {
+      background: #ffd98c;
+    }
+
+    .window strong,
+    .labtop strong {
+      font: 700 .88rem "JetBrains Mono", monospace;
+      color: var(--muted);
+    }
+
+    .window small {
+      margin-left: auto;
+      color: var(--muted);
+      font: 700 .82rem "JetBrains Mono", monospace;
+    }
+
+    .hudbody {
+      padding: 24px;
+      font-family: "JetBrains Mono", monospace;
+    }
+
+    .fetch {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 22px;
+    }
+
+    .fetch pre {
+      color: var(--cyan);
+      line-height: 1.25;
+    }
+
+    .fetch b {
+      color: var(--pink);
+      display: inline-block;
+      min-width: 64px;
+    }
+
+    .terminal {
+      margin-top: 22px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(0,0,0,.16);
+    }
+
+    .terminal span {
+      color: var(--green);
+    }
+
+    .terminal i {
+      color: var(--pink);
+      font-style: normal;
+      animation: blink .9s infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    .interactive-terminal {
+      display: grid;
+      gap: 12px;
+    }
+
+    .terminal-output {
+      min-height: 110px;
+      max-height: 190px;
+      overflow: auto;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(0,0,0,.18);
+    }
+
+    .terminal-output p {
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .terminal-form {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .terminal-form input {
+      flex: 1;
+      min-width: 0;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--text);
+      font-family: "JetBrains Mono", monospace;
+    }
+
+    .terminal-form button,
+    .terminal-shortcuts button,
+    .project-actions button,
+    .project-actions a {
+      font: 700 .78rem "JetBrains Mono", monospace;
+      border-color: var(--line);
+      background: rgba(255,255,255,.04);
+    }
+
+    .signals {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .signals article {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      background: rgba(255,255,255,.03);
+    }
+
+    .signals span {
+      font-size: .72rem;
+      color: var(--muted);
+    }
+
+    .grid3,
+    .valuegrid,
+    .arsenal,
+    .ops,
+    .projects,
+    .quickgrid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid3 {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 42px;
+    }
+
+    .grid3 article,
+    .value,
+    .op,
+    .quick {
+      padding: 20px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at var(--mx,50%) var(--my,20%), color-mix(in srgb, var(--cyan) 10%, transparent), transparent 14rem),
+        rgba(255,255,255,.028);
+    }
+
+    .grid3 span,
+    .value span,
+    .op span,
+    .quick span {
+      font-family: "JetBrains Mono", monospace;
+      color: var(--pink);
+      font-weight: 800;
+    }
+
+    .quick {
+      display: block;
+      width: 100%;
+      text-align: left;
+      color: var(--text);
+      min-height: 190px;
+    }
+
+    .quick span {
+      display: inline-flex;
+      margin-bottom: 38px;
+      text-transform: uppercase;
+      font-size: .78rem;
+    }
+
+    .quick strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.15rem;
+    }
+
+    .quickgrid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      gap: 48px;
+    }
+
+    .panel {
+      padding: 30px;
+    }
+
+    .identity {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .identity article {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.03);
+    }
+
+    .identity span {
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    .head {
+      max-width: 820px;
+      margin-bottom: 38px;
+    }
+
+    .valuegrid,
+    .arsenal {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .card {
+      min-height: 350px;
+      padding: 24px;
+      transition: .2s;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      color: var(--muted);
+      font-family: "JetBrains Mono", monospace;
+    }
+
+    .top span {
+      color: var(--cyan);
+    }
+
+    .meters {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .meters label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    .meters b {
+      height: 8px;
+      border-radius: 99px;
+      background: rgba(255,255,255,.08);
+      overflow: hidden;
+    }
+
+    .meters b:before {
+      content: "";
+      display: block;
+      width: var(--w);
+      height: 100%;
+      background: linear-gradient(90deg, var(--pink), var(--cyan));
+      animation: grow 1.2s both;
+    }
+
+    @keyframes grow {
+      from { transform: scaleX(0); }
+    }
+
+    .filters {
+      margin-bottom: 22px;
+    }
+
+    .projects {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .project {
+      position: relative;
+      min-height: 360px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .project.big {
+      grid-column: span 2;
+    }
+
+    .project:before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background: radial-gradient(
+        circle at var(--mx,80%) var(--my,20%),
+        color-mix(in srgb, var(--cyan) 14%, transparent),
+        transparent 16rem
+      );
+      opacity: 0;
+      transition: .2s;
+    }
+
+    .project:hover:before {
+      opacity: 1;
+    }
+
+    .project > * {
+      position: relative;
+    }
+
+    .status {
+      position: absolute !important;
+      right: 18px;
+      top: 18px;
+      padding: 5px 9px;
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      color: var(--cyan);
+      font: 700 .7rem "JetBrains Mono", monospace;
+    }
+
+    .projecttop {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+      padding-right: 78px;
+    }
+
+    .projecttop a {
+      color: var(--muted);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .ops {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .op h3 {
+      margin: 40px 0 12px;
+    }
+
+    .labgrid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 40px;
+    }
+
+    .labbox {
+      overflow: hidden;
+    }
+
+    .labtop {
+      justify-content: space-between;
+    }
+
+    .labout {
+      min-height: 220px;
+      padding: 22px;
+      color: var(--cyan);
+      font-family: "JetBrains Mono", monospace;
+    }
+
+    .labout span {
+      color: var(--green);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline article {
+      padding: 24px;
+    }
+
+    .timeline span {
+      color: var(--pink);
+      font: 700 .86rem "JetBrains Mono", monospace;
+    }
+
+    .contact {
+      text-align: center;
+      padding: clamp(30px,7vw,66px);
+    }
+
+    .contact p {
+      max-width: 760px;
+      margin: 18px auto 28px;
+    }
+
+    .contact .actions {
+      justify-content: center;
+    }
+
+    .palette,
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: rgba(5,3,11,.68);
+      backdrop-filter: blur(18px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: .18s;
+    }
+
+    .palette.active,
+    .modal.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .box,
+    .modalbox {
+      width: min(720px,100%);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(15,11,28,.96);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .boxtop {
+      min-height: 56px;
+      display: flex;
+      align-items: center;
+      padding: 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .boxtop button,
+    #modalClose {
+      margin-left: auto;
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: rgba(255,255,255,.035);
+      font-size: 1.4rem;
+    }
+
+    .palette input {
+      width: 100%;
+      padding: 18px 20px;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      outline: none;
+      background: transparent;
+      color: var(--text);
+    }
+
+    .hint {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 18px 20px 8px;
+    }
+
+    .palette p {
+      padding: 0 20px 20px;
+    }
+
+    .modalbox {
+      position: relative;
+      padding: 30px;
+    }
+
+    #modalClose {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+    }
+
+    #modalCat {
+      color: var(--pink);
+      font: 700 .86rem "JetBrains Mono", monospace;
+    }
+
+    #modalPoints {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 12px;
+      margin: 22px 0;
+    }
+
+    #modalPoints span {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      color: var(--muted);
+      background: rgba(255,255,255,.03);
+    }
+
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 100;
+      max-width: 360px;
+      padding: 14px 16px;
+      border: 1px solid var(--line2);
+      border-radius: 16px;
+      background: rgba(15,11,28,.96);
+      color: var(--text);
+      box-shadow: var(--shadow);
+      transform: translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: .22s;
+      font: 700 .86rem "JetBrains Mono", monospace;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    footer {
+      padding: 30px 0;
+      border-top: 1px solid rgba(255,255,255,.055);
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--muted);
+      font: 700 .84rem "JetBrains Mono", monospace;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity .7s, transform .7s cubic-bezier(.2,.8,.2,1);
+    }
+
+    @media(max-width:1100px) {
+      nav {
+        display: none;
+      }
+
+      .menu {
+        display: block;
+      }
+
+      nav.active {
+        position: fixed;
+        display: grid;
+        left: 20px;
+        right: 20px;
+        top: 92px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: rgba(10,7,18,.96);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-grid,
+      .split,
+      .labgrid {
+        grid-template-columns: 1fr;
+      }
+
+      .hud {
+        transform: none;
+      }
+
+      .arsenal,
+      .ops,
+      .valuegrid,
+      .projects,
+      .quickgrid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .grid3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width:760px) {
+      .stealth {
+        display: none;
+      }
+
+      section {
+        padding: 82px 0;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .fetch,
+      .identity,
+      .arsenal,
+      .projects,
+      .ops,
+      .valuegrid,
+      .quickgrid,
+      #modalPoints,
+      .signals {
+        grid-template-columns: 1fr;
+      }
+
+      .project.big {
+        grid-column: auto;
+      }
+
+      .footer {
+        flex-direction: column;
+      }
+    }
+
+    @media(max-width:500px) {
+      .wrap {
+        width: min(1180px, calc(100% - 28px));
+      }
+
+      .brand small {
+        display: none;
+      }
+
+      h1 {
+        font-size: clamp(2.55rem,15vw,4rem);
+      }
+
+      .btn,
+      .actions {
+        width: 100%;
+      }
+
+      .hudbody {
+        padding: 18px;
+      }
+
+      .projecttop {
+        padding-right: 0;
+      }
+
+      .status {
+        position: static !important;
+        width: max-content;
+        margin-bottom: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="fx"></canvas>
+  <div class="grid"></div>
+  <div class="cursor"></div>
+  <div class="scan"></div>
+
+  <div class="loader" id="loader">
+    <div>
+      <h2>redteam<span>.profile</span></h2>
+      <div id="log"></div>
+      <div class="bar"><span></span></div>
+    </div>
+  </div>
+
+  <header>
+    <div class="wrap nav">
+      <a href="#home" class="brand">
+        <span class="logo">RT</span>
+        <div>
+          <strong>Henrique</strong>
+          <small>ethical hacker / red team</small>
+        </div>
+      </a>
+
+      <button class="menu" id="menuBtn">☰</button>
+
+      <nav id="navMenu">
+        <a href="#sobre">About</a>
+        <a href="#actions">Actions</a>
+        <a href="#valor">Value</a>
+        <a href="#arsenal">Arsenal</a>
+        <a href="#projetos">Projects</a>
+        <a href="#operacao">Operation</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#contato" class="pill">Contact</a>
+      </nav>
+
+      <button class="stealth" id="stealth">stealth</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="wrap hero-grid">
+        <div class="reveal">
+          <div class="badge"><i class="dot"></i> ethical hacking · red team · authorized labs only</div>
+
+          <h1>Henrique da Silva Cunha <em>Red Team focused Ethical Hacker.</em></h1>
+
+          <p class="lead">
+            Technical Electronics student, advanced Linux user, and developer focused on pentesting, Red Team,
+            web security, authorized offensive automation, OPSEC, detection awareness, and custom tooling.
+          </p>
+
+          <div class="actions">
+            <a class="btn primary" href="#projetos">View projects</a>
+            <a class="btn" href="https://github.com/lulz-lich" target="_blank">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/henrique-cunha-802305335/" target="_blank">LinkedIn</a>
+            <button class="btn" id="paletteOpen">Ctrl + K</button>
+          </div>
+
+          <div class="chips">
+            <span>Web Pentest</span>
+            <span>Red Team</span>
+            <span>Python Tooling</span>
+            <span>Linux / CachyOS</span>
+            <span>OPSEC</span>
+            <span>Cisco Ethical Hacker</span>
+          </div>
+        </div>
+
+        <aside class="hud reveal">
+          <div class="window">
+            <div class="dots"><i></i><i></i><i></i></div>
+            <strong>mrh@HENRICK:~/redteam</strong>
+            <small id="clock">00:06</small>
+          </div>
+
+          <div class="hudbody">
+            <div class="fetch">
+<pre>       /\
       /  \
      / /\ \
     / ____ \
    /_/ RED\_\
-     TEAM</pre><div><p><b>Role</b> Ethical Hacker</p><p><b>OS</b> CachyOS</p><p><b>WM</b> Hyprland</p><p><b>Core</b> web · tooling · OPSEC</p><p><b>Rule</b> authorized only</p></div></div><div class="terminal"><span>➜</span> <b id="typeLine"></b><i>█</i></div><div class="signals"><article><strong>Primary</strong><span>Red Team</span></article><article><strong>Tooling</strong><span>Python / CLI</span></article><article><strong>Workflow</strong><span>Linux / Git</span></article></div></div></aside></div><div class="wrap grid3 reveal"><article><span>01</span><strong>Red Team direction</strong><p>Authorized attack-chain thinking, methodology, OPSEC, and documentation.</p></article><article><span>02</span><strong>Tooling próprio</strong><p>Python automation, CLI tooling, crawling, parsing, evidence handling, and reports.</p></article><article><span>03</span><strong>Linux-native</strong><p>CachyOS, Hyprland, terminal workflow, Git, Docker, and isolated labs.</p></article></div></section>
-<section id="sobre"><div class="wrap split"><div class="reveal"><span class="kicker">01 · About</span><h2>Ethical Red Team with an engineering mindset.</h2></div><div class="panel reveal"><p>My focus is Ethical Hacking and Red Team: understanding how environments are compromised in authorized scenarios, simulating risk responsibly, documenting evidence, and turning findings into defensive improvement.</p><p>I have a strong foundation in Linux, programming, networking, automation, and electronics. My current direction prioritizes Web Pentest, Active Directory, cloud security, OPSEC, technical reporting, authorized offensive automation, and detection awareness.</p><div class="identity"><article><strong>Red Team</strong><span>Recon, enumeration, controlled exploitation, OPSEC, and evidence.</span></article><article><strong>Web Security</strong><span>OWASP, APIs, authentication, sessions, and vulnerability validation.</span></article><article><strong>Automation</strong><span>Python, Bash, CLI tools, parsing, and structured outputs.</span></article><article><strong>Reporting</strong><span>Impact, severity, mitigation, and clear documentation.</span></article></div></div></div></section>
-<section id="valor" class="muted"><div class="wrap"><div class="head reveal"><span class="kicker">02 · Value</span><h2>What I bring as a strong junior profile.</h2><p>Organized technical growth, ethical security practice, and demonstrable projects.</p></div><div class="valuegrid"><article class="value reveal"><span>research</span><h3>Scoped research</h3><p>Organize hypotheses, separate noise from signal, and document discoveries.</p></article><article class="value reveal"><span>automation</span><h3>Repeatable automation</h3><p>Scripts and tools to standardize tasks and preserve evidence.</p></article><article class="value reveal"><span>reporting</span><h3>Technical communication</h3><p>Impact, evidence, severity, mitigation, and next steps.</p></article><article class="value reveal"><span>detection</span><h3>Defense-aware mindset</h3><p>Awareness of logs, traces, monitoring, and response.</p></article></div></div></section>
-<section id="arsenal"><div class="wrap"><div class="head reveal"><span class="kicker">03 · Arsenal</span><h2>Skills aligned with Red Team work.</h2><p>This portfolio now communicates Red Team direction, not just “I know computers,” a phrase that should probably come with a fine.</p></div><div class="arsenal"><article class="card reveal"><div class="top"><span>RT</span><small>01</small></div><h3>Red Team Foundations</h3><p>Reconnaissance, enumeration, lab-based attack chains, OPSEC, and detection.</p><div class="meters"><label>Recon<b style="--w:90%"></b></label><label>OPSEC<b style="--w:78%"></b></label><label>Method<b style="--w:86%"></b></label></div></article><article class="card reveal"><div class="top"><span>WEB</span><small>02</small></div><h3>Web & API Pentest</h3><p>OWASP Top 10, Burp Suite, authentication, sessions, APIs, and reporting.</p><div class="meters"><label>OWASP<b style="--w:86%"></b></label><label>Burp<b style="--w:82%"></b></label><label>Reports<b style="--w:88%"></b></label></div></article><article class="card reveal"><div class="top"><span>OPS</span><small>03</small></div><h3>Linux, AD & Cloud Path</h3><p>Advanced Linux, shell, Docker, Git, networking, AD, and cloud security.</p><div class="meters"><label>Linux<b style="--w:92%"></b></label><label>Networks<b style="--w:80%"></b></label><label>Labs<b style="--w:84%"></b></label></div></article><article class="card reveal"><div class="top"><span>DEV</span><small>04</small></div><h3>Offensive Tooling</h3><p>Python, Bash, C/C++, JavaScript, CLI tools, and documentation.</p><div class="meters"><label>Python<b style="--w:88%"></b></label><label>CLI<b style="--w:84%"></b></label><label>Docs<b style="--w:86%"></b></label></div></article></div></div></section>
-<section id="projetos" class="muted"><div class="wrap"><div class="head reveal"><span class="kicker">04 · Projects</span><h2>Projects para currículo de Red Team.</h2><p>Click the cards to view details.</p></div><div class="filters reveal"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="redteam">Red Team</button><button class="filter" data-filter="web">Web</button><button class="filter" data-filter="tooling">Tooling</button><button class="filter" data-filter="docs">Reports</button></div><div class="projects">
-<article class="project big reveal" data-cat="redteam tooling docs" data-id="capysuite"><div class="status">flagship</div><div class="projecttop"><span class="kicker">Main Tool</span><a href="https://github.com/lulz-lich" target="_blank">repo ↗</a></div><h3>CapySuite</h3><p>Modular suite for authorized labs: enumeration, automation, evidence handling, and technical reporting.</p><div class="tags"><span>Python</span><span>CLI</span><span>Red Team</span></div></article>
-<article class="project reveal" data-cat="web tooling docs" data-id="crawler"><div class="status">web</div><div class="projecttop"><span class="kicker">Web Recon</span><a href="https://github.com/lulz-lich" target="_blank">repo ↗</a></div><h3>Security Crawler</h3><p>Crawler for mapping routes, organizing discoveries, and generating structured output.</p><div class="tags"><span>Python</span><span>Web</span><span>Recon</span></div></article>
-<article class="project reveal" data-cat="redteam docs" data-id="writeups"><div class="status">method</div><div class="projecttop"><span class="kicker">Writeups</span><a href="https://github.com/lulz-lich" target="_blank">repo ↗</a></div><h3>Red Team Writeups</h3><p>Writeups with methodology, evidence, impact, mitigation, and technical reasoning.</p><div class="tags"><span>Labs</span><span>Evidence</span><span>Docs</span></div></article>
-<article class="project reveal" data-cat="redteam tooling" data-id="opsec"><div class="status">ops</div><div class="projecttop"><span class="kicker">Operations</span><a href="https://github.com/lulz-lich" target="_blank">repo ↗</a></div><h3>OPSEC Lab Notes</h3><p>Studies on traces, logs, operational hygiene, and detection in lab environments.</p><div class="tags"><span>OPSEC</span><span>Detection</span><span>Logs</span></div></article>
-<article class="project reveal" data-cat="tooling docs" data-id="gsm"><div class="status">software</div><div class="projecttop"><span class="kicker">Engineering</span><a href="https://github.com/lulz-lich" target="_blank">repo ↗</a></div><h3>GSM</h3><p>Backup, restore, cloud sync, cross-platform support, and automation.</p><div class="tags"><span>Python</span><span>Cloud</span><span>Linux</span></div></article>
-<article class="project reveal" data-cat="tooling" data-id="blackcapy"><div class="status">bonus</div><div class="projecttop"><span class="kicker">Technical Bonus</span><a href="https://github.com/lulz-lich" target="_blank">repo ↗</a></div><h3>BlackCapy</h3><p>ESP32, modularity, logs, and physical UI as a secondary technical differentiator.</p><div class="tags"><span>ESP32</span><span>C++</span><span>Open Source</span></div></article>
-</div></div></section>
-<section id="operacao"><div class="wrap"><div class="head reveal"><span class="kicker">05 · Operation</span><h2>How I want to operate in Red Team.</h2><p>The goal is to generate useful evidence for defense, not roleplay as a villain with a terminal open.</p></div><div class="ops"><article class="op reveal"><span>scope</span><h3>Scope</h3><p>Authorization, limits, objectives, and rules.</p></article><article class="op reveal"><span>recon</span><h3>Reconnaissance</h3><p>Map exposed surface and testable hypotheses.</p></article><article class="op reveal"><span>validate</span><h3>Validation</h3><p>Confirm risk in a controlled way.</p></article><article class="op reveal"><span>report</span><h3>Reporting</h3><p>Impact, evidence, and mitigation.</p></article></div></div></section>
-<section id="laboratorio" class="muted"><div class="wrap labgrid"><div class="head reveal"><span class="kicker">06 · Lab</span><h2>Interactive methodology panel.</h2><p>Shows reasoning without becoming a public chaos manual.</p></div><div class="labbox reveal"><div class="labtop"><strong>redteamctl --authorized-lab</strong><span id="labStatus">idle</span></div><div class="lab lab-actions"><button data-cmd="workflow">workflow</button><button data-cmd="ethics">ethics</button><button data-cmd="tools">tools</button><button data-cmd="detection">detection</button><button data-cmd="cert">cert</button></div><div id="labOutput" class="labout"><p><span>$</span> choose a command</p></div></div></div></section>
-<section id="roadmap"><div class="wrap split"><div class="reveal"><span class="kicker">07 · Roadmap</span><h2>Next professional evolution.</h2></div><div class="timeline reveal"><article><span>Now</span><h3>Web Pentest + Tooling</h3><p>Projects próprios, labs, crawler, CapySuite e relatórios.</p></article><article><span>Next</span><h3>Active Directory</h3><p>Domain fundamentals, enumeration, and defense.</p></article><article><span>Later</span><h3>Cloud Security</h3><p>AWS/Azure, IAM, misconfigurations, logs, and detection.</p></article><article><span>Continuous</span><h3>OPSEC + Detection</h3><p>Tracing, evidence, monitoring, and reporting.</p></article></div></div></section>
-<section id="contato"><div class="wrap contact reveal"><span class="kicker">08 · Contact</span><h2>Ethical Red Team, custom tooling, and clear documentation.</h2><p>Open to opportunities, collaboration, and projects involving ethical pentesting, Red Team, automation, Linux, web security, and tool development.</p><div class="actions"><a class="btn primary" href="mailto:mrh.ofici@gmail.com">mrh.ofici@gmail.com</a><a class="btn" href="https://github.com/lulz-lich" target="_blank">GitHub</a><a class="btn" href="https://www.linkedin.com/in/henrique-cunha-802305335/" target="_blank">LinkedIn</a></div></div></section>
-</main>
-<div class="palette" id="palette"><div class="box"><div class="boxtop"><strong>Command Palette</strong><button id="paletteClose">×</button></div><input id="paletteInput" placeholder="about, value, arsenal, projects, operation, lab, roadmap, contact, stealth"><div class="hint"><button data-go="sobre">about</button><button data-go="valor">value</button><button data-go="arsenal">arsenal</button><button data-go="projetos">projects</button><button data-go="laboratorio">lab</button><button data-go="stealth">stealth</button></div><p>Shortcut: Ctrl + K. The mouse survives, but the keyboard reigns.</p></div></div>
-<div class="modal" id="modal"><div class="modalbox"><button id="modalClose">×</button><span id="modalCat"></span><h2 id="modalTitle"></h2><p id="modalText"></p><div id="modalPoints"></div><a id="modalLink" class="btn primary" href="https://github.com/lulz-lich" target="_blank">Open repository</a></div></div>
-<footer><div class="wrap footer"><p>© 2026 Henrique da Silva Cunha · ethical hacking and terminal-shaped stubbornness.</p><a href="#home">Back to top ↑</a></div></footer>
-<script>
-const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
-const body=document.body,log=$("#log"),loader=$("#loader"),cursor=$(".cursor"),nav=$("#navMenu");
-["loading red team profile","checking authorization-first mindset","indexing pentest projects","mounting linux workflow","loading reporting module","rendering portfolio"].forEach((m,i)=>setTimeout(()=>{let p=document.createElement("p");p.innerHTML=`<b>[ok]</b> ${m}`;log.appendChild(p)},i*150));setTimeout(()=>loader.classList.add("done"),1600);
-addEventListener("mousemove",e=>{cursor.style.setProperty("--x",e.clientX+"px");cursor.style.setProperty("--y",e.clientY+"px")});
-$("#menuBtn").onclick=()=>nav.classList.toggle("active");$$("nav a").forEach(a=>a.onclick=()=>nav.classList.remove("active"));
-const obs=new IntersectionObserver(es=>es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add("show"),i*45);obs.unobserve(e.target)}}),{threshold:.12});$$(".reveal").forEach(e=>obs.observe(e));
-function clock(){$("#clock").textContent=new Date().toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"})}clock();setInterval(clock,2e4);
-let phrases=["init redteam-portfolio --mode ethical","scan skills --focus pentest, web, tooling","load projects/capysuite --priority high","scope: authorized environments only","workflow: recon -> validate -> document -> mitigate"],pi=0,ci=0,del=false;function type(){let l=$("#typeLine"),p=phrases[pi];l.textContent=p.slice(0,ci);if(!del&&ci<p.length){ci++;return setTimeout(type,48)}if(!del&&ci===p.length){del=true;return setTimeout(type,1250)}if(del&&ci>0){ci--;return setTimeout(type,22)}del=false;pi=(pi+1)%phrases.length;setTimeout(type,240)}type();
-$$(".project,.value,.op").forEach(el=>el.onmousemove=e=>{let r=el.getBoundingClientRect();el.style.setProperty("--mx",((e.clientX-r.left)/r.width)*100+"%");el.style.setProperty("--my",((e.clientY-r.top)/r.height)*100+"%")});
-$$(".filter").forEach(b=>b.onclick=()=>{let f=b.dataset.filter;$$(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");$$(".project").forEach(p=>p.classList.toggle("hidden",!(f==="all"||p.dataset.cat.includes(f))))});
-const data={capysuite:["Main Red Team Tool","CapySuite","Modular suite for authorized labs, combining enumeration, evidence organization, workflow automation, and reporting.",["Python + CLI","Red Team workflow","Evidence management","Automation"]],crawler:["Web Recon Tool","Security Crawler","Crawler for mapping routes and organizing discoveries in owned applications or authorized environments.",["Web recon","Route mapping","Structured output","Reports"]],writeups:["Methodology & Reporting","Red Team Writeups","Writeups with methodology, evidence, impact, mitigation, and technical reasoning.",["Methodology","Evidence","Mitigation","Technical clarity"]],opsec:["Operations & Detection","OPSEC Lab Notes","Studies on operational organization, traces, logs, environment hygiene, and detection.",["OPSEC","Detection","Logs","Lab discipline"]],gsm:["Software Engineering","GSM · Game Save Manager","Software project focused on backup, restore, cloud integration, automation, and data safety.",["Python","Cloud","Cross-platform","Automation"]],blackcapy:["Technical Bonus","BlackCapy","Projeto open-source com ESP32, modularity, logs, and physical UI as a secondary technical differentiator.",["ESP32","C++","Open Source","Embedded"]]};
-function openM(id){let d=data[id];$("#modalCat").textContent=d[0];$("#modalTitle").textContent=d[1];$("#modalText").textContent=d[2];$("#modalPoints").innerHTML=d[3].map(x=>`<span>${x}</span>`).join("");$("#modal").classList.add("active")}function closeM(){$("#modal").classList.remove("active")}$$(".project").forEach(p=>p.onclick=e=>{if(!e.target.closest("a"))openM(p.dataset.id)});$("#modalClose").onclick=closeM;$("#modal").onclick=e=>{if(e.target===$("#modal"))closeM()};
-const lab={workflow:["confirm written scope","perform reconnaissance","enumerate exposed services","validate findings safely","document evidence, impact and mitigation"],ethics:["only owned or authorized environments","no abuse of real systems","no persistence outside labs","respect privacy and data boundaries"],tools:["linux + shell + git","python automation","burp / nmap / docker labs","custom tooling for repeatable workflows"],detection:["think like attacker and defender","understand logs and traces","study detection opportunities","document what defenders should monitor"],cert:["Cisco Networking Academy: Ethical Hacker","legal and compliance scope","vulnerability assessment process","mitigation recommendations"]};
-$$(".lab-actions button").forEach(b=>b.onclick=()=>{let o=$("#labOutput"),s=$("#labStatus");o.innerHTML="";s.textContent="running";lab[b.dataset.cmd].forEach((t,i)=>setTimeout(()=>{o.innerHTML+=`<p><span>$</span> ${t}</p>`;if(i===lab[b.dataset.cmd].length-1)s.textContent="done"},i*110))});
-function openP(){$("#palette").classList.add("active");setTimeout(()=>$("#paletteInput").focus(),40)}function closeP(){$("#palette").classList.remove("active");$("#paletteInput").value=""}$("#paletteOpen").onclick=openP;$("#paletteClose").onclick=closeP;$("#palette").onclick=e=>{if(e.target===$("#palette"))closeP()};function run(cmd){cmd=cmd.trim().toLowerCase();let r={sobre:"#sobre",valor:"#valor",arsenal:"#arsenal",projetos:"#projetos",operacao:"#operacao",lab:"#laboratorio",roadmap:"#roadmap",contato:"#contato"};if(r[cmd]){closeP();document.querySelector(r[cmd]).scrollIntoView({behavior:"smooth"});return}if(cmd==="stealth"){toggle();closeP();return}$("#paletteInput").value="Invalid command."}$("#paletteInput").onkeydown=e=>{if(e.key==="Enter")run(e.target.value)};$$(".hint button").forEach(b=>b.onclick=()=>run(b.dataset.go));addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){e.preventDefault();openP()}if(e.key==="Escape"){closeP();closeM()}});
-function toggle(){body.classList.toggle("stealth");localStorage.setItem("stealth",body.classList.contains("stealth")?"1":"0")}if(localStorage.getItem("stealth")==="1")body.classList.add("stealth");$("#stealth").onclick=toggle;
-const c=$("#fx"),ctx=c.getContext("2d");let W,H,ps=[];function resize(){W=c.width=innerWidth*devicePixelRatio;H=c.height=innerHeight*devicePixelRatio;c.style.width=innerWidth+"px";c.style.height=innerHeight+"px";ps=Array.from({length:Math.min(85,Math.floor(innerWidth/18))},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25*devicePixelRatio,vy:(Math.random()-.5)*.25*devicePixelRatio,r:(Math.random()*1.3+.6)*devicePixelRatio}))}function draw(){ctx.clearRect(0,0,W,H);ctx.fillStyle=body.classList.contains("stealth")?"rgba(128,255,187,.45)":"rgba(200,182,255,.42)";ctx.strokeStyle=body.classList.contains("stealth")?"rgba(128,255,187,.12)":"rgba(145,217,255,.11)";ps.forEach((p,i)=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();for(let j=i+1;j<ps.length;j++){let q=ps[j],d=Math.hypot(p.x-q.x,p.y-q.y),m=128*devicePixelRatio;if(d<m){ctx.globalAlpha=1-d/m;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke();ctx.globalAlpha=1}}});requestAnimationFrame(draw)}resize();draw();addEventListener("resize",resize);
-</script></body></html>
+     TEAM</pre>
+              <div>
+                <p><b>Role</b> Ethical Hacker</p>
+                <p><b>OS</b> CachyOS</p>
+                <p><b>WM</b> Hyprland</p>
+                <p><b>Core</b> web · tooling · OPSEC</p>
+                <p><b>Rule</b> authorized only</p>
+              </div>
+            </div>
+
+            <div class="terminal interactive-terminal">
+              <div class="terminal-output" id="terminalOutput">
+                <p><span>➜</span> Type a command or click one below.</p>
+              </div>
+
+              <form id="terminalForm" class="terminal-form">
+                <span>➜</span>
+                <input id="terminalInput" type="text" placeholder="help, skills, projects, contact, roadmap" autocomplete="off">
+                <button type="submit">run</button>
+              </form>
+
+              <div class="terminal-shortcuts">
+                <button type="button" data-terminal="help">help</button>
+                <button type="button" data-terminal="skills">skills</button>
+                <button type="button" data-terminal="projects">projects</button>
+                <button type="button" data-terminal="contact">contact</button>
+                <button type="button" data-terminal="roadmap">roadmap</button>
+              </div>
+            </div>
+
+            <div class="signals">
+              <article><strong>Primary</strong><span>Red Team</span></article>
+              <article><strong>Tooling</strong><span>Python / CLI</span></article>
+              <article><strong>Workflow</strong><span>Linux / Git</span></article>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="wrap grid3 reveal">
+        <article>
+          <span>01</span>
+          <strong>Red Team direction</strong>
+          <p>Authorized attack-chain thinking, methodology, OPSEC, and documentation.</p>
+        </article>
+
+        <article>
+          <span>02</span>
+          <strong>Custom tooling</strong>
+          <p>Python automation, CLI tooling, crawling, parsing, evidence handling, and reports.</p>
+        </article>
+
+        <article>
+          <span>03</span>
+          <strong>Linux-native</strong>
+          <p>CachyOS, Hyprland, terminal workflow, Git, Docker, and isolated labs.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="actions" class="muted">
+      <div class="wrap">
+        <div class="head reveal">
+          <span class="kicker">Quick Actions</span>
+          <h2>Useful interactions, not decorative suffering.</h2>
+          <p>Fast actions for recruiters, collaborators, and anyone who does not want to hunt links like a medieval peasant.</p>
+        </div>
+
+        <div class="quickgrid">
+          <button class="quick reveal" data-action="copy-email">
+            <span>copy</span>
+            <strong>Copy email</strong>
+            <p>Copy my professional email to the clipboard.</p>
+          </button>
+
+          <button class="quick reveal" data-action="copy-contact">
+            <span>vcard</span>
+            <strong>Copy contact card</strong>
+            <p>Copy email, GitHub, and LinkedIn in one clean block.</p>
+          </button>
+
+          <a class="quick reveal" href="https://github.com/lulz-lich" target="_blank">
+            <span>github</span>
+            <strong>Open GitHub</strong>
+            <p>See my repositories and technical projects.</p>
+          </a>
+
+          <a class="quick reveal" href="https://www.linkedin.com/in/henrique-cunha-802305335/" target="_blank">
+            <span>profile</span>
+            <strong>Open LinkedIn</strong>
+            <p>View my professional profile.</p>
+          </a>
+
+          <a class="quick reveal" href="#projetos">
+            <span>projects</span>
+            <strong>Jump to projects</strong>
+            <p>Go directly to my Red Team and tooling projects.</p>
+          </a>
+
+          <button class="quick reveal" data-action="terminal-help">
+            <span>terminal</span>
+            <strong>Show commands</strong>
+            <p>Display available terminal commands in the interactive HUD.</p>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="wrap split">
+        <div class="reveal">
+          <span class="kicker">01 · About</span>
+          <h2>Ethical Red Team with an engineering mindset.</h2>
+        </div>
+
+        <div class="panel reveal">
+          <p>
+            My focus is Ethical Hacking and Red Team: understanding how environments are compromised in authorized scenarios,
+            simulating risk responsibly, documenting evidence, and turning findings into defensive improvement.
+          </p>
+
+          <p>
+            I have a strong foundation in Linux, programming, networking, automation, and electronics. My current direction
+            prioritizes Web Pentest, Active Directory, cloud security, OPSEC, technical reporting, authorized offensive automation,
+            and detection awareness.
+          </p>
+
+          <div class="identity">
+            <article><strong>Red Team</strong><span>Recon, enumeration, controlled exploitation, OPSEC, and evidence.</span></article>
+            <article><strong>Web Security</strong><span>OWASP, APIs, authentication, sessions, and vulnerability validation.</span></article>
+            <article><strong>Automation</strong><span>Python, Bash, CLI tools, parsing, and structured outputs.</span></article>
+            <article><strong>Reporting</strong><span>Impact, severity, mitigation, and clear documentation.</span></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="valor" class="muted">
+      <div class="wrap">
+        <div class="head reveal">
+          <span class="kicker">02 · Value</span>
+          <h2>What I bring as a strong junior profile.</h2>
+          <p>Organized technical growth, ethical security practice, and demonstrable projects.</p>
+        </div>
+
+        <div class="valuegrid">
+          <article class="value reveal"><span>research</span><h3>Scoped research</h3><p>Organize hypotheses, separate noise from signal, and document discoveries.</p></article>
+          <article class="value reveal"><span>automation</span><h3>Repeatable automation</h3><p>Scripts and tools to standardize tasks and preserve evidence.</p></article>
+          <article class="value reveal"><span>reporting</span><h3>Technical communication</h3><p>Impact, evidence, severity, mitigation, and next steps.</p></article>
+          <article class="value reveal"><span>detection</span><h3>Defense-aware mindset</h3><p>Awareness of logs, traces, monitoring, and response.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="arsenal">
+      <div class="wrap">
+        <div class="head reveal">
+          <span class="kicker">03 · Arsenal</span>
+          <h2>Skills aligned with Red Team work.</h2>
+          <p>This portfolio communicates Red Team direction, not just “I know computers,” a phrase that should probably come with a fine.</p>
+        </div>
+
+        <div class="arsenal">
+          <article class="card reveal">
+            <div class="top"><span>RT</span><small>01</small></div>
+            <h3>Red Team Foundations</h3>
+            <p>Reconnaissance, enumeration, lab-based attack chains, OPSEC, and detection.</p>
+            <div class="meters">
+              <label>Recon<b style="--w:90%"></b></label>
+              <label>OPSEC<b style="--w:78%"></b></label>
+              <label>Method<b style="--w:86%"></b></label>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="top"><span>WEB</span><small>02</small></div>
+            <h3>Web & API Pentest</h3>
+            <p>OWASP Top 10, Burp Suite, authentication, sessions, APIs, and reporting.</p>
+            <div class="meters">
+              <label>OWASP<b style="--w:86%"></b></label>
+              <label>Burp<b style="--w:82%"></b></label>
+              <label>Reports<b style="--w:88%"></b></label>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="top"><span>OPS</span><small>03</small></div>
+            <h3>Linux, AD & Cloud Path</h3>
+            <p>Advanced Linux, shell, Docker, Git, networking, AD, and cloud security.</p>
+            <div class="meters">
+              <label>Linux<b style="--w:92%"></b></label>
+              <label>Networks<b style="--w:80%"></b></label>
+              <label>Labs<b style="--w:84%"></b></label>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="top"><span>DEV</span><small>04</small></div>
+            <h3>Offensive Tooling</h3>
+            <p>Python, Bash, C/C++, JavaScript, CLI tools, and documentation.</p>
+            <div class="meters">
+              <label>Python<b style="--w:88%"></b></label>
+              <label>CLI<b style="--w:84%"></b></label>
+              <label>Docs<b style="--w:86%"></b></label>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projetos" class="muted">
+      <div class="wrap">
+        <div class="head reveal">
+          <span class="kicker">04 · Projects</span>
+          <h2>Projects for a Red Team resume.</h2>
+          <p>Click the cards to view details. They finally do something besides occupying pixels.</p>
+        </div>
+
+        <div class="filters reveal">
+          <button class="filter active" data-filter="all">All</button>
+          <button class="filter" data-filter="redteam">Red Team</button>
+          <button class="filter" data-filter="web">Web</button>
+          <button class="filter" data-filter="tooling">Tooling</button>
+          <button class="filter" data-filter="docs">Reports</button>
+        </div>
+
+        <div class="projects">
+          <article class="project big reveal" data-cat="redteam tooling docs" data-id="capysuite">
+            <div class="status">flagship</div>
+            <div class="projecttop"><span class="kicker">Main Tool</span><a href="https://github.com/lulz-lich" target="_blank">repo ↗</a></div>
+            <h3>CapySuite</h3>
+            <p>Modular suite for authorized labs: enumeration, automation, evidence handling, and technical reporting.</p>
+            <div class="tags"><span>Python</span><span>CLI</span><span>Red Team</span></div>
+            <div class="project-actions">
+              <button type="button" class="project-info-btn">View details</button>
+              <a href="https://github.com/lulz-lich" target="_blank">Repository</a>
+            </div>
+          </article>
+
+          <article class="project reveal" data-cat="web tooling docs" data-id="crawler">
+            <div class="status">web</div>
+            <div class="projecttop"><span class="kicker">Web Recon</span><a href="https://github.com/lulz-lich" target="_blank">repo ↗</a></div>
+            <h3>Security Crawler</h3>
+            <p>Crawler for mapping routes, organizing discoveries, and generating structured output.</p>
+            <div class="tags"><span>Python</span><span>Web</span><span>Recon</span></div>
+            <div class="project-actions">
+              <button type="button" class="project-info-btn">View details</button>
+              <a href="https://github.com/lulz-lich" target="_blank">Repository</a>
+            </div>
+          </article>
+
+          <article class="project reveal" data-cat="redteam docs" data-id="writeups">
+            <div class="status">method</div>
+            <div class="projecttop"><span class="kicker">Writeups</span><a href="https://github.com/lulz-lich" target="_blank">repo ↗</a></div>
+            <h3>Red Team Writeups</h3>
+            <p>Writeups with methodology, evidence, impact, mitigation, and technical reasoning.</p>
+            <div class="tags"><span>Labs</span><span>Evidence</span><span>Docs</span></div>
+            <div class="project-actions">
+              <button type="button" class="project-info-btn">View details</button>
+              <a href="https://github.com/lulz-lich" target="_blank">Repository</a>
+            </div>
+          </article>
+
+          <article class="project reveal" data-cat="redteam tooling" data-id="opsec">
+            <div class="status">ops</div>
+            <div class="projecttop"><span class="kicker">Operations</span><a href="https://github.com/lulz-lich" target="_blank">repo ↗</a></div>
+            <h3>OPSEC Lab Notes</h3>
+            <p>Studies on traces, logs, operational hygiene, and detection in lab environments.</p>
+            <div class="tags"><span>OPSEC</span><span>Detection</span><span>Logs</span></div>
+            <div class="project-actions">
+              <button type="button" class="project-info-btn">View details</button>
+              <a href="https://github.com/lulz-lich" target="_blank">Repository</a>
+            </div>
+          </article>
+
+          <article class="project reveal" data-cat="tooling docs" data-id="gsm">
+            <div class="status">software</div>
+            <div class="projecttop"><span class="kicker">Engineering</span><a href="https://github.com/lulz-lich" target="_blank">repo ↗</a></div>
+            <h3>GSM</h3>
+            <p>Backup, restore, cloud sync, cross-platform support, and automation.</p>
+            <div class="tags"><span>Python</span><span>Cloud</span><span>Linux</span></div>
+            <div class="project-actions">
+              <button type="button" class="project-info-btn">View details</button>
+              <a href="https://github.com/lulz-lich" target="_blank">Repository</a>
+            </div>
+          </article>
+
+          <article class="project reveal" data-cat="tooling" data-id="blackcapy">
+            <div class="status">bonus</div>
+            <div class="projecttop"><span class="kicker">Technical Bonus</span><a href="https://github.com/lulz-lich" target="_blank">repo ↗</a></div>
+            <h3>BlackCapy</h3>
+            <p>ESP32, modularity, logs, and physical UI as a secondary technical differentiator.</p>
+            <div class="tags"><span>ESP32</span><span>C++</span><span>Open Source</span></div>
+            <div class="project-actions">
+              <button type="button" class="project-info-btn">View details</button>
+              <a href="https://github.com/lulz-lich" target="_blank">Repository</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="operacao">
+      <div class="wrap">
+        <div class="head reveal">
+          <span class="kicker">05 · Operation</span>
+          <h2>How I want to operate in Red Team.</h2>
+          <p>The goal is to generate useful evidence for defense, not roleplay as a villain with a terminal open.</p>
+        </div>
+
+        <div class="ops">
+          <article class="op reveal"><span>scope</span><h3>Scope</h3><p>Authorization, limits, objectives, and rules.</p></article>
+          <article class="op reveal"><span>recon</span><h3>Reconnaissance</h3><p>Map exposed surface and testable hypotheses.</p></article>
+          <article class="op reveal"><span>validate</span><h3>Validation</h3><p>Confirm risk in a controlled way.</p></article>
+          <article class="op reveal"><span>report</span><h3>Reporting</h3><p>Impact, evidence, and mitigation.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="laboratorio" class="muted">
+      <div class="wrap labgrid">
+        <div class="head reveal">
+          <span class="kicker">06 · Lab</span>
+          <h2>Interactive methodology panel.</h2>
+          <p>Shows reasoning without becoming a public chaos manual.</p>
+        </div>
+
+        <div class="labbox reveal">
+          <div class="labtop">
+            <strong>redteamctl --authorized-lab</strong>
+            <span id="labStatus">idle</span>
+          </div>
+
+          <div class="lab lab-actions">
+            <button data-cmd="workflow">workflow</button>
+            <button data-cmd="ethics">ethics</button>
+            <button data-cmd="tools">tools</button>
+            <button data-cmd="detection">detection</button>
+            <button data-cmd="cert">cert</button>
+          </div>
+
+          <div id="labOutput" class="labout">
+            <p><span>$</span> choose a command</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="wrap split">
+        <div class="reveal">
+          <span class="kicker">07 · Roadmap</span>
+          <h2>Next professional evolution.</h2>
+        </div>
+
+        <div class="timeline reveal">
+          <article><span>Now</span><h3>Web Pentest + Tooling</h3><p>Custom projects, labs, crawler, CapySuite, and reports.</p></article>
+          <article><span>Next</span><h3>Active Directory</h3><p>Domain fundamentals, enumeration, and defense.</p></article>
+          <article><span>Later</span><h3>Cloud Security</h3><p>AWS/Azure, IAM, misconfigurations, logs, and detection.</p></article>
+          <article><span>Continuous</span><h3>OPSEC + Detection</h3><p>Tracing, evidence, monitoring, and reporting.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="wrap contact reveal">
+        <span class="kicker">08 · Contact</span>
+        <h2>Ethical Red Team, custom tooling, and clear documentation.</h2>
+        <p>Open to opportunities, collaboration, and projects involving ethical pentesting, Red Team, automation, Linux, web security, and tool development.</p>
+
+        <div class="actions">
+          <a class="btn primary" href="mailto:mrh.ofici@gmail.com">mrh.ofici@gmail.com</a>
+          <a class="btn" href="https://github.com/lulz-lich" target="_blank">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/henrique-cunha-802305335/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="palette" id="palette">
+    <div class="box">
+      <div class="boxtop">
+        <strong>Command Palette</strong>
+        <button id="paletteClose">×</button>
+      </div>
+
+      <input id="paletteInput" placeholder="about, actions, value, arsenal, projects, operation, lab, roadmap, contact, stealth">
+
+      <div class="hint">
+        <button data-go="sobre">about</button>
+        <button data-go="actions">actions</button>
+        <button data-go="valor">value</button>
+        <button data-go="arsenal">arsenal</button>
+        <button data-go="projetos">projects</button>
+        <button data-go="laboratorio">lab</button>
+        <button data-go="stealth">stealth</button>
+      </div>
+
+      <p>Shortcut: Ctrl + K. The mouse survives, but the keyboard reigns.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modalbox">
+      <button id="modalClose">×</button>
+      <span id="modalCat"></span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalText"></p>
+      <div id="modalPoints"></div>
+      <a id="modalLink" class="btn primary" href="https://github.com/lulz-lich" target="_blank">Open repository</a>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <footer>
+    <div class="wrap footer">
+      <p>© 2026 Henrique da Silva Cunha · ethical hacking and terminal-shaped stubbornness.</p>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    const $ = s => document.querySelector(s);
+    const $$ = s => document.querySelectorAll(s);
+
+    const EMAIL = "mrh.ofici@gmail.com";
+    const GITHUB = "https://github.com/lulz-lich";
+    const LINKEDIN = "https://www.linkedin.com/in/henrique-cunha-802305335/";
+
+    const body = document.body;
+    const log = $("#log");
+    const loader = $("#loader");
+    const cursor = $(".cursor");
+    const nav = $("#navMenu");
+
+    [
+      "loading red team profile",
+      "checking authorization-first mindset",
+      "indexing pentest projects",
+      "mounting linux workflow",
+      "loading reporting module",
+      "rendering portfolio"
+    ].forEach((m, i) => {
+      setTimeout(() => {
+        const p = document.createElement("p");
+        p.innerHTML = `<b>[ok]</b> ${m}`;
+        log.appendChild(p);
+      }, i * 150);
+    });
+
+    setTimeout(() => loader.classList.add("done"), 1600);
+
+    addEventListener("mousemove", e => {
+      cursor.style.setProperty("--x", e.clientX + "px");
+      cursor.style.setProperty("--y", e.clientY + "px");
+    });
+
+    $("#menuBtn").onclick = () => nav.classList.toggle("active");
+    $$("nav a").forEach(a => a.onclick = () => nav.classList.remove("active"));
+
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add("show"), index * 45);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12 });
+
+    $$(".reveal").forEach(e => obs.observe(e));
+
+    function clock() {
+      $("#clock").textContent = new Date().toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+    }
+
+    clock();
+    setInterval(clock, 20000);
+
+    function showToast(message) {
+      const toast = $("#toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2600);
+    }
+
+    async function copyText(text, successMessage) {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast(successMessage);
+      } catch {
+        showToast("Clipboard blocked by browser. Humanity suffers again.");
+      }
+    }
+
+    $$(".project,.value,.op,.quick").forEach(el => {
+      el.onmousemove = e => {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty("--mx", ((e.clientX - r.left) / r.width) * 100 + "%");
+        el.style.setProperty("--my", ((e.clientY - r.top) / r.height) * 100 + "%");
+      };
+    });
+
+    $$(".filter").forEach(button => {
+      button.onclick = () => {
+        const filter = button.dataset.filter;
+
+        $$(".filter").forEach(x => x.classList.remove("active"));
+        button.classList.add("active");
+
+        $$(".project").forEach(project => {
+          project.classList.toggle("hidden", !(filter === "all" || project.dataset.cat.includes(filter)));
+        });
+      };
+    });
+
+    const modalData = {
+      capysuite: [
+        "Main Red Team Tool",
+        "CapySuite",
+        "Modular suite for authorized labs, combining enumeration, evidence organization, workflow automation, and reporting.",
+        ["Python + CLI", "Red Team workflow", "Evidence management", "Automation"]
+      ],
+      crawler: [
+        "Web Recon Tool",
+        "Security Crawler",
+        "Crawler for mapping routes and organizing discoveries in owned applications or authorized environments.",
+        ["Web recon", "Route mapping", "Structured output", "Reports"]
+      ],
+      writeups: [
+        "Methodology & Reporting",
+        "Red Team Writeups",
+        "Writeups with methodology, evidence, impact, mitigation, and technical reasoning.",
+        ["Methodology", "Evidence", "Mitigation", "Technical clarity"]
+      ],
+      opsec: [
+        "Operations & Detection",
+        "OPSEC Lab Notes",
+        "Studies on operational organization, traces, logs, environment hygiene, and detection.",
+        ["OPSEC", "Detection", "Logs", "Lab discipline"]
+      ],
+      gsm: [
+        "Software Engineering",
+        "GSM · Game Save Manager",
+        "Software project focused on backup, restore, cloud integration, automation, and data safety.",
+        ["Python", "Cloud", "Cross-platform", "Automation"]
+      ],
+      blackcapy: [
+        "Technical Bonus",
+        "BlackCapy",
+        "Open-source ESP32 project with modularity, logs, and physical UI as a secondary technical differentiator.",
+        ["ESP32", "C++", "Open Source", "Embedded"]
+      ]
+    };
+
+    function openM(id) {
+      const data = modalData[id];
+      if (!data) return;
+
+      $("#modalCat").textContent = data[0];
+      $("#modalTitle").textContent = data[1];
+      $("#modalText").textContent = data[2];
+      $("#modalPoints").innerHTML = data[3].map(x => `<span>${x}</span>`).join("");
+
+      $("#modal").classList.add("active");
+      body.classList.add("lock");
+    }
+
+    function closeM() {
+      $("#modal").classList.remove("active");
+      body.classList.remove("lock");
+    }
+
+    $$(".project").forEach(project => {
+      project.onclick = e => {
+        if (!e.target.closest("a") && !e.target.closest("button")) {
+          openM(project.dataset.id);
+        }
+      };
+    });
+
+    $$(".project-info-btn").forEach(button => {
+      button.onclick = e => {
+        e.stopPropagation();
+        const project = button.closest(".project");
+        openM(project.dataset.id);
+      };
+    });
+
+    $("#modalClose").onclick = closeM;
+
+    $("#modal").onclick = e => {
+      if (e.target === $("#modal")) closeM();
+    };
+
+    const lab = {
+      workflow: [
+        "confirm written scope",
+        "perform reconnaissance",
+        "enumerate exposed services",
+        "validate findings safely",
+        "document evidence, impact and mitigation"
+      ],
+      ethics: [
+        "only owned or authorized environments",
+        "no abuse of real systems",
+        "no persistence outside labs",
+        "respect privacy and data boundaries"
+      ],
+      tools: [
+        "linux + shell + git",
+        "python automation",
+        "burp / nmap / docker labs",
+        "custom tooling for repeatable workflows"
+      ],
+      detection: [
+        "think like attacker and defender",
+        "understand logs and traces",
+        "study detection opportunities",
+        "document what defenders should monitor"
+      ],
+      cert: [
+        "Cisco Networking Academy: Ethical Hacker",
+        "legal and compliance scope",
+        "vulnerability assessment process",
+        "mitigation recommendations"
+      ]
+    };
+
+    $$(".lab-actions button").forEach(button => {
+      button.onclick = () => {
+        const output = $("#labOutput");
+        const status = $("#labStatus");
+        const lines = lab[button.dataset.cmd];
+
+        output.innerHTML = "";
+        status.textContent = "running";
+
+        lines.forEach((line, i) => {
+          setTimeout(() => {
+            output.innerHTML += `<p><span>$</span> ${line}</p>`;
+            if (i === lines.length - 1) status.textContent = "done";
+          }, i * 110);
+        });
+      };
+    });
+
+    function terminalPrint(lines) {
+      const output = $("#terminalOutput");
+      output.innerHTML = "";
+
+      lines.forEach((line, index) => {
+        const p = document.createElement("p");
+        p.innerHTML = `<span>$</span> ${line}`;
+        p.style.opacity = "0";
+        p.style.transform = "translateY(6px)";
+        output.appendChild(p);
+
+        setTimeout(() => {
+          p.style.transition = "opacity .22s ease, transform .22s ease";
+          p.style.opacity = "1";
+          p.style.transform = "translateY(0)";
+        }, index * 70);
+      });
+    }
+
+    const terminalCommands = {
+      help: [
+        "Available commands:",
+        "skills      show technical focus",
+        "projects    list main projects",
+        "contact     show contact links",
+        "roadmap     show current learning path",
+        "clear       clear terminal"
+      ],
+      skills: [
+        "Red Team Foundations",
+        "Web & API Pentest",
+        "Linux / CachyOS / Hyprland",
+        "Python offensive tooling",
+        "OPSEC and detection awareness",
+        "Technical reporting"
+      ],
+      projects: [
+        "CapySuite          flagship Red Team toolkit",
+        "Security Crawler   web recon and route mapping",
+        "Red Team Writeups  methodology and evidence",
+        "OPSEC Lab Notes    logs, traces and detection",
+        "GSM                software engineering proof",
+        "BlackCapy          embedded technical bonus"
+      ],
+      contact: [
+        `Email: ${EMAIL}`,
+        `GitHub: ${GITHUB}`,
+        `LinkedIn: ${LINKEDIN}`
+      ],
+      roadmap: [
+        "Now: Web Pentest + Python tooling",
+        "Next: Active Directory labs",
+        "Then: Cloud security and IAM",
+        "Continuous: OPSEC, detection, reporting"
+      ]
+    };
+
+    function runTerminalCommand(command) {
+      const normalized = command.trim().toLowerCase();
+
+      if (!normalized) return;
+
+      if (normalized === "clear") {
+        $("#terminalOutput").innerHTML = `<p><span>➜</span> terminal cleared</p>`;
+        return;
+      }
+
+      if (terminalCommands[normalized]) {
+        terminalPrint(terminalCommands[normalized]);
+        return;
+      }
+
+      terminalPrint([
+        `Unknown command: ${normalized}`,
+        "Try: help, skills, projects, contact, roadmap, clear"
+      ]);
+    }
+
+    $("#terminalForm").addEventListener("submit", e => {
+      e.preventDefault();
+
+      const input = $("#terminalInput");
+      runTerminalCommand(input.value);
+      input.value = "";
+    });
+
+    $$("[data-terminal]").forEach(button => {
+      button.onclick = () => runTerminalCommand(button.dataset.terminal);
+    });
+
+    $$("[data-action]").forEach(button => {
+      button.onclick = () => {
+        const action = button.dataset.action;
+
+        if (action === "copy-email") {
+          copyText(EMAIL, "Email copied.");
+          return;
+        }
+
+        if (action === "copy-contact") {
+          copyText(
+            `Henrique da Silva Cunha
+Email: ${EMAIL}
+GitHub: ${GITHUB}
+LinkedIn: ${LINKEDIN}`,
+            "Contact card copied."
+          );
+          return;
+        }
+
+        if (action === "terminal-help") {
+          $("#home").scrollIntoView({ behavior: "smooth" });
+          runTerminalCommand("help");
+        }
+      };
+    });
+
+    function openPalette() {
+      $("#palette").classList.add("active");
+      body.classList.add("lock");
+      setTimeout(() => $("#paletteInput").focus(), 40);
+    }
+
+    function closePalette() {
+      $("#palette").classList.remove("active");
+      body.classList.remove("lock");
+      $("#paletteInput").value = "";
+    }
+
+    $("#paletteOpen").onclick = openPalette;
+    $("#paletteClose").onclick = closePalette;
+
+    $("#palette").onclick = e => {
+      if (e.target === $("#palette")) closePalette();
+    };
+
+    function toggleStealth() {
+      body.classList.toggle("stealth");
+      localStorage.setItem("stealth", body.classList.contains("stealth") ? "1" : "0");
+    }
+
+    if (localStorage.getItem("stealth") === "1") body.classList.add("stealth");
+    $("#stealth").onclick = toggleStealth;
+
+    function runPaletteCommand(command) {
+      const cmd = command.trim().toLowerCase();
+
+      const routes = {
+        about: "#sobre",
+        actions: "#actions",
+        value: "#valor",
+        arsenal: "#arsenal",
+        projects: "#projetos",
+        operation: "#operacao",
+        lab: "#laboratorio",
+        roadmap: "#roadmap",
+        contact: "#contato",
+        sobre: "#sobre",
+        valor: "#valor",
+        projetos: "#projetos",
+        operacao: "#operacao",
+        contato: "#contato"
+      };
+
+      if (routes[cmd]) {
+        closePalette();
+        document.querySelector(routes[cmd]).scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+
+      if (cmd === "stealth") {
+        toggleStealth();
+        closePalette();
+        return;
+      }
+
+      $("#paletteInput").value = "Invalid command.";
+    }
+
+    $("#paletteInput").onkeydown = e => {
+      if (e.key === "Enter") runPaletteCommand(e.target.value);
+    };
+
+    $$(".hint button").forEach(button => {
+      button.onclick = () => runPaletteCommand(button.dataset.go);
+    });
+
+    addEventListener("keydown", e => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        openPalette();
+      }
+
+      if (e.key === "Escape") {
+        closePalette();
+        closeM();
+      }
+    });
+
+    const canvas = $("#fx");
+    const ctx = canvas.getContext("2d");
+
+    let W;
+    let H;
+    let particles = [];
+
+    function resize() {
+      W = canvas.width = innerWidth * devicePixelRatio;
+      H = canvas.height = innerHeight * devicePixelRatio;
+
+      canvas.style.width = innerWidth + "px";
+      canvas.style.height = innerHeight + "px";
+
+      particles = Array.from({ length: Math.min(85, Math.floor(innerWidth / 18)) }, () => ({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - .5) * .25 * devicePixelRatio,
+        vy: (Math.random() - .5) * .25 * devicePixelRatio,
+        r: (Math.random() * 1.3 + .6) * devicePixelRatio
+      }));
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      ctx.fillStyle = body.classList.contains("stealth")
+        ? "rgba(128,255,187,.45)"
+        : "rgba(200,182,255,.42)";
+
+      ctx.strokeStyle = body.classList.contains("stealth")
+        ? "rgba(128,255,187,.12)"
+        : "rgba(145,217,255,.11)";
+
+      particles.forEach((p, i) => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > W) p.vx *= -1;
+        if (p.y < 0 || p.y > H) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const q = particles[j];
+          const d = Math.hypot(p.x - q.x, p.y - q.y);
+          const max = 128 * devicePixelRatio;
+
+          if (d < max) {
+            ctx.globalAlpha = 1 - d / max;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+          }
+        }
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    resize();
+    draw();
+    addEventListener("resize", resize);
+  </script>
+</body>
+</html>
