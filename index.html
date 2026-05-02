@@ -20,6 +20,8 @@
       --cyan: #91d9ff;
       --violet: #c8b6ff;
       --green: #9ef0ce;
+      --yellow: #ffd98c;
+      --danger: #ff7d99;
       --shadow: 0 24px 80px rgba(0,0,0,.42);
       --r: 28px;
     }
@@ -34,6 +36,7 @@
       --pink: #80ffbb;
       --cyan: #76ffea;
       --violet: #bcffd9;
+      --green: #83ff9f;
     }
 
     * {
@@ -60,6 +63,33 @@
 
     body.lock {
       overflow: hidden;
+    }
+
+    body[data-view="recruiter"] #fx,
+    body[data-view="recruiter"] .cursor,
+    body[data-view="recruiter"] .scan {
+      display: none;
+    }
+
+    body[data-view="recruiter"] .grid {
+      opacity: .16;
+    }
+
+    body[data-view="recruiter"] .hud,
+    body[data-view="recruiter"] .project,
+    body[data-view="recruiter"] .card,
+    body[data-view="recruiter"] .value,
+    body[data-view="recruiter"] .panel {
+      box-shadow: 0 14px 42px rgba(0,0,0,.28);
+    }
+
+    body[data-view="technical"] .project,
+    body[data-view="technical"] .card {
+      border-color: color-mix(in srgb, var(--cyan) 38%, var(--line));
+    }
+
+    body[data-view="redteam"] .project[data-cat*="redteam"] {
+      border-color: color-mix(in srgb, var(--pink) 42%, var(--line));
     }
 
     a {
@@ -254,7 +284,12 @@
     .terminal-form button,
     .terminal-shortcuts button,
     .project-actions button,
-    .project-actions a {
+    .project-actions a,
+    .mode,
+    .skill-node,
+    .drawer-tab,
+    .drawer-actions button,
+    .drawer-actions a {
       padding: 10px 13px;
       border: 1px solid transparent;
       border-radius: 99px;
@@ -271,7 +306,12 @@
     .terminal-form button:hover,
     .terminal-shortcuts button:hover,
     .project-actions button:hover,
-    .project-actions a:hover {
+    .project-actions a:hover,
+    .mode:hover,
+    .skill-node:hover,
+    .drawer-tab:hover,
+    .drawer-actions button:hover,
+    .drawer-actions a:hover {
       background: rgba(255,255,255,.06);
       border-color: var(--line2);
       transform: translateY(-2px);
@@ -376,7 +416,10 @@
     .tags,
     .filters,
     .terminal-shortcuts,
-    .project-actions {
+    .project-actions,
+    .modebar,
+    .drawer-tabs,
+    .drawer-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
@@ -389,11 +432,14 @@
     }
 
     .primary,
-    .filter.active {
+    .filter.active,
+    .mode.active,
+    .skill-node.active,
+    .drawer-tab.active {
       background: linear-gradient(135deg, var(--pink), var(--cyan));
       color: #130d1f;
       font-weight: 900;
-      border: 0;
+      border-color: transparent;
     }
 
     .chips {
@@ -419,7 +465,8 @@
     .timeline article,
     .contact,
     .labbox,
-    .quick {
+    .quick,
+    .matrix-output {
       border: 1px solid var(--line);
       border-radius: var(--r);
       background: linear-gradient(180deg, rgba(24,20,45,.88), rgba(12,9,24,.84));
@@ -456,11 +503,11 @@
     }
 
     .dots i:nth-child(1) {
-      background: #ff7d99;
+      background: var(--danger);
     }
 
     .dots i:nth-child(2) {
-      background: #ffd98c;
+      background: var(--yellow);
     }
 
     .window strong,
@@ -563,7 +610,9 @@
     .terminal-form button,
     .terminal-shortcuts button,
     .project-actions button,
-    .project-actions a {
+    .project-actions a,
+    .drawer-actions button,
+    .drawer-actions a {
       font: 700 .78rem "JetBrains Mono", monospace;
       border-color: var(--line);
       background: rgba(255,255,255,.04);
@@ -593,7 +642,8 @@
     .arsenal,
     .ops,
     .projects,
-    .quickgrid {
+    .quickgrid,
+    .skill-matrix {
       display: grid;
       gap: 18px;
     }
@@ -606,7 +656,8 @@
     .grid3 article,
     .value,
     .op,
-    .quick {
+    .quick,
+    .skill-node {
       padding: 20px;
       border-radius: 22px;
       border: 1px solid var(--line);
@@ -618,7 +669,9 @@
     .grid3 span,
     .value span,
     .op span,
-    .quick span {
+    .quick span,
+    .skill-node span,
+    .matrix-output span {
       font-family: "JetBrains Mono", monospace;
       color: var(--pink);
       font-weight: 800;
@@ -632,14 +685,16 @@
       min-height: 190px;
     }
 
-    .quick span {
+    .quick span,
+    .skill-node span {
       display: inline-flex;
       margin-bottom: 38px;
       text-transform: uppercase;
       font-size: .78rem;
     }
 
-    .quick strong {
+    .quick strong,
+    .skill-node strong {
       display: block;
       margin-bottom: 8px;
       font-size: 1.15rem;
@@ -681,6 +736,42 @@
     .head {
       max-width: 820px;
       margin-bottom: 38px;
+    }
+
+    .modebar {
+      margin-bottom: 24px;
+    }
+
+    .skill-matrix {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .skill-node {
+      min-height: 220px;
+      text-align: left;
+      border-radius: 24px;
+    }
+
+    .skill-node.active span {
+      color: #130d1f;
+    }
+
+    .skill-node.active p {
+      color: rgba(19,13,31,.78);
+    }
+
+    .matrix-output {
+      margin-top: 18px;
+      padding: 24px;
+    }
+
+    .matrix-output span {
+      text-transform: uppercase;
+      font-size: .8rem;
+    }
+
+    .matrix-output h3 {
+      margin: 8px 0 10px;
     }
 
     .valuegrid,
@@ -756,6 +847,7 @@
       justify-content: space-between;
       overflow: hidden;
       cursor: pointer;
+      transition: .22s;
     }
 
     .project.big {
@@ -781,6 +873,18 @@
 
     .project > * {
       position: relative;
+    }
+
+    .project.relevant {
+      outline: 2px solid color-mix(in srgb, var(--cyan) 62%, transparent);
+      box-shadow:
+        var(--shadow),
+        0 0 35px color-mix(in srgb, var(--cyan) 18%, transparent);
+    }
+
+    .project.dimmed {
+      opacity: .38;
+      filter: saturate(.65);
     }
 
     .status {
@@ -913,7 +1017,8 @@
     }
 
     .boxtop button,
-    #modalClose {
+    #modalClose,
+    .drawer-close {
       margin-left: auto;
       width: 38px;
       height: 38px;
@@ -973,6 +1078,79 @@
       border-radius: 14px;
       color: var(--muted);
       background: rgba(255,255,255,.03);
+    }
+
+    .project-drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      display: flex;
+      justify-content: flex-end;
+      background: rgba(5,3,11,.65);
+      backdrop-filter: blur(18px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: .2s;
+    }
+
+    .project-drawer.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .drawer-panel {
+      width: min(560px, 100%);
+      height: 100%;
+      overflow: auto;
+      padding: 30px;
+      border-left: 1px solid var(--line2);
+      background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--cyan) 12%, transparent), transparent 20rem),
+        rgba(12,9,24,.98);
+      box-shadow: var(--shadow);
+      transform: translateX(28px);
+      transition: .24s;
+    }
+
+    .project-drawer.active .drawer-panel {
+      transform: translateX(0);
+    }
+
+    .drawer-close {
+      float: right;
+    }
+
+    .drawer-panel h2 {
+      margin: 8px 52px 14px 0;
+    }
+
+    .drawer-tabs {
+      margin: 24px 0 16px;
+    }
+
+    .drawer-content {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .drawer-content article {
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .drawer-content strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .drawer-actions button,
+    .drawer-actions a {
+      border-radius: 14px;
     }
 
     .toast {
@@ -1059,7 +1237,8 @@
       .ops,
       .valuegrid,
       .projects,
-      .quickgrid {
+      .quickgrid,
+      .skill-matrix {
         grid-template-columns: repeat(2,1fr);
       }
 
@@ -1088,6 +1267,7 @@
       .ops,
       .valuegrid,
       .quickgrid,
+      .skill-matrix,
       #modalPoints,
       .signals {
         grid-template-columns: 1fr;
@@ -1133,11 +1313,15 @@
         width: max-content;
         margin-bottom: 12px;
       }
+
+      .drawer-panel {
+        padding: 24px 18px;
+      }
     }
   </style>
 </head>
 
-<body>
+<body data-view="redteam">
   <canvas id="fx"></canvas>
   <div class="grid"></div>
   <div class="cursor"></div>
@@ -1167,6 +1351,7 @@
         <a href="#sobre">About</a>
         <a href="#actions">Actions</a>
         <a href="#valor">Value</a>
+        <a href="#matrix">Matrix</a>
         <a href="#arsenal">Arsenal</a>
         <a href="#projetos">Projects</a>
         <a href="#operacao">Operation</a>
@@ -1239,7 +1424,7 @@
 
               <form id="terminalForm" class="terminal-form">
                 <span>➜</span>
-                <input id="terminalInput" type="text" placeholder="help, skills, projects, contact, roadmap" autocomplete="off">
+                <input id="terminalInput" type="text" placeholder="help, focus redteam, mode recruiter, project capysuite" autocomplete="off">
                 <button type="submit">run</button>
               </form>
 
@@ -1376,6 +1561,66 @@
       </div>
     </section>
 
+    <section id="matrix">
+      <div class="wrap">
+        <div class="head reveal">
+          <span class="kicker">Interactive Skill Matrix</span>
+          <h2>Click a skill to reshape the portfolio.</h2>
+          <p>This matrix connects skills, projects, roadmap and terminal output. Finally, the site behaves like an interface instead of glowing furniture.</p>
+        </div>
+
+        <div class="modebar reveal">
+          <button class="mode active" data-mode="redteam">Red Team Mode</button>
+          <button class="mode" data-mode="technical">Technical Mode</button>
+          <button class="mode" data-mode="recruiter">Recruiter Mode</button>
+        </div>
+
+        <div class="skill-matrix reveal">
+          <button class="skill-node active" data-skill="redteam">
+            <span>core</span>
+            <strong>Red Team</strong>
+            <p>Authorized attack chains, OPSEC, evidence and reporting.</p>
+          </button>
+
+          <button class="skill-node" data-skill="web">
+            <span>attack surface</span>
+            <strong>Web Pentest</strong>
+            <p>OWASP, APIs, auth, sessions, route mapping and validation.</p>
+          </button>
+
+          <button class="skill-node" data-skill="tooling">
+            <span>builder</span>
+            <strong>Offensive Tooling</strong>
+            <p>Python, CLI workflows, structured output and automation.</p>
+          </button>
+
+          <button class="skill-node" data-skill="linux">
+            <span>workflow</span>
+            <strong>Linux</strong>
+            <p>CachyOS, Hyprland, shell, Git, Docker and local labs.</p>
+          </button>
+
+          <button class="skill-node" data-skill="detection">
+            <span>defense-aware</span>
+            <strong>Detection</strong>
+            <p>Logs, traces, monitoring, evidence quality and blue team value.</p>
+          </button>
+
+          <button class="skill-node" data-skill="reporting">
+            <span>deliverable</span>
+            <strong>Reporting</strong>
+            <p>Impact, severity, mitigation, executive clarity and technical detail.</p>
+          </button>
+        </div>
+
+        <div class="matrix-output reveal" id="matrixOutput">
+          <span>selected focus</span>
+          <h3>Red Team</h3>
+          <p>Highlighting projects and sections related to authorized operations, OPSEC, evidence and reporting.</p>
+        </div>
+      </div>
+    </section>
+
     <section id="arsenal">
       <div class="wrap">
         <div class="head reveal">
@@ -1437,7 +1682,7 @@
         <div class="head reveal">
           <span class="kicker">04 · Projects</span>
           <h2>Projects for a Red Team resume.</h2>
-          <p>Click the cards to view details. They finally do something besides occupying pixels.</p>
+          <p>Click the cards to open a technical side panel with tabs, stack, value and roadmap.</p>
         </div>
 
         <div class="filters reveal">
@@ -1456,7 +1701,7 @@
             <p>Modular suite for authorized labs: enumeration, automation, evidence handling, and technical reporting.</p>
             <div class="tags"><span>Python</span><span>CLI</span><span>Red Team</span></div>
             <div class="project-actions">
-              <button type="button" class="project-info-btn">View details</button>
+              <button type="button" class="project-info-btn">Open panel</button>
               <a href="https://github.com/lulz-lich" target="_blank">Repository</a>
             </div>
           </article>
@@ -1468,7 +1713,7 @@
             <p>Crawler for mapping routes, organizing discoveries, and generating structured output.</p>
             <div class="tags"><span>Python</span><span>Web</span><span>Recon</span></div>
             <div class="project-actions">
-              <button type="button" class="project-info-btn">View details</button>
+              <button type="button" class="project-info-btn">Open panel</button>
               <a href="https://github.com/lulz-lich" target="_blank">Repository</a>
             </div>
           </article>
@@ -1480,7 +1725,7 @@
             <p>Writeups with methodology, evidence, impact, mitigation, and technical reasoning.</p>
             <div class="tags"><span>Labs</span><span>Evidence</span><span>Docs</span></div>
             <div class="project-actions">
-              <button type="button" class="project-info-btn">View details</button>
+              <button type="button" class="project-info-btn">Open panel</button>
               <a href="https://github.com/lulz-lich" target="_blank">Repository</a>
             </div>
           </article>
@@ -1492,7 +1737,7 @@
             <p>Studies on traces, logs, operational hygiene, and detection in lab environments.</p>
             <div class="tags"><span>OPSEC</span><span>Detection</span><span>Logs</span></div>
             <div class="project-actions">
-              <button type="button" class="project-info-btn">View details</button>
+              <button type="button" class="project-info-btn">Open panel</button>
               <a href="https://github.com/lulz-lich" target="_blank">Repository</a>
             </div>
           </article>
@@ -1504,7 +1749,7 @@
             <p>Backup, restore, cloud sync, cross-platform support, and automation.</p>
             <div class="tags"><span>Python</span><span>Cloud</span><span>Linux</span></div>
             <div class="project-actions">
-              <button type="button" class="project-info-btn">View details</button>
+              <button type="button" class="project-info-btn">Open panel</button>
               <a href="https://github.com/lulz-lich" target="_blank">Repository</a>
             </div>
           </article>
@@ -1516,7 +1761,7 @@
             <p>ESP32, modularity, logs, and physical UI as a secondary technical differentiator.</p>
             <div class="tags"><span>ESP32</span><span>C++</span><span>Open Source</span></div>
             <div class="project-actions">
-              <button type="button" class="project-info-btn">View details</button>
+              <button type="button" class="project-info-btn">Open panel</button>
               <a href="https://github.com/lulz-lich" target="_blank">Repository</a>
             </div>
           </article>
@@ -1601,6 +1846,31 @@
     </section>
   </main>
 
+  <aside class="project-drawer" id="projectDrawer" aria-hidden="true">
+    <div class="drawer-panel">
+      <button class="drawer-close" id="drawerClose">×</button>
+
+      <span class="kicker" id="drawerCategory">Project</span>
+      <h2 id="drawerTitle">Project title</h2>
+      <p id="drawerSummary">Project summary</p>
+
+      <div class="drawer-tabs">
+        <button class="drawer-tab active" data-tab="overview">Overview</button>
+        <button class="drawer-tab" data-tab="stack">Stack</button>
+        <button class="drawer-tab" data-tab="value">Red Team Value</button>
+        <button class="drawer-tab" data-tab="roadmap">Next Steps</button>
+      </div>
+
+      <div class="drawer-content" id="drawerContent"></div>
+
+      <div class="drawer-actions">
+        <button id="copyProjectSummary">Copy summary</button>
+        <button id="focusProjectSkills">Focus related skills</button>
+        <a id="drawerRepo" href="https://github.com/lulz-lich" target="_blank" rel="noopener">Open repository</a>
+      </div>
+    </div>
+  </aside>
+
   <div class="palette" id="palette">
     <div class="box">
       <div class="boxtop">
@@ -1608,30 +1878,19 @@
         <button id="paletteClose">×</button>
       </div>
 
-      <input id="paletteInput" placeholder="about, actions, value, arsenal, projects, operation, lab, roadmap, contact, stealth">
+      <input id="paletteInput" placeholder="about, actions, value, matrix, projects, operation, lab, roadmap, contact, stealth">
 
       <div class="hint">
         <button data-go="sobre">about</button>
         <button data-go="actions">actions</button>
         <button data-go="valor">value</button>
-        <button data-go="arsenal">arsenal</button>
+        <button data-go="matrix">matrix</button>
         <button data-go="projetos">projects</button>
         <button data-go="laboratorio">lab</button>
         <button data-go="stealth">stealth</button>
       </div>
 
       <p>Shortcut: Ctrl + K. The mouse survives, but the keyboard reigns.</p>
-    </div>
-  </div>
-
-  <div class="modal" id="modal">
-    <div class="modalbox">
-      <button id="modalClose">×</button>
-      <span id="modalCat"></span>
-      <h2 id="modalTitle"></h2>
-      <p id="modalText"></p>
-      <div id="modalPoints"></div>
-      <a id="modalLink" class="btn primary" href="https://github.com/lulz-lich" target="_blank">Open repository</a>
     </div>
   </div>
 
@@ -1657,6 +1916,13 @@
     const loader = $("#loader");
     const cursor = $(".cursor");
     const nav = $("#navMenu");
+
+    const portfolioState = {
+      mode: localStorage.getItem("portfolioMode") || "redteam",
+      skill: "redteam",
+      activeProject: null,
+      activeTab: "overview"
+    };
 
     [
       "loading red team profile",
@@ -1724,6 +1990,371 @@
       }
     }
 
+    function terminalPrint(lines) {
+      const output = $("#terminalOutput");
+      output.innerHTML = "";
+
+      lines.forEach((line, index) => {
+        const p = document.createElement("p");
+        p.innerHTML = `<span>$</span> ${line}`;
+        p.style.opacity = "0";
+        p.style.transform = "translateY(6px)";
+        output.appendChild(p);
+
+        setTimeout(() => {
+          p.style.transition = "opacity .22s ease, transform .22s ease";
+          p.style.opacity = "1";
+          p.style.transform = "translateY(0)";
+        }, index * 70);
+      });
+    }
+
+    const skillData = {
+      redteam: {
+        title: "Red Team",
+        text: "Highlighting authorized operations, OPSEC, evidence, reporting and attack-chain methodology.",
+        projectMatch: ["capysuite", "writeups", "opsec"],
+        terminal: [
+          "focus: Red Team",
+          "highlighting CapySuite, Red Team Writeups and OPSEC Lab Notes",
+          "core value: authorized operations, evidence and reporting"
+        ]
+      },
+      web: {
+        title: "Web Pentest",
+        text: "Highlighting web reconnaissance, route mapping, OWASP thinking, APIs and validation workflows.",
+        projectMatch: ["crawler", "writeups", "capysuite"],
+        terminal: [
+          "focus: Web Pentest",
+          "highlighting Security Crawler and writeups",
+          "core value: attack surface mapping and validation"
+        ]
+      },
+      tooling: {
+        title: "Offensive Tooling",
+        text: "Highlighting Python, CLI design, repeatable workflows, structured output and automation.",
+        projectMatch: ["capysuite", "crawler", "gsm", "blackcapy"],
+        terminal: [
+          "focus: Offensive Tooling",
+          "highlighting Python, CLI, automation and structured output",
+          "core value: repeatable workflows"
+        ]
+      },
+      linux: {
+        title: "Linux Workflow",
+        text: "Highlighting CachyOS, Hyprland, terminal usage, Git, Docker and local security labs.",
+        projectMatch: ["capysuite", "gsm", "opsec"],
+        terminal: [
+          "focus: Linux Workflow",
+          "highlighting local labs, shell workflow and environment control",
+          "core value: practical operational environment"
+        ]
+      },
+      detection: {
+        title: "Detection Awareness",
+        text: "Highlighting logs, traces, defensive visibility, monitoring and evidence quality.",
+        projectMatch: ["opsec", "writeups", "capysuite"],
+        terminal: [
+          "focus: Detection Awareness",
+          "highlighting logs, traces and defender-facing evidence",
+          "core value: useful findings for blue team response"
+        ]
+      },
+      reporting: {
+        title: "Technical Reporting",
+        text: "Highlighting impact, evidence, mitigation, executive clarity and technical depth.",
+        projectMatch: ["writeups", "capysuite", "crawler"],
+        terminal: [
+          "focus: Technical Reporting",
+          "highlighting evidence, impact, severity and mitigation",
+          "core value: turning findings into decisions"
+        ]
+      }
+    };
+
+    const drawerProjects = {
+      capysuite: {
+        category: "Main Red Team Tool",
+        title: "CapySuite",
+        summary: "Modular Red Team operations toolkit for authorized labs, focused on enumeration, evidence organization, automation and reporting.",
+        repo: GITHUB,
+        skills: ["redteam", "tooling", "reporting"],
+        tabs: {
+          overview: [
+            ["Purpose", "Centralize Red Team lab workflow into a modular, repeatable toolkit."],
+            ["Problem", "Manual workflows get messy: scattered outputs, weak evidence and inconsistent reporting."],
+            ["Status", "Flagship portfolio project."]
+          ],
+          stack: [
+            ["Language", "Python"],
+            ["Interface", "CLI-first workflow"],
+            ["Output", "Structured logs, JSON-friendly data and report-ready summaries."]
+          ],
+          value: [
+            ["Red Team Value", "Improves repeatability, evidence handling and operational consistency."],
+            ["Professional Signal", "Shows tooling mindset, methodology and security maturity."]
+          ],
+          roadmap: [
+            ["Next", "Add modules for recon, reporting templates and evidence export."],
+            ["Later", "Add workspace profiles, engagement notes and report generation."]
+          ]
+        }
+      },
+
+      crawler: {
+        category: "Web Recon Tool",
+        title: "Security Crawler",
+        summary: "Web reconnaissance tool for mapping routes, organizing discoveries and generating structured output in owned or authorized environments.",
+        repo: GITHUB,
+        skills: ["web", "tooling", "reporting"],
+        tabs: {
+          overview: [
+            ["Purpose", "Map web surfaces and help organize discovered endpoints."],
+            ["Problem", "Recon output is often noisy and hard to convert into useful reporting."],
+            ["Status", "Good web security portfolio project."]
+          ],
+          stack: [
+            ["Language", "Python"],
+            ["Focus", "Crawling, parsing, route mapping and structured output."],
+            ["Use", "Authorized environments only."]
+          ],
+          value: [
+            ["Red Team Value", "Supports early-stage recon and evidence organization."],
+            ["Professional Signal", "Shows web security, automation and disciplined scope."]
+          ],
+          roadmap: [
+            ["Next", "Improve output formats and add project-based scan sessions."],
+            ["Later", "Add report templates and integration with CapySuite."]
+          ]
+        }
+      },
+
+      writeups: {
+        category: "Methodology & Reporting",
+        title: "Red Team Writeups",
+        summary: "Writeups focused on methodology, evidence, impact, mitigation and technical reasoning.",
+        repo: GITHUB,
+        skills: ["redteam", "reporting", "detection"],
+        tabs: {
+          overview: [
+            ["Purpose", "Prove reasoning, not just final answers."],
+            ["Problem", "Many beginners show screenshots but fail to explain impact or mitigation."],
+            ["Status", "Essential credibility project."]
+          ],
+          stack: [
+            ["Format", "Markdown, screenshots, structured notes."],
+            ["Method", "Scope, steps, evidence, impact and mitigation."],
+            ["Focus", "Clarity and reproducibility."]
+          ],
+          value: [
+            ["Red Team Value", "Shows communication, evidence quality and maturity."],
+            ["Professional Signal", "Good reports are what make findings useful."]
+          ],
+          roadmap: [
+            ["Next", "Publish lab writeups with consistent format."],
+            ["Later", "Add executive summaries and detection notes."]
+          ]
+        }
+      },
+
+      opsec: {
+        category: "Operations & Detection",
+        title: "OPSEC Lab Notes",
+        summary: "Operational security notes focused on traces, logs, lab discipline, detection awareness and defensive value.",
+        repo: GITHUB,
+        skills: ["redteam", "detection", "linux"],
+        tabs: {
+          overview: [
+            ["Purpose", "Study how actions leave traces and how defenders can detect them."],
+            ["Problem", "Offensive learning without detection awareness becomes shallow."],
+            ["Status", "Differentiator for Red Team direction."]
+          ],
+          stack: [
+            ["Environment", "Linux labs, logs, Docker and controlled environments."],
+            ["Focus", "Traces, logs, operational hygiene and defensive visibility."],
+            ["Output", "Notes and detection-aware summaries."]
+          ],
+          value: [
+            ["Red Team Value", "Improves operational discipline and defender-aware thinking."],
+            ["Professional Signal", "Shows maturity beyond just running tools."]
+          ],
+          roadmap: [
+            ["Next", "Document common traces in lab workflows."],
+            ["Later", "Map actions to detection opportunities."]
+          ]
+        }
+      },
+
+      gsm: {
+        category: "Software Engineering",
+        title: "GSM",
+        summary: "Game Save Manager focused on backup, restore, cloud sync, cross-platform support and automation.",
+        repo: GITHUB,
+        skills: ["tooling", "linux"],
+        tabs: {
+          overview: [
+            ["Purpose", "Manage game save backups and restoration across platforms."],
+            ["Problem", "Data loss and poor restore flows are annoying, apparently humanity needed help there too."],
+            ["Status", "Software engineering proof project."]
+          ],
+          stack: [
+            ["Language", "Python"],
+            ["Platforms", "Linux and Windows"],
+            ["Integrations", "Cloud sync and backup tooling."]
+          ],
+          value: [
+            ["Portfolio Value", "Shows product thinking, automation and data handling."],
+            ["Security Adjacent", "Good proof of engineering discipline."]
+          ],
+          roadmap: [
+            ["Next", "Improve UI and restore validation."],
+            ["Later", "Add safer sync conflict handling."]
+          ]
+        }
+      },
+
+      blackcapy: {
+        category: "Technical Bonus",
+        title: "BlackCapy",
+        summary: "Open-source ESP32-based project with modularity, logs and physical UI as a secondary technical differentiator.",
+        repo: GITHUB,
+        skills: ["tooling", "linux"],
+        tabs: {
+          overview: [
+            ["Purpose", "Portable technical toolkit with embedded architecture and modularity."],
+            ["Positioning", "Secondary technical differentiator, not the main Red Team focus."],
+            ["Status", "Open-source TCC-level project."]
+          ],
+          stack: [
+            ["Hardware", "ESP32"],
+            ["Language", "C/C++"],
+            ["Focus", "Logs, UI, modules and local interaction."]
+          ],
+          value: [
+            ["Portfolio Value", "Shows low-level understanding and systems thinking."],
+            ["Professional Signal", "Useful as proof of breadth, but not the central career focus."]
+          ],
+          roadmap: [
+            ["Next", "Improve UI, logs and module structure."],
+            ["Later", "Keep it secondary while Red Team portfolio grows."]
+          ]
+        }
+      }
+    };
+
+    function setPortfolioMode(mode) {
+      portfolioState.mode = mode;
+      localStorage.setItem("portfolioMode", mode);
+      document.body.dataset.view = mode;
+
+      $$(".mode").forEach(button => {
+        button.classList.toggle("active", button.dataset.mode === mode);
+      });
+
+      const modeLines = {
+        redteam: [
+          "mode: Red Team",
+          "prioritizing operations, OPSEC, evidence and reporting"
+        ],
+        technical: [
+          "mode: Technical",
+          "prioritizing stack, architecture, automation and implementation detail"
+        ],
+        recruiter: [
+          "mode: Recruiter",
+          "prioritizing clarity, contact, main projects and professional value"
+        ]
+      };
+
+      terminalPrint(modeLines[mode]);
+    }
+
+    function selectSkill(skill) {
+      const data = skillData[skill];
+      if (!data) return;
+
+      portfolioState.skill = skill;
+
+      $$(".skill-node").forEach(node => {
+        node.classList.toggle("active", node.dataset.skill === skill);
+      });
+
+      $$(".project").forEach(project => {
+        const id = project.dataset.id;
+        const relevant = data.projectMatch.includes(id);
+
+        project.classList.toggle("relevant", relevant);
+        project.classList.toggle("dimmed", !relevant);
+      });
+
+      $("#matrixOutput").innerHTML = `
+        <span>selected focus</span>
+        <h3>${data.title}</h3>
+        <p>${data.text}</p>
+      `;
+
+      terminalPrint(data.terminal);
+    }
+
+    function renderDrawerTab(tab) {
+      const project = drawerProjects[portfolioState.activeProject];
+      if (!project) return;
+
+      portfolioState.activeTab = tab;
+
+      $$(".drawer-tab").forEach(button => {
+        button.classList.toggle("active", button.dataset.tab === tab);
+      });
+
+      $("#drawerContent").innerHTML = project.tabs[tab].map(([title, text]) => `
+        <article>
+          <strong>${title}</strong>
+          <p>${text}</p>
+        </article>
+      `).join("");
+    }
+
+    function openProjectDrawer(id) {
+      const project = drawerProjects[id];
+      if (!project) return;
+
+      portfolioState.activeProject = id;
+      portfolioState.activeTab = "overview";
+
+      $("#drawerCategory").textContent = project.category;
+      $("#drawerTitle").textContent = project.title;
+      $("#drawerSummary").textContent = project.summary;
+      $("#drawerRepo").href = project.repo;
+
+      renderDrawerTab("overview");
+
+      const drawer = $("#projectDrawer");
+      drawer.classList.add("active");
+      drawer.setAttribute("aria-hidden", "false");
+      body.classList.add("lock");
+    }
+
+    function closeProjectDrawer() {
+      const drawer = $("#projectDrawer");
+      drawer.classList.remove("active");
+      drawer.setAttribute("aria-hidden", "true");
+      body.classList.remove("lock");
+    }
+
+    $$(".mode").forEach(button => {
+      button.onclick = () => setPortfolioMode(button.dataset.mode);
+    });
+
+    $$(".skill-node").forEach(node => {
+      node.onclick = () => selectSkill(node.dataset.skill);
+
+      node.onmousemove = event => {
+        const rect = node.getBoundingClientRect();
+        node.style.setProperty("--mx", ((event.clientX - rect.left) / rect.width) * 100 + "%");
+        node.style.setProperty("--my", ((event.clientY - rect.top) / rect.height) * 100 + "%");
+      };
+    });
+
     $$(".project,.value,.op,.quick").forEach(el => {
       el.onmousemove = e => {
         const r = el.getBoundingClientRect();
@@ -1745,83 +2376,54 @@
       };
     });
 
-    const modalData = {
-      capysuite: [
-        "Main Red Team Tool",
-        "CapySuite",
-        "Modular suite for authorized labs, combining enumeration, evidence organization, workflow automation, and reporting.",
-        ["Python + CLI", "Red Team workflow", "Evidence management", "Automation"]
-      ],
-      crawler: [
-        "Web Recon Tool",
-        "Security Crawler",
-        "Crawler for mapping routes and organizing discoveries in owned applications or authorized environments.",
-        ["Web recon", "Route mapping", "Structured output", "Reports"]
-      ],
-      writeups: [
-        "Methodology & Reporting",
-        "Red Team Writeups",
-        "Writeups with methodology, evidence, impact, mitigation, and technical reasoning.",
-        ["Methodology", "Evidence", "Mitigation", "Technical clarity"]
-      ],
-      opsec: [
-        "Operations & Detection",
-        "OPSEC Lab Notes",
-        "Studies on operational organization, traces, logs, environment hygiene, and detection.",
-        ["OPSEC", "Detection", "Logs", "Lab discipline"]
-      ],
-      gsm: [
-        "Software Engineering",
-        "GSM · Game Save Manager",
-        "Software project focused on backup, restore, cloud integration, automation, and data safety.",
-        ["Python", "Cloud", "Cross-platform", "Automation"]
-      ],
-      blackcapy: [
-        "Technical Bonus",
-        "BlackCapy",
-        "Open-source ESP32 project with modularity, logs, and physical UI as a secondary technical differentiator.",
-        ["ESP32", "C++", "Open Source", "Embedded"]
-      ]
-    };
-
-    function openM(id) {
-      const data = modalData[id];
-      if (!data) return;
-
-      $("#modalCat").textContent = data[0];
-      $("#modalTitle").textContent = data[1];
-      $("#modalText").textContent = data[2];
-      $("#modalPoints").innerHTML = data[3].map(x => `<span>${x}</span>`).join("");
-
-      $("#modal").classList.add("active");
-      body.classList.add("lock");
-    }
-
-    function closeM() {
-      $("#modal").classList.remove("active");
-      body.classList.remove("lock");
-    }
-
     $$(".project").forEach(project => {
-      project.onclick = e => {
-        if (!e.target.closest("a") && !e.target.closest("button")) {
-          openM(project.dataset.id);
-        }
+      project.onclick = event => {
+        if (event.target.closest("a") || event.target.closest("button")) return;
+        openProjectDrawer(project.dataset.id);
       };
     });
 
     $$(".project-info-btn").forEach(button => {
-      button.onclick = e => {
-        e.stopPropagation();
+      button.onclick = event => {
+        event.stopPropagation();
         const project = button.closest(".project");
-        openM(project.dataset.id);
+        openProjectDrawer(project.dataset.id);
       };
     });
 
-    $("#modalClose").onclick = closeM;
+    $("#drawerClose").onclick = closeProjectDrawer;
 
-    $("#modal").onclick = e => {
-      if (e.target === $("#modal")) closeM();
+    $("#projectDrawer").onclick = event => {
+      if (event.target.id === "projectDrawer") closeProjectDrawer();
+    };
+
+    $$(".drawer-tab").forEach(button => {
+      button.onclick = () => renderDrawerTab(button.dataset.tab);
+    });
+
+    $("#copyProjectSummary").onclick = () => {
+      const project = drawerProjects[portfolioState.activeProject];
+      if (!project) return;
+
+      const text = `${project.title}
+${project.summary}
+
+Category: ${project.category}
+Repository: ${project.repo}`;
+
+      copyText(text, "Project summary copied.");
+    };
+
+    $("#focusProjectSkills").onclick = () => {
+      const project = drawerProjects[portfolioState.activeProject];
+      if (!project) return;
+
+      closeProjectDrawer();
+      $("#matrix").scrollIntoView({ behavior: "smooth" });
+
+      setTimeout(() => {
+        selectSkill(project.skills[0]);
+      }, 350);
     };
 
     const lab = {
@@ -1876,34 +2478,7 @@
       };
     });
 
-    function terminalPrint(lines) {
-      const output = $("#terminalOutput");
-      output.innerHTML = "";
-
-      lines.forEach((line, index) => {
-        const p = document.createElement("p");
-        p.innerHTML = `<span>$</span> ${line}`;
-        p.style.opacity = "0";
-        p.style.transform = "translateY(6px)";
-        output.appendChild(p);
-
-        setTimeout(() => {
-          p.style.transition = "opacity .22s ease, transform .22s ease";
-          p.style.opacity = "1";
-          p.style.transform = "translateY(0)";
-        }, index * 70);
-      });
-    }
-
     const terminalCommands = {
-      help: [
-        "Available commands:",
-        "skills      show technical focus",
-        "projects    list main projects",
-        "contact     show contact links",
-        "roadmap     show current learning path",
-        "clear       clear terminal"
-      ],
       skills: [
         "Red Team Foundations",
         "Web & API Pentest",
@@ -1934,22 +2509,107 @@
     };
 
     function runTerminalCommand(command) {
-      const normalized = command.trim().toLowerCase();
+      const cmd = command.trim().toLowerCase();
+      if (!cmd) return;
 
-      if (!normalized) return;
-
-      if (normalized === "clear") {
+      if (cmd === "clear") {
         $("#terminalOutput").innerHTML = `<p><span>➜</span> terminal cleared</p>`;
         return;
       }
 
-      if (terminalCommands[normalized]) {
-        terminalPrint(terminalCommands[normalized]);
+      if (cmd === "help") {
+        terminalPrint([
+          "Available commands:",
+          "skills, projects, contact, roadmap, clear",
+          "open github, open linkedin",
+          "focus redteam, focus web, focus tooling, focus linux, focus detection, focus reporting",
+          "mode redteam, mode technical, mode recruiter",
+          "project capysuite, project crawler, project writeups, project opsec, project gsm, project blackcapy",
+          "copy email, copy contact"
+        ]);
+        return;
+      }
+
+      if (terminalCommands[cmd]) {
+        terminalPrint(terminalCommands[cmd]);
+        return;
+      }
+
+      if (cmd.startsWith("open ")) {
+        const target = cmd.replace("open ", "").trim();
+
+        const routes = {
+          github: GITHUB,
+          linkedin: LINKEDIN,
+          capysuite: GITHUB,
+          crawler: GITHUB
+        };
+
+        if (routes[target]) {
+          terminalPrint([`opening ${target}...`]);
+          window.open(routes[target], "_blank", "noopener");
+          return;
+        }
+
+        terminalPrint([`unknown open target: ${target}`, "try: open github, open linkedin"]);
+        return;
+      }
+
+      if (cmd.startsWith("focus ")) {
+        const skill = cmd.replace("focus ", "").trim();
+
+        if (skillData[skill]) {
+          $("#matrix").scrollIntoView({ behavior: "smooth" });
+          selectSkill(skill);
+          return;
+        }
+
+        terminalPrint([`unknown focus: ${skill}`, "try: focus redteam, focus web, focus tooling, focus detection"]);
+        return;
+      }
+
+      if (cmd.startsWith("mode ")) {
+        const mode = cmd.replace("mode ", "").trim();
+
+        if (["redteam", "technical", "recruiter"].includes(mode)) {
+          setPortfolioMode(mode);
+          return;
+        }
+
+        terminalPrint([`unknown mode: ${mode}`, "try: mode redteam, mode technical, mode recruiter"]);
+        return;
+      }
+
+      if (cmd.startsWith("project ")) {
+        const id = cmd.replace("project ", "").trim();
+
+        if (drawerProjects[id]) {
+          openProjectDrawer(id);
+          return;
+        }
+
+        terminalPrint([`unknown project: ${id}`, "try: project capysuite, project crawler, project writeups, project opsec"]);
+        return;
+      }
+
+      if (cmd === "copy email") {
+        copyText(EMAIL, "Email copied.");
+        return;
+      }
+
+      if (cmd === "copy contact") {
+        copyText(
+          `Henrique da Silva Cunha
+Email: ${EMAIL}
+GitHub: ${GITHUB}
+LinkedIn: ${LINKEDIN}`,
+          "Contact card copied."
+        );
         return;
       }
 
       terminalPrint([
-        `Unknown command: ${normalized}`,
+        `Unknown command: ${cmd}`,
         "Try: help, skills, projects, contact, roadmap, clear"
       ]);
     }
@@ -2027,6 +2687,7 @@ LinkedIn: ${LINKEDIN}`,
         about: "#sobre",
         actions: "#actions",
         value: "#valor",
+        matrix: "#matrix",
         arsenal: "#arsenal",
         projects: "#projetos",
         operation: "#operacao",
@@ -2071,7 +2732,7 @@ LinkedIn: ${LINKEDIN}`,
 
       if (e.key === "Escape") {
         closePalette();
-        closeM();
+        closeProjectDrawer();
       }
     });
 
@@ -2142,6 +2803,9 @@ LinkedIn: ${LINKEDIN}`,
     resize();
     draw();
     addEventListener("resize", resize);
+
+    setPortfolioMode(portfolioState.mode);
+    selectSkill(portfolioState.skill);
   </script>
 </body>
 </html>
