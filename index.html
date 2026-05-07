@@ -1378,6 +1378,7 @@ ETHICAL HACKING</pre>
           <h2 id="modalTitle">Project</h2>
           <p id="modalSummary"></p>
           <div class="chips" id="modalChips"></div>
+          <div class="project-actions" id="modalLinks"></div>
         </div>
         <button class="close-button" type="button" id="closeModal" aria-label="Close project details">×</button>
       </div>
@@ -1403,6 +1404,24 @@ ETHICAL HACKING</pre>
       github: "https://github.com/lulz-lich",
       linkedin: "https://www.linkedin.com/in/henrique-cunha-802305335/",
       location: "Sao Paulo, Brazil"
+    };
+
+    const repos = {
+      webphantom: "https://github.com/lulz-lich/WebPhantom",
+      cipherhound: "https://github.com/lulz-lich/CipherHound",
+      reconforge: "https://github.com/lulz-lich/ReconForge",
+      vulnforge: "https://github.com/lulz-lich/VulnForge",
+      ghosttrail: "https://github.com/lulz-lich/GhostTrail",
+      nightwatch: "https://github.com/lulz-lich/NightWatch",
+      masktrace: "https://github.com/lulz-lich/MaskTrace",
+      cloudspecter: "https://github.com/lulz-lich/CloudSpecter",
+      reportforge: "https://github.com/lulz-lich/ReportForge",
+      shellscope: "https://github.com/lulz-lich/ShellScope",
+      phishforge: "https://github.com/lulz-lich/PhishForge",
+      chronobreak: "https://github.com/lulz-lich/chronobreak",
+      quantumnoir: "https://github.com/lulz-lich/QuantumNoir",
+      blackcapy: "https://github.com/lulz-lich/BlackCapy",
+      capysuite: "https://github.com/lulz-lich/CapySuite"
     };
 
     const skills = [
@@ -1452,7 +1471,7 @@ ETHICAL HACKING</pre>
         next: ["Define safe crawler boundaries", "Design output schema", "Create first prototype with local targets"],
         learnings: ["Web surface mapping", "Data organization", "Safe automation boundaries"],
         ethics: "Designed only for owned, lab or explicitly authorized targets.",
-        links: [{ label: "GitHub profile", url: profile.github }]
+        links: [{ label: "Repository", url: repos.webphantom }]
       },
       {
         id: "cipherhound",
@@ -1467,7 +1486,7 @@ ETHICAL HACKING</pre>
         next: ["Scope safe educational operations", "Implement basic transforms", "Document examples"],
         learnings: ["CLI design", "Parsing", "Cryptography fundamentals"],
         ethics: "Educational tooling for study, labs and defensive understanding.",
-        links: [{ label: "GitHub profile", url: profile.github }]
+        links: [{ label: "Repository", url: repos.cipherhound }]
       },
       {
         id: "reconforge",
@@ -1482,7 +1501,7 @@ ETHICAL HACKING</pre>
         next: ["Create workspace format", "Add command templates", "Add export flow"],
         learnings: ["Recon discipline", "Linux workflow", "Evidence organization"],
         ethics: "Built around explicit scope and authorized environments.",
-        links: [{ label: "GitHub profile", url: profile.github }]
+        links: [{ label: "Repository", url: repos.reconforge }]
       },
       {
         id: "vulnforge",
@@ -1497,7 +1516,7 @@ ETHICAL HACKING</pre>
         next: ["Design finding schema", "Create Markdown templates", "Test on lab writeups"],
         learnings: ["Report writing", "OWASP basics", "Technical communication"],
         ethics: "Focused on responsible disclosure style documentation and mitigation.",
-        links: [{ label: "GitHub profile", url: profile.github }]
+        links: [{ label: "Repository", url: repos.vulnforge }]
       },
       {
         id: "ghosttrail",
@@ -1512,7 +1531,7 @@ ETHICAL HACKING</pre>
         next: ["Pick lab scenarios", "Map actions to logs", "Write detection notes"],
         learnings: ["OPSEC", "Logs", "Detection awareness"],
         ethics: "Defender-aware learning for authorized labs and blue-team value.",
-        links: [{ label: "GitHub profile", url: profile.github }]
+        links: [{ label: "Repository", url: repos.ghosttrail }]
       },
       {
         id: "nightwatch",
@@ -1527,7 +1546,7 @@ ETHICAL HACKING</pre>
         next: ["Define monitored signals", "Build CLI prototype", "Add terminal UI"],
         learnings: ["Monitoring basics", "Linux services", "Automation"],
         ethics: "Benign local monitoring for owned lab environments.",
-        links: [{ label: "GitHub profile", url: profile.github }]
+        links: [{ label: "Repository", url: repos.nightwatch }]
       },
       {
         id: "masktrace",
@@ -1542,7 +1561,7 @@ ETHICAL HACKING</pre>
         next: ["Define safe scope", "Document lab-only examples", "Add defender perspective"],
         learnings: ["Privacy basics", "OPSEC vocabulary", "Documentation discipline"],
         ethics: "No evasion claims, malware behavior or real-world abuse guidance.",
-        links: [{ label: "GitHub profile", url: profile.github }]
+        links: [{ label: "Repository", url: repos.masktrace }]
       },
       {
         id: "cloudspecter",
@@ -1557,7 +1576,7 @@ ETHICAL HACKING</pre>
         next: ["Choose provider labs", "Document IAM basics", "Create safe checklist"],
         learnings: ["Cloud IAM", "Misconfiguration analysis", "Security reporting"],
         ethics: "Focused on owned training accounts and defensive recommendations.",
-        links: [{ label: "GitHub profile", url: profile.github }]
+        links: [{ label: "Repository", url: repos.cloudspecter }]
       },
       {
         id: "reportforge",
@@ -1572,7 +1591,7 @@ ETHICAL HACKING</pre>
         next: ["Create reusable templates", "Add sample lab report", "Connect to CapySuite ideas"],
         learnings: ["Security writing", "Information design", "Repeatable documentation"],
         ethics: "Designed to make findings clearer and more useful for remediation.",
-        links: [{ label: "GitHub profile", url: profile.github }]
+        links: [{ label: "Repository", url: repos.reportforge }]
       },
       {
         id: "shellscope",
@@ -1587,7 +1606,7 @@ ETHICAL HACKING</pre>
         next: ["Design CLI commands", "Implement environment summary", "Add export examples"],
         learnings: ["Shell workflow", "Linux internals basics", "Documentation automation"],
         ethics: "Productivity and documentation helper for local systems.",
-        links: [{ label: "GitHub profile", url: profile.github }]
+        links: [{ label: "Repository", url: repos.shellscope }]
       },
       {
         id: "phishforge",
@@ -1602,7 +1621,7 @@ ETHICAL HACKING</pre>
         next: ["Define safe content policy", "Create examples without credential capture", "Add reporting checklist"],
         learnings: ["Social engineering defense", "Security education", "Risk communication"],
         ethics: "Defensive education only; no credential harvesting, impersonation kit or real campaign tooling.",
-        links: [{ label: "GitHub profile", url: profile.github }]
+        links: [{ label: "Repository", url: repos.phishforge }]
       },
       {
         id: "chronobreak",
@@ -1617,7 +1636,7 @@ ETHICAL HACKING</pre>
         next: ["Pick first model", "Build simple simulation", "Write assumptions and limitations"],
         learnings: ["Modeling", "Numerical thinking", "Scientific documentation"],
         ethics: "Non-security scientific learning project.",
-        links: [{ label: "GitHub profile", url: profile.github }]
+        links: [{ label: "Repository", url: repos.chronobreak }]
       },
       {
         id: "quantumnoir",
@@ -1632,7 +1651,7 @@ ETHICAL HACKING</pre>
         next: ["Choose first topic", "Create visual prototype", "Add references and limitations"],
         learnings: ["Physics communication", "Math structure", "Technical design"],
         ethics: "Non-security scientific learning project.",
-        links: [{ label: "GitHub profile", url: profile.github }]
+        links: [{ label: "Repository", url: repos.quantumnoir }]
       },
       {
         id: "blackcapy",
@@ -1647,7 +1666,7 @@ ETHICAL HACKING</pre>
         next: ["Improve module structure", "Document hardware/software decisions", "Publish clearer project notes"],
         learnings: ["Embedded systems", "C++", "Hardware/software integration"],
         ethics: "General embedded and electronics project, positioned as breadth rather than offensive capability.",
-        links: [{ label: "GitHub profile", url: profile.github }]
+        links: [{ label: "Repository", url: repos.blackcapy }]
       },
       {
         id: "capysuite",
@@ -1662,7 +1681,7 @@ ETHICAL HACKING</pre>
         next: ["Define modules", "Create workspace format", "Add sample report export", "Publish repository-specific docs"],
         learnings: ["Tool architecture", "Security workflow design", "Technical reporting"],
         ethics: "Built around authorized labs, scope discipline and responsible documentation.",
-        links: [{ label: "GitHub profile", url: profile.github }]
+        links: [{ label: "Repository", url: repos.capysuite }]
       }
     ];
 
@@ -1854,6 +1873,11 @@ ETHICAL HACKING</pre>
       $("#modalTitle").textContent = project.name;
       $("#modalSummary").textContent = project.summary;
       $("#modalChips").innerHTML = project.stack.map(chip).join("");
+      $("#modalLinks").innerHTML = project.links.map(link => `
+        <a class="project-action" href="${escapeHtml(link.url)}" target="_blank" rel="noopener">
+          Open ${escapeHtml(link.label.toLowerCase())}
+        </a>
+      `).join("");
       renderDetailTabs();
       renderDetailBody();
       $("#closeModal").focus();
