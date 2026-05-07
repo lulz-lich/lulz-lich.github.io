@@ -4,7 +4,7 @@
   "private": true,
   "description": "Professional portfolio for Henrique Cunha.",
   "scripts": {
-    "build": "rm -rf dist && mkdir -p dist && cp -R index.html favicon.svg assets data dist/",
+    "build": "rm -rf dist && mkdir -p dist && cp -R index.html 404.html favicon.svg assets data dist/",
     "preview": "npx serve dist"
   },
   "keywords": [

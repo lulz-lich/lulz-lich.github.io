@@ -28,6 +28,40 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Henrique Cunha",
+      "alternateName": "lulz-lich",
+      "url": "https://lulz-lich.github.io/",
+      "email": "mailto:mrh.ofici@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Sao Paulo",
+        "addressCountry": "BR"
+      },
+      "sameAs": [
+        "https://github.com/lulz-lich",
+        "https://www.linkedin.com/in/henrique-cunha-802305335/"
+      ],
+      "knowsAbout": [
+        "Ethical Hacking",
+        "Red Team",
+        "Web Security",
+        "Linux",
+        "Python",
+        "Electronics",
+        "Embedded Systems",
+        "Technical Documentation"
+      ],
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "ETEC Carolina Carinhato Sampaio"
+      }
+    }
+  </script>
+
   <style>
     :root {
       --bg: #070a12;
@@ -292,6 +326,15 @@
       display: none;
     }
 
+    .lang-toggle {
+      width: auto;
+      min-width: 54px;
+      padding-inline: 10px;
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: .76rem;
+      font-weight: 800;
+    }
+
     main {
       position: relative;
     }
@@ -399,6 +442,11 @@
       gap: 10px;
     }
 
+    .nav-shell > .actions {
+      flex-wrap: nowrap;
+      width: auto;
+    }
+
     .status-row {
       margin-top: 28px;
     }
@@ -407,6 +455,8 @@
     .panel,
     .project-card,
     .skill-card,
+    .case-card,
+    .proof-card,
     .cert-card,
     .education-card,
     .terminal-panel,
@@ -765,6 +815,76 @@
       border-color: color-mix(in srgb, var(--cyan) 42%, var(--line));
     }
 
+    .project-preview {
+      display: grid;
+      gap: 8px;
+      margin: 14px 0 16px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background:
+        linear-gradient(135deg, rgba(116,214,255,.08), transparent 45%),
+        rgba(0,0,0,.18);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: .76rem;
+      color: var(--muted);
+    }
+
+    .preview-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--cyan);
+      font-weight: 800;
+    }
+
+    .preview-bars {
+      display: grid;
+      gap: 5px;
+    }
+
+    .preview-bars i {
+      display: block;
+      height: 6px;
+      width: var(--w, 70%);
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--cyan), var(--green));
+      opacity: .75;
+    }
+
+    .preview-lines {
+      display: grid;
+      gap: 4px;
+    }
+
+    .preview-lines span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .project-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: -8px 0 13px;
+    }
+
+    .project-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 4px 7px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--soft);
+      background: rgba(255,255,255,.026);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: .68rem;
+      font-weight: 700;
+    }
+
     .project-head {
       display: flex;
       align-items: flex-start;
@@ -849,6 +969,68 @@
 
     .workflow-output h3 {
       color: var(--cyan);
+    }
+
+    .case-grid,
+    .proof-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .case-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .proof-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .case-card,
+    .proof-card {
+      padding: 22px;
+    }
+
+    .case-card {
+      display: flex;
+      min-height: 420px;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .case-card h3,
+    .proof-card h3 {
+      margin-bottom: 12px;
+    }
+
+    .case-card dl {
+      display: grid;
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .case-card dt {
+      color: var(--cyan);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: .74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .case-card dd {
+      margin: 3px 0 0;
+      color: var(--muted);
+    }
+
+    .proof-card strong {
+      display: block;
+      color: var(--text);
+      font-size: 1.5rem;
+      line-height: 1.1;
+    }
+
+    .proof-card span {
+      color: var(--soft);
+      font-size: .88rem;
     }
 
     .cert-grid {
@@ -1058,7 +1240,9 @@
 
       .skills-grid,
       .featured-grid,
-      .projects-grid {
+      .projects-grid,
+      .case-grid,
+      .proof-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
@@ -1086,6 +1270,8 @@
       .skills-grid,
       .featured-grid,
       .projects-grid,
+      .case-grid,
+      .proof-grid,
       .cert-grid,
       .project-toolbar {
         grid-template-columns: 1fr;
@@ -1106,12 +1292,46 @@
         width: 100%;
       }
 
+      .nav-shell > .actions {
+        width: auto;
+      }
+
       .footer-row {
         flex-direction: column;
       }
     }
 
     @media (max-width: 460px) {
+      .nav-shell {
+        gap: 8px;
+        padding-inline: 10px;
+      }
+
+      .brand {
+        min-width: 0;
+        gap: 9px;
+      }
+
+      .brand strong {
+        font-size: .94rem;
+        white-space: nowrap;
+      }
+
+      .brand-mark,
+      .icon-button {
+        width: 38px;
+        height: 38px;
+        flex: 0 0 auto;
+      }
+
+      .lang-toggle {
+        min-width: 44px;
+      }
+
+      .nav-shell > .actions {
+        gap: 6px;
+      }
+
       h1 {
         font-size: clamp(2.65rem, 16vw, 4rem);
       }
@@ -1128,7 +1348,7 @@
 </head>
 
 <body>
-  <a href="#main" class="skip-link">Skip to content</a>
+  <a href="#main" class="skip-link" data-i18n="skip">Skip to content</a>
 
   <header class="site-header">
     <div class="wrap nav-shell">
@@ -1136,22 +1356,24 @@
         <span class="brand-mark mono">HC</span>
         <span>
           <strong>Henrique Cunha</strong>
-          <small>ethical hacker / red team student</small>
+          <small data-i18n="brand_subtitle">ethical hacker / red team student</small>
         </span>
       </a>
 
       <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#workflow">Workflow</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#skills" data-i18n="nav_skills">Skills</a>
+        <a href="#projects" data-i18n="nav_projects">Projects</a>
+        <a href="#case-studies" data-i18n="nav_cases">Cases</a>
+        <a href="#workflow" data-i18n="nav_workflow">Workflow</a>
+        <a href="#certifications" data-i18n="nav_certs">Certifications</a>
+        <a href="#education" data-i18n="nav_education">Education</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
       </nav>
 
       <div class="actions">
         <button class="icon-button menu-button" id="menuButton" type="button" aria-label="Open navigation">☰</button>
+        <button class="icon-button lang-toggle" id="languageButton" type="button" aria-label="Switch language">PT</button>
         <button class="icon-button" id="themeButton" type="button" aria-label="Toggle theme">◐</button>
       </div>
     </div>
@@ -1161,26 +1383,26 @@
     <section id="home" class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy reveal">
-          <span class="kicker">Available for technical opportunities</span>
-          <h1>Henrique Cunha <span>Ethical Hacker & Red Team Student.</span></h1>
-          <p class="hero-lead">
+          <span class="kicker" data-i18n="hero_kicker">Available for technical opportunities</span>
+          <h1>Henrique Cunha <span data-i18n="hero_title">Ethical Hacker & Red Team Student.</span></h1>
+          <p class="hero-lead" data-i18n="hero_lead">
             I study and practice ethical hacking through authorized labs, Red Team methodology, Linux,
             automation, electronics and scientific thinking.
           </p>
 
           <div class="actions" aria-label="Primary actions">
-            <a class="btn primary" href="https://github.com/lulz-lich" target="_blank" rel="noopener">Open GitHub</a>
-            <a class="btn" href="https://www.linkedin.com/in/henrique-cunha-802305335/" target="_blank" rel="noopener">Open LinkedIn</a>
-            <a class="btn" href="assets/docs/henrique-cunha-resume.html" target="_blank" rel="noopener">View resume</a>
-            <a class="btn" href="#certifications">View certificates</a>
-            <button class="btn" id="copyEmailHero" type="button">Copy email</button>
+            <a class="btn primary" href="https://github.com/lulz-lich" target="_blank" rel="noopener" data-i18n="open_github">Open GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/henrique-cunha-802305335/" target="_blank" rel="noopener" data-i18n="open_linkedin">Open LinkedIn</a>
+            <a class="btn" href="assets/docs/henrique-cunha-resume.html" target="_blank" rel="noopener" data-i18n="view_resume">View resume</a>
+            <a class="btn" href="#certifications" data-i18n="view_certs">View certificates</a>
+            <button class="btn" id="copyEmailHero" type="button" data-i18n="copy_email">Copy email</button>
           </div>
 
           <div class="status-row" aria-label="Quick indicators">
-            <article class="status-card"><strong>15</strong><span>official portfolio projects</span></article>
-            <article class="status-card"><strong>Red Team</strong><span>authorized labs and methodology</span></article>
-            <article class="status-card"><strong>Linux</strong><span>terminal-first workflow</span></article>
-            <article class="status-card"><strong>2026</strong><span>technical electronics path</span></article>
+            <article class="status-card"><strong>15</strong><span data-i18n="stat_projects">official portfolio projects</span></article>
+            <article class="status-card"><strong>Red Team</strong><span data-i18n="stat_redteam">authorized labs and methodology</span></article>
+            <article class="status-card"><strong>Linux</strong><span data-i18n="stat_linux">terminal-first workflow</span></article>
+            <article class="status-card"><strong>2026</strong><span data-i18n="stat_education">technical electronics path</span></article>
           </div>
         </div>
 
@@ -1200,10 +1422,10 @@
 /_/ /_/_/ |_|
 ETHICAL HACKING</pre>
               <div class="profile-lines">
-                <p><b>Role</b> Technical student</p>
-                <p><b>Focus</b> Ethical hacking, Red Team</p>
+                <p><b>Role</b> <span data-i18n="hud_role">Technical student</span></p>
+                <p><b>Focus</b> <span data-i18n="hud_focus">Ethical hacking, Red Team</span></p>
                 <p><b>Stack</b> Linux, Python, C/C++, JS</p>
-                <p><b>Rule</b> Authorized labs only</p>
+                <p><b>Rule</b> <span data-i18n="hud_rule">Authorized labs only</span></p>
               </div>
             </div>
 
@@ -1232,17 +1454,17 @@ ETHICAL HACKING</pre>
     <section id="about" class="section-band">
       <div class="wrap split">
         <div class="section-head reveal">
-          <span class="kicker">About</span>
-          <h2>Security mindset with an engineering base.</h2>
+          <span class="kicker" data-i18n="about_kicker">About</span>
+          <h2 data-i18n="about_title">Security mindset with an engineering base.</h2>
         </div>
 
         <div class="panel reveal">
-          <p>
+          <p data-i18n="about_p1">
             I am a technical Electronics student from Sao Paulo, Brazil, focused on pentest, Red Team methodology,
             ethical hacking, Linux and programming. My work connects practical cybersecurity with automation,
             embedded systems and scientific reasoning.
           </p>
-          <p>
+          <p data-i18n="about_p2">
             I care about projects that can be tested, documented and improved. The direction is clear: build real
             technical capability, communicate findings cleanly and keep offensive security inside authorized,
             ethical and useful contexts.
@@ -1261,9 +1483,9 @@ ETHICAL HACKING</pre>
     <section id="skills">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="kicker">Skills</span>
-          <h2>Honest, practical and organized by domain.</h2>
-          <p>No inflated expert labels. Just the areas I am building, using and documenting with discipline.</p>
+          <span class="kicker" data-i18n="skills_kicker">Skills</span>
+          <h2 data-i18n="skills_title">Honest, practical and organized by domain.</h2>
+          <p data-i18n="skills_text">No inflated expert labels. Just the areas I am building, using and documenting with discipline.</p>
         </div>
 
         <div class="skills-grid" id="skillsGrid"></div>
@@ -1273,19 +1495,19 @@ ETHICAL HACKING</pre>
     <section id="projects" class="section-band">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="kicker">Projects</span>
-          <h2>The core of the portfolio.</h2>
-          <p>Official project set with honest status labels. Search and filters use the project data below, not decorative buttons.</p>
+          <span class="kicker" data-i18n="projects_kicker">Projects</span>
+          <h2 data-i18n="projects_title">The core of the portfolio.</h2>
+          <p data-i18n="projects_text">Official project set with honest status labels. Search and filters use the project data below, not decorative buttons.</p>
         </div>
 
         <div class="featured-block reveal">
           <div class="featured-head">
             <div>
-              <span class="kicker">Featured</span>
-              <h3>Best projects to inspect first.</h3>
-              <p>These are the strongest signals for ethical hacking, Red Team methodology, reporting, web security and electronics.</p>
+              <span class="kicker" data-i18n="featured_kicker">Featured</span>
+              <h3 data-i18n="featured_title">Best projects to inspect first.</h3>
+              <p data-i18n="featured_text">These are the strongest signals for ethical hacking, Red Team methodology, reporting, web security and electronics.</p>
             </div>
-            <button class="btn" type="button" data-command="filter featured">Filter featured</button>
+            <button class="btn" type="button" data-command="filter featured" data-i18n="filter_featured">Filter featured</button>
           </div>
           <div class="featured-grid" id="featuredProjects"></div>
         </div>
@@ -1303,12 +1525,40 @@ ETHICAL HACKING</pre>
       </div>
     </section>
 
+    <section id="case-studies">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker" data-i18n="cases_kicker">Case Studies</span>
+          <h2 data-i18n="cases_title">A closer look at the strongest work.</h2>
+          <p data-i18n="cases_text">Short technical narratives that explain the problem, the architecture decision and what each project proves.</p>
+        </div>
+
+        <div class="case-grid" id="caseStudiesGrid"></div>
+      </div>
+    </section>
+
+    <section id="proof" class="section-band">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker" data-i18n="proof_kicker">Proof of Work</span>
+          <h2 data-i18n="proof_title">Signals that can be checked quickly.</h2>
+        </div>
+
+        <div class="proof-grid">
+          <article class="proof-card reveal"><strong>15</strong><span data-i18n="proof_projects">public portfolio repositories</span></article>
+          <article class="proof-card reveal"><strong>2</strong><span data-i18n="proof_certs">Cisco cybersecurity credentials</span></article>
+          <article class="proof-card reveal"><strong>5+</strong><span data-i18n="proof_domains">technical domains: web, Red Team, cloud, embedded and physics</span></article>
+          <article class="proof-card reveal"><strong>2026</strong><span data-i18n="proof_education">expected technical Electronics completion</span></article>
+        </div>
+      </div>
+    </section>
+
     <section id="workflow">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="kicker">Workflow</span>
-          <h2>How I approach technical work.</h2>
-          <p>Security work only matters when it is scoped, reproducible, documented and useful for improvement.</p>
+          <span class="kicker" data-i18n="workflow_kicker">Workflow</span>
+          <h2 data-i18n="workflow_title">How I approach technical work.</h2>
+          <p data-i18n="workflow_text">Security work only matters when it is scoped, reproducible, documented and useful for improvement.</p>
         </div>
 
         <div class="workflow-shell">
@@ -1321,8 +1571,8 @@ ETHICAL HACKING</pre>
     <section id="certifications" class="section-band">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="kicker">Certifications</span>
-          <h2>Documented learning and security foundations.</h2>
+          <span class="kicker" data-i18n="certs_kicker">Certifications</span>
+          <h2 data-i18n="certs_title">Documented learning and security foundations.</h2>
         </div>
 
         <div class="cert-grid">
@@ -1367,8 +1617,8 @@ ETHICAL HACKING</pre>
     <section id="education">
       <div class="wrap education-grid">
         <div class="section-head reveal">
-          <span class="kicker">Education</span>
-          <h2>Technical Electronics with software and security direction.</h2>
+          <span class="kicker" data-i18n="education_kicker">Education</span>
+          <h2 data-i18n="education_title">Technical Electronics with software and security direction.</h2>
         </div>
 
         <div class="education-card reveal">
@@ -1388,9 +1638,9 @@ ETHICAL HACKING</pre>
     <section id="contact" class="section-band">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="kicker">Contact</span>
-          <h2>Open to technical opportunities and collaboration.</h2>
-          <p>Available for cybersecurity learning opportunities, internships, technical programs, open-source projects and serious project conversations.</p>
+          <span class="kicker" data-i18n="contact_kicker">Contact</span>
+          <h2 data-i18n="contact_title">Open to technical opportunities and collaboration.</h2>
+          <p data-i18n="contact_text">Available for cybersecurity learning opportunities, internships, technical programs, open-source projects and serious project conversations.</p>
         </div>
 
         <div class="contact-grid">
@@ -1465,6 +1715,276 @@ ETHICAL HACKING</pre>
       quantumnoir: "https://github.com/lulz-lich/QuantumNoir",
       blackcapy: "https://github.com/lulz-lich/BlackCapy",
       capysuite: "https://github.com/lulz-lich/CapySuite"
+    };
+
+    const demoLinks = {
+      chronobreak: "https://lulz-lich.github.io/chronobreak/",
+      quantumnoir: "https://lulz-lich.github.io/QuantumNoir/"
+    };
+
+    const repoMeta = {
+      webphantom: { language: "Python", updated: "May 2026" },
+      cipherhound: { language: "Python", updated: "May 2026" },
+      reconforge: { language: "Python", updated: "May 2026" },
+      vulnforge: { language: "Python", updated: "May 2026" },
+      ghosttrail: { language: "Python", updated: "May 2026" },
+      nightwatch: { language: "Python", updated: "May 2026" },
+      masktrace: { language: "Python", updated: "May 2026" },
+      cloudspecter: { language: "Python", updated: "May 2026" },
+      reportforge: { language: "Python", updated: "May 2026" },
+      shellscope: { language: "Python", updated: "May 2026" },
+      phishforge: { language: "Python", updated: "May 2026" },
+      chronobreak: { language: "TypeScript", updated: "May 2026" },
+      quantumnoir: { language: "TypeScript", updated: "May 2026" },
+      blackcapy: { language: "C++", updated: "May 2026" },
+      capysuite: { language: "TypeScript", updated: "May 2026" }
+    };
+
+    const projectPreviews = {
+      capysuite: ["scope loaded: authorized lab", "chain mapped: recon -> evidence -> report", "opsec notes attached"],
+      webphantom: ["browser session: controlled", "captured: headers cookies forms", "evidence saved for report"],
+      reconforge: ["domain inventory built", "dns records correlated", "services queued for review"],
+      vulnforge: ["headers/cookies reviewed", "auth/session notes created", "finding template ready"],
+      reportforge: ["executive summary generated", "technical finding structured", "export queue: md/html/pdf"],
+      blackcapy: ["esp32 module detected", "plugin interface loaded", "embedded notes synced"],
+      cipherhound: ["entropy scan completed", "jwt/private-key patterns checked", "sensitive artifact review ready"],
+      ghosttrail: ["attack chain visualized", "mitre technique mapped", "detection point attached"],
+      nightwatch: ["activity timeline built", "noise estimate updated", "defender visibility noted"],
+      masktrace: ["identity signals correlated", "public exposure summarized", "privacy-aware report ready"],
+      cloudspecter: ["iam policy parsed", "trust path inspected", "hardening note created"],
+      shellscope: ["shell history imported", "timestamped evidence grouped", "timeline export ready"],
+      phishforge: ["awareness template loaded", "local demo flow safe", "defensive recommendation added"],
+      chronobreak: ["event horizon rendered", "redshift curve active", "observer signal delayed"],
+      quantumnoir: ["interference pattern loaded", "observer effect visualized", "information paradox queued"]
+    };
+
+    const projectPt = {
+      capysuite: {
+        summary: "Toolkit principal de operações Red Team para avaliações autorizadas, evidências, cadeias de ataque, mapeamento MITRE ATT&CK, notas de OPSEC e fluxo de engajamento.",
+        problem: "Trabalho de Red Team em laboratório precisa de estrutura repetível, evidência limpa e saídas claras."
+      },
+      webphantom: {
+        summary: "Toolkit de automação com navegador headless para avaliações web autorizadas, capturando screenshots, headers, cookies, formulários, fluxos e estados da aplicação.",
+        problem: "Avaliações web precisam de visibilidade repetível sem perder escopo, contexto ou evidências."
+      },
+      reconforge: {
+        summary: "Toolkit de reconhecimento externo e mapeamento de superfície para avaliações autorizadas envolvendo domínios, DNS, serviços expostos e certificados.",
+        problem: "Reconhecimento fica fraco quando domínios, serviços, certificados e notas ficam espalhados."
+      },
+      vulnforge: {
+        summary: "Toolkit alinhado a OWASP para avaliação web e API com headers, cookies, CORS, autenticação, sessões, endpoints e achados reportáveis.",
+        problem: "Achados web ficam mais úteis quando validação, evidência e mitigação seguem categorias claras."
+      },
+      reportforge: {
+        summary: "Motor bilingue de relatório pentest para sumários executivos, achados técnicos, evidências, severidade, remediação e exportação Markdown/HTML/PDF.",
+        problem: "Bom trabalho técnico precisa virar um entregável que outras pessoas consigam entender e agir."
+      },
+      blackcapy: {
+        summary: "Projeto embarcado modular para estudar protocolos sem fio, sistemas embarcados e testes de segurança com firmware por plugins, hardware expansível e interface pixel-art.",
+        problem: "Um perfil técnico forte ganha credibilidade quando mostra software, hardware e documentação juntos."
+      }
+    };
+
+    const caseStudies = [
+      {
+        projectId: "capysuite",
+        title: "CapySuite",
+        focus: "Red Team operations",
+        problem: "Authorized lab work needs a single place for targets, scope, evidence, attack-chain reasoning and reporting notes.",
+        decision: "Model the engagement as a structured workspace instead of a loose folder of outputs.",
+        proof: "Shows Red Team methodology, scope discipline, MITRE ATT&CK thinking and evidence-first reporting.",
+        pt: {
+          focus: "Operações Red Team",
+          problem: "Trabalho autorizado em laboratório precisa reunir alvos, escopo, evidências, raciocínio de cadeia de ataque e notas de relatório.",
+          decision: "Modelar o engajamento como workspace estruturado, não como uma pasta solta de outputs.",
+          proof: "Mostra metodologia Red Team, disciplina de escopo, MITRE ATT&CK e reporting orientado por evidência."
+        }
+      },
+      {
+        projectId: "webphantom",
+        title: "WebPhantom",
+        focus: "Web assessment automation",
+        problem: "Browser state, cookies, forms and screenshots are easy to lose during authorized web assessment notes.",
+        decision: "Use headless browser automation to capture evidence consistently while keeping the workflow report-oriented.",
+        proof: "Shows practical web security thinking, automation and disciplined evidence collection.",
+        pt: {
+          focus: "Automação para avaliação web",
+          problem: "Estado do navegador, cookies, formulários e screenshots se perdem facilmente durante notas de avaliação web autorizada.",
+          decision: "Usar automação headless para capturar evidência de forma consistente e orientada a relatório.",
+          proof: "Mostra raciocínio prático de web security, automação e coleta disciplinada de evidências."
+        }
+      },
+      {
+        projectId: "reportforge",
+        title: "ReportForge",
+        focus: "Professional reporting",
+        problem: "A finding is only useful when evidence, impact and remediation are written clearly enough for action.",
+        decision: "Build a reporting engine with reusable sections, bilingual output and export paths.",
+        proof: "Shows communication maturity, security documentation and deliverable-focused engineering.",
+        pt: {
+          focus: "Relatórios profissionais",
+          problem: "Um achado só é útil quando evidência, impacto e remediação são claros o suficiente para ação.",
+          decision: "Construir um motor de relatório com seções reutilizáveis, saída bilingue e caminhos de exportação.",
+          proof: "Mostra maturidade de comunicação, documentação de segurança e engenharia focada em entregáveis."
+        }
+      }
+    ];
+
+    const translations = {
+      en: {
+        skip: "Skip to content",
+        brand_subtitle: "ethical hacker / red team student",
+        nav_about: "About",
+        nav_skills: "Skills",
+        nav_projects: "Projects",
+        nav_cases: "Cases",
+        nav_workflow: "Workflow",
+        nav_certs: "Certifications",
+        nav_education: "Education",
+        nav_contact: "Contact",
+        hero_kicker: "Available for technical opportunities",
+        hero_title: "Ethical Hacker & Red Team Student.",
+        hero_lead: "I study and practice ethical hacking through authorized labs, Red Team methodology, Linux, automation, electronics and scientific thinking.",
+        open_github: "Open GitHub",
+        open_linkedin: "Open LinkedIn",
+        view_resume: "View resume",
+        view_certs: "View certificates",
+        copy_email: "Copy email",
+        stat_projects: "official portfolio projects",
+        stat_redteam: "authorized labs and methodology",
+        stat_linux: "terminal-first workflow",
+        stat_education: "technical electronics path",
+        hud_role: "Technical student",
+        hud_focus: "Ethical hacking, Red Team",
+        hud_rule: "Authorized labs only",
+        about_kicker: "About",
+        about_title: "Security mindset with an engineering base.",
+        about_p1: "I am a technical Electronics student from Sao Paulo, Brazil, focused on pentest, Red Team methodology, ethical hacking, Linux and programming. My work connects practical cybersecurity with automation, embedded systems and scientific reasoning.",
+        about_p2: "I care about projects that can be tested, documented and improved. The direction is clear: build real technical capability, communicate findings cleanly and keep offensive security inside authorized, ethical and useful contexts.",
+        skills_kicker: "Skills",
+        skills_title: "Honest, practical and organized by domain.",
+        skills_text: "No inflated expert labels. Just the areas I am building, using and documenting with discipline.",
+        projects_kicker: "Projects",
+        projects_title: "The core of the portfolio.",
+        projects_text: "Official project set with honest status labels. Search and filters use the project data below, not decorative buttons.",
+        featured_kicker: "Featured",
+        featured_title: "Best projects to inspect first.",
+        featured_text: "These are the strongest signals for ethical hacking, Red Team methodology, reporting, web security and electronics.",
+        filter_featured: "Filter featured",
+        cases_kicker: "Case Studies",
+        cases_title: "A closer look at the strongest work.",
+        cases_text: "Short technical narratives that explain the problem, the architecture decision and what each project proves.",
+        proof_kicker: "Proof of Work",
+        proof_title: "Signals that can be checked quickly.",
+        proof_projects: "public portfolio repositories",
+        proof_certs: "Cisco cybersecurity credentials",
+        proof_domains: "technical domains: web, Red Team, cloud, embedded and physics",
+        proof_education: "expected technical Electronics completion",
+        workflow_kicker: "Workflow",
+        workflow_title: "How I approach technical work.",
+        workflow_text: "Security work only matters when it is scoped, reproducible, documented and useful for improvement.",
+        certs_kicker: "Certifications",
+        certs_title: "Documented learning and security foundations.",
+        education_kicker: "Education",
+        education_title: "Technical Electronics with software and security direction.",
+        contact_kicker: "Contact",
+        contact_title: "Open to technical opportunities and collaboration.",
+        contact_text: "Available for cybersecurity learning opportunities, internships, technical programs, open-source projects and serious project conversations.",
+        view_details: "View details",
+        repository: "Repository",
+        live_demo: "Live demo",
+        open_repository: "Open repository",
+        open_live_demo: "Open live demo",
+        problem: "Problem",
+        status: "Status",
+        features: "Main features or intended capabilities",
+        roadmap: "Next steps",
+        learning: "Technical learning",
+        ethics: "Security and ethics",
+        case_problem: "Problem",
+        case_decision: "Decision",
+        case_proof: "Proof",
+        updated: "updated",
+        projects_visible: "projects visible",
+        conservative_status: "This status is based on the public repository and avoids overselling the project."
+      },
+      pt: {
+        skip: "Pular para o conteúdo",
+        brand_subtitle: "hacker ético / estudante Red Team",
+        nav_about: "Sobre",
+        nav_skills: "Skills",
+        nav_projects: "Projetos",
+        nav_cases: "Cases",
+        nav_workflow: "Workflow",
+        nav_certs: "Certificações",
+        nav_education: "Formação",
+        nav_contact: "Contato",
+        hero_kicker: "Disponível para oportunidades técnicas",
+        hero_title: "Hacker Ético & Estudante de Red Team.",
+        hero_lead: "Estudo e pratico ethical hacking em laboratórios autorizados, com metodologia Red Team, Linux, automação, eletrônica e pensamento científico.",
+        open_github: "Abrir GitHub",
+        open_linkedin: "Abrir LinkedIn",
+        view_resume: "Ver currículo",
+        view_certs: "Ver certificados",
+        copy_email: "Copiar email",
+        stat_projects: "projetos públicos no portfólio",
+        stat_redteam: "laboratórios autorizados e metodologia",
+        stat_linux: "workflow primeiro no terminal",
+        stat_education: "formação técnica em eletrônica",
+        hud_role: "Estudante técnico",
+        hud_focus: "Ethical hacking, Red Team",
+        hud_rule: "Somente labs autorizados",
+        about_kicker: "Sobre",
+        about_title: "Mentalidade de segurança com base de engenharia.",
+        about_p1: "Sou estudante técnico em Eletrônica em São Paulo, Brasil, com foco em pentest, metodologia Red Team, ethical hacking, Linux e programação. Meu trabalho conecta cybersecurity prática com automação, sistemas embarcados e raciocínio científico.",
+        about_p2: "Eu me importo com projetos que podem ser testados, documentados e melhorados. A direção é clara: construir capacidade técnica real, comunicar achados com clareza e manter segurança ofensiva em contextos autorizados, éticos e úteis.",
+        skills_kicker: "Skills",
+        skills_title: "Honesto, prático e organizado por domínio.",
+        skills_text: "Sem rótulos inflados de expert. Só as áreas que estou construindo, usando e documentando com disciplina.",
+        projects_kicker: "Projetos",
+        projects_title: "O coração do portfólio.",
+        projects_text: "Conjunto oficial de projetos com status honesto. Busca e filtros usam os dados reais abaixo, não botões decorativos.",
+        featured_kicker: "Destaques",
+        featured_title: "Projetos para ver primeiro.",
+        featured_text: "São os sinais mais fortes de ethical hacking, metodologia Red Team, reporting, web security e eletrônica.",
+        filter_featured: "Filtrar destaques",
+        cases_kicker: "Case Studies",
+        cases_title: "Um olhar mais técnico sobre os melhores trabalhos.",
+        cases_text: "Narrativas curtas explicando problema, decisão de arquitetura e o que cada projeto prova.",
+        proof_kicker: "Prova de Trabalho",
+        proof_title: "Sinais verificáveis rapidamente.",
+        proof_projects: "repositórios públicos do portfólio",
+        proof_certs: "credenciais Cisco em cybersecurity",
+        proof_domains: "domínios técnicos: web, Red Team, cloud, embarcados e física",
+        proof_education: "previsão de conclusão do técnico em Eletrônica",
+        workflow_kicker: "Workflow",
+        workflow_title: "Como abordo trabalho técnico.",
+        workflow_text: "Segurança só importa quando tem escopo, reprodução, documentação e utilidade para melhoria.",
+        certs_kicker: "Certificações",
+        certs_title: "Aprendizado documentado e base em segurança.",
+        education_kicker: "Formação",
+        education_title: "Eletrônica técnica com direção em software e segurança.",
+        contact_kicker: "Contato",
+        contact_title: "Aberto a oportunidades técnicas e colaboração.",
+        contact_text: "Disponível para oportunidades de aprendizado em cybersecurity, estágios, programas técnicos, open-source e conversas sérias sobre projetos.",
+        view_details: "Ver detalhes",
+        repository: "Repositório",
+        live_demo: "Demo",
+        open_repository: "Abrir repositório",
+        open_live_demo: "Abrir demo",
+        problem: "Problema",
+        status: "Status",
+        features: "Funcionalidades principais ou planejadas",
+        roadmap: "Próximos passos",
+        learning: "Aprendizado técnico",
+        ethics: "Segurança e ética",
+        case_problem: "Problema",
+        case_decision: "Decisão",
+        case_proof: "Prova",
+        updated: "atualizado",
+        projects_visible: "projetos visíveis",
+        conservative_status: "Este status é baseado no repositório público e evita vender o projeto além do que ele mostra."
+      }
     };
 
     const skills = [
@@ -1774,7 +2294,8 @@ ETHICAL HACKING</pre>
       filter: "All",
       search: "",
       activeProject: null,
-      activeTab: "Overview"
+      activeTab: "Overview",
+      lang: localStorage.getItem("portfolioLanguage") || "en"
     };
 
     const featuredProjectIds = ["capysuite", "webphantom", "reconforge", "vulnforge", "reportforge", "blackcapy"];
@@ -1792,6 +2313,64 @@ ETHICAL HACKING</pre>
 
     function chip(text) {
       return `<span class="chip">${escapeHtml(text)}</span>`;
+    }
+
+    function t(key) {
+      return translations[state.lang][key] || translations.en[key] || key;
+    }
+
+    function projectSummary(project) {
+      return state.lang === "pt" && projectPt[project.id]?.summary
+        ? projectPt[project.id].summary
+        : project.summary;
+    }
+
+    function projectProblem(project) {
+      return state.lang === "pt" && projectPt[project.id]?.problem
+        ? projectPt[project.id].problem
+        : project.problem;
+    }
+
+    function projectLinks(project) {
+      const links = project.links.map(link => ({
+        label: link.label === "Repository" ? t("repository") : link.label,
+        url: link.url,
+        type: "repo"
+      }));
+
+      if (demoLinks[project.id]) {
+        links.push({ label: t("live_demo"), url: demoLinks[project.id], type: "demo" });
+      }
+
+      return links;
+    }
+
+    function projectBadges(project) {
+      const meta = repoMeta[project.id] || {};
+      return [project.status, meta.language, `${t("updated")} ${meta.updated}`]
+        .filter(Boolean)
+        .map(item => `<span class="project-badge">${escapeHtml(item)}</span>`)
+        .join("");
+    }
+
+    function projectPreview(project) {
+      const lines = projectPreviews[project.id] || project.stack.slice(0, 3);
+      const widths = ["82%", "66%", "74%"];
+
+      return `
+        <div class="project-preview" aria-hidden="true">
+          <div class="preview-top">
+            <span>${escapeHtml(project.name.toLowerCase())}.preview</span>
+            <span>${escapeHtml(repoMeta[project.id]?.language || project.stack[0])}</span>
+          </div>
+          <div class="preview-bars">
+            ${widths.map(width => `<i style="--w:${width}"></i>`).join("")}
+          </div>
+          <div class="preview-lines">
+            ${lines.map(line => `<span>$ ${escapeHtml(line)}</span>`).join("")}
+          </div>
+        </div>
+      `;
     }
 
     function showToast(message) {
@@ -1858,7 +2437,7 @@ ETHICAL HACKING</pre>
         button.addEventListener("click", () => {
           state.filter = button.dataset.filter;
           renderProjects();
-          terminalPrint([`filter: ${state.filter}`, `${filteredProjects().length} project(s) visible`]);
+          terminalPrint([`filter: ${state.filter}`, `${filteredProjects().length} ${t("projects_visible")}`]);
         });
       });
     }
@@ -1876,12 +2455,14 @@ ETHICAL HACKING</pre>
               <span class="project-status">${escapeHtml(project.status)}</span>
             </div>
             <h3>${escapeHtml(project.name)}</h3>
-            <p>${escapeHtml(project.summary)}</p>
+            <div class="project-badges">${projectBadges(project)}</div>
+            ${projectPreview(project)}
+            <p>${escapeHtml(projectSummary(project))}</p>
             <div class="chips">${project.stack.map(chip).join("")}</div>
           </div>
           <div class="project-actions">
-            <button class="project-action" type="button" data-open-project="${escapeHtml(project.id)}">View details</button>
-            ${project.links.map(link => `<a class="project-action" href="${escapeHtml(link.url)}" target="_blank" rel="noopener">${escapeHtml(link.label)}</a>`).join("")}
+            <button class="project-action" type="button" data-open-project="${escapeHtml(project.id)}">${escapeHtml(t("view_details"))}</button>
+            ${projectLinks(project).map(link => `<a class="project-action" href="${escapeHtml(link.url)}" target="_blank" rel="noopener">${escapeHtml(link.label)}</a>`).join("")}
           </div>
         </article>
       `;
@@ -1915,10 +2496,49 @@ ETHICAL HACKING</pre>
       observeReveals();
     }
 
+    function renderCaseStudies() {
+      $("#caseStudiesGrid").innerHTML = caseStudies.map(study => {
+        const project = projects.find(item => item.id === study.projectId);
+        const localized = state.lang === "pt" ? study.pt : study;
+        const links = project ? projectLinks(project) : [];
+
+        return `
+          <article class="case-card reveal">
+            <div>
+              <span class="level">${escapeHtml(localized.focus)}</span>
+              <h3>${escapeHtml(study.title)}</h3>
+              ${project ? projectPreview(project) : ""}
+              <dl>
+                <div>
+                  <dt>${escapeHtml(t("case_problem"))}</dt>
+                  <dd>${escapeHtml(localized.problem)}</dd>
+                </div>
+                <div>
+                  <dt>${escapeHtml(t("case_decision"))}</dt>
+                  <dd>${escapeHtml(localized.decision)}</dd>
+                </div>
+                <div>
+                  <dt>${escapeHtml(t("case_proof"))}</dt>
+                  <dd>${escapeHtml(localized.proof)}</dd>
+                </div>
+              </dl>
+            </div>
+            <div class="project-actions">
+              ${project ? `<button class="project-action" type="button" data-open-project="${escapeHtml(project.id)}">${escapeHtml(t("view_details"))}</button>` : ""}
+              ${links.map(link => `<a class="project-action" href="${escapeHtml(link.url)}" target="_blank" rel="noopener">${escapeHtml(link.label)}</a>`).join("")}
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      bindProjectCards();
+      observeReveals();
+    }
+
     function renderProjects() {
       renderFilters();
       const visible = filteredProjects();
-      $("#projectCount").textContent = `${visible.length} of ${projects.length} projects visible`;
+      $("#projectCount").textContent = `${visible.length} of ${projects.length} ${t("projects_visible")}`;
 
       $("#projectsGrid").innerHTML = visible.map(project => projectCard(project)).join("");
 
@@ -1937,11 +2557,11 @@ ETHICAL HACKING</pre>
       $("#projectModal").setAttribute("aria-hidden", "false");
       $("#modalCategory").textContent = `${project.category} / ${project.status}`;
       $("#modalTitle").textContent = project.name;
-      $("#modalSummary").textContent = project.summary;
+      $("#modalSummary").textContent = projectSummary(project);
       $("#modalChips").innerHTML = project.stack.map(chip).join("");
-      $("#modalLinks").innerHTML = project.links.map(link => `
+      $("#modalLinks").innerHTML = projectLinks(project).map(link => `
         <a class="project-action" href="${escapeHtml(link.url)}" target="_blank" rel="noopener">
-          Open ${escapeHtml(link.label.toLowerCase())}
+          ${escapeHtml(link.type === "demo" ? t("open_live_demo") : t("open_repository"))}
         </a>
       `).join("");
       renderDetailTabs();
@@ -1956,10 +2576,22 @@ ETHICAL HACKING</pre>
       state.activeProject = null;
     }
 
+    function detailTabLabel(tab) {
+      const labels = {
+        Overview: state.lang === "pt" ? "Visão geral" : "Overview",
+        Features: state.lang === "pt" ? "Funcionalidades" : "Features",
+        Roadmap: state.lang === "pt" ? "Roadmap" : "Roadmap",
+        Learning: state.lang === "pt" ? "Aprendizado" : "Learning",
+        Ethics: state.lang === "pt" ? "Ética" : "Ethics"
+      };
+
+      return labels[tab] || tab;
+    }
+
     function renderDetailTabs() {
       $("#detailTabs").innerHTML = detailTabs.map(tab => `
         <button class="detail-tab ${tab === state.activeTab ? "active" : ""}" type="button" data-detail-tab="${tab}">
-          ${tab}
+          ${escapeHtml(detailTabLabel(tab))}
         </button>
       `).join("");
 
@@ -1988,20 +2620,20 @@ ETHICAL HACKING</pre>
       const views = {
         Overview: `
           <section class="detail-block">
-            <h3>Problem</h3>
-            <p>${escapeHtml(project.problem)}</p>
+            <h3>${escapeHtml(t("problem"))}</h3>
+            <p>${escapeHtml(projectProblem(project))}</p>
           </section>
           <section class="detail-block">
-            <h3>Status</h3>
-            <p>${escapeHtml(project.status)}. This label is intentionally conservative and avoids presenting ideas as finished releases.</p>
+            <h3>${escapeHtml(t("status"))}</h3>
+            <p>${escapeHtml(project.status)}. ${escapeHtml(t("conservative_status"))}</p>
           </section>
         `,
-        Features: renderList("Main features or intended capabilities", project.features),
-        Roadmap: renderList("Next steps", project.next),
-        Learning: renderList("Technical learning", project.learnings),
+        Features: renderList(t("features"), project.features),
+        Roadmap: renderList(t("roadmap"), project.next),
+        Learning: renderList(t("learning"), project.learnings),
         Ethics: `
           <section class="detail-block">
-            <h3>Security and ethics</h3>
+            <h3>${escapeHtml(t("ethics"))}</h3>
             <p>${escapeHtml(project.ethics)}</p>
           </section>
         `
@@ -2079,7 +2711,37 @@ ETHICAL HACKING</pre>
       state.filter = normalized;
       scrollToSection("#projects");
       renderProjects();
-      terminalPrint([`filter: ${normalized}`, `${filteredProjects().length} project(s) visible`]);
+      terminalPrint([`filter: ${normalized}`, `${filteredProjects().length} ${t("projects_visible")}`]);
+    }
+
+    function applyTranslations() {
+      document.documentElement.lang = state.lang === "pt" ? "pt-BR" : "en";
+      $$("[data-i18n]").forEach(element => {
+        element.textContent = t(element.dataset.i18n);
+      });
+      $("#languageButton").textContent = state.lang === "pt" ? "EN" : "PT";
+      $("#languageButton").setAttribute("aria-label", state.lang === "pt" ? "Switch to English" : "Mudar para português");
+    }
+
+    function setLanguage(lang) {
+      state.lang = lang;
+      localStorage.setItem("portfolioLanguage", lang);
+      applyTranslations();
+      renderSkills();
+      renderFeaturedProjects();
+      renderProjects();
+      renderCaseStudies();
+      renderWorkflow();
+
+      if (state.activeProject) {
+        $("#modalSummary").textContent = projectSummary(state.activeProject);
+        renderDetailTabs();
+        renderDetailBody();
+      }
+    }
+
+    function toggleLanguage() {
+      setLanguage(state.lang === "pt" ? "en" : "pt");
     }
 
     function runCommand(value) {
@@ -2094,6 +2756,8 @@ ETHICAL HACKING</pre>
         certifications: "#certifications",
         contact: "#contact",
         workflow: "#workflow",
+        cases: "#case-studies",
+        "case studies": "#case-studies",
         education: "#education"
       };
 
@@ -2103,7 +2767,7 @@ ETHICAL HACKING</pre>
           "open github, open linkedin, copy email",
           "filter featured, filter redteam, filter web, filter cloud, filter physics, filter active, filter prototype",
           "project capysuite, project blackcapy, project webphantom",
-          "theme, clear"
+          "theme, language, clear"
         ]);
         return;
       }
@@ -2140,6 +2804,14 @@ ETHICAL HACKING</pre>
       if (command === "theme") {
         toggleTheme();
         terminalPrint(["theme toggled"]);
+        return;
+      }
+
+      if (["language", "lang", "pt", "en"].includes(command)) {
+        if (command === "pt") setLanguage("pt");
+        else if (command === "en") setLanguage("en");
+        else toggleLanguage();
+        terminalPrint([`language: ${state.lang}`]);
         return;
       }
 
@@ -2197,9 +2869,11 @@ ETHICAL HACKING</pre>
 
     function init() {
       document.documentElement.dataset.theme = localStorage.getItem("portfolioTheme") || "";
+      applyTranslations();
       renderSkills();
       renderFeaturedProjects();
       renderProjects();
+      renderCaseStudies();
       renderWorkflow();
       observeReveals();
       updateClock();
@@ -2223,6 +2897,7 @@ ETHICAL HACKING</pre>
 
       $("#copyEmailHero").addEventListener("click", () => copyText(profile.email, "Email copied."));
       $("#copyEmailContact").addEventListener("click", () => copyText(profile.email, "Email copied."));
+      $("#languageButton").addEventListener("click", toggleLanguage);
       $("#themeButton").addEventListener("click", toggleTheme);
 
       $("#menuButton").addEventListener("click", () => {
