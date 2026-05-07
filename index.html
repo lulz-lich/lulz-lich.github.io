@@ -2,62 +2,88 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Henrique da Silva Cunha | Ethical Hacker & Red Team</title>
-  <meta name="description" content="Red Team portfolio of Henrique da Silva Cunha: ethical hacking, web pentest, Linux, automation, OPSEC, detection and custom tooling.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070a12">
+  <meta name="color-scheme" content="dark">
+
+  <title>Henrique Cunha | Ethical Hacking, Red Team & Security Tooling</title>
+  <meta name="description" content="Professional portfolio of Henrique Cunha, a technical electronics student focused on ethical hacking, Red Team, Linux, automation, security tooling, electronics and scientific thinking.">
+  <meta name="author" content="Henrique Cunha">
+  <meta name="robots" content="index,follow">
+
+  <meta property="og:title" content="Henrique Cunha | Ethical Hacking, Red Team & Security Tooling">
+  <meta property="og:description" content="Security-focused tools, automation workflows and technical projects combining cybersecurity, Linux, software engineering and scientific thinking.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lulz-lich.github.io/">
+  <meta property="og:image" content="https://lulz-lich.github.io/assets/docs/pentest.jpeg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Henrique Cunha | Ethical Hacking, Red Team & Security Tooling">
+  <meta name="twitter:description" content="Security-focused tools, automation workflows and technical projects combining cybersecurity, Linux, software engineering and scientific thinking.">
+  <meta name="twitter:image" content="https://lulz-lich.github.io/assets/docs/pentest.jpeg">
+
+  <link rel="canonical" href="https://lulz-lich.github.io/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@500;800&display=swap');
-
     :root {
-      --bg: #070510;
-      --text: #f7efff;
-      --muted: #c9bce0;
-      --muted2: #9588ad;
-      --line: rgba(218,193,255,.18);
-      --line2: rgba(218,193,255,.35);
-      --pink: #f2a7d8;
-      --cyan: #91d9ff;
-      --violet: #c8b6ff;
-      --green: #9ef0ce;
-      --yellow: #ffd98c;
-      --danger: #ff7d99;
-      --shadow: 0 24px 80px rgba(0,0,0,.42);
-      --r: 28px;
+      --bg: #070a12;
+      --bg-2: #0b1020;
+      --panel: rgba(16, 23, 39, .82);
+      --panel-2: rgba(11, 16, 31, .92);
+      --text: #f3f7ff;
+      --muted: #aebbd0;
+      --soft: #758197;
+      --line: rgba(158, 177, 210, .19);
+      --line-strong: rgba(125, 216, 255, .35);
+      --cyan: #74d6ff;
+      --green: #8ff0c6;
+      --red: #ff7f9a;
+      --violet: #b8a7ff;
+      --amber: #ffd08a;
+      --shadow: 0 24px 70px rgba(0, 0, 0, .34);
+      --radius: 18px;
+      --radius-sm: 10px;
+      --max: 1180px;
     }
 
-    body.stealth {
-      --bg: #030604;
-      --text: #eafff3;
-      --muted: #a7c8b7;
-      --muted2: #779480;
-      --line: rgba(128,255,187,.18);
-      --line2: rgba(128,255,187,.38);
-      --pink: #80ffbb;
-      --cyan: #76ffea;
-      --violet: #bcffd9;
-      --green: #83ff9f;
+    [data-theme="stealth"] {
+      --bg: #030806;
+      --bg-2: #07130e;
+      --panel: rgba(10, 25, 18, .84);
+      --panel-2: rgba(6, 18, 12, .93);
+      --text: #effff7;
+      --muted: #abcdbd;
+      --soft: #7ea08f;
+      --line: rgba(143, 240, 198, .2);
+      --line-strong: rgba(143, 240, 198, .42);
+      --cyan: #7dfce9;
+      --green: #8ff0c6;
+      --red: #ff8aa0;
+      --violet: #b9ffd9;
     }
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     html {
       scroll-behavior: smooth;
-      color-scheme: dark;
     }
 
     body {
-      font-family: Inter, system-ui, sans-serif;
-      background:
-        radial-gradient(circle at 15% 10%, color-mix(in srgb, var(--pink) 20%, transparent), transparent 24rem),
-        radial-gradient(circle at 85% 10%, color-mix(in srgb, var(--cyan) 18%, transparent), transparent 24rem),
-        linear-gradient(#05030b, var(--bg), #05030b);
+      margin: 0;
+      min-height: 100vh;
       color: var(--text);
-      line-height: 1.65;
+      background:
+        radial-gradient(circle at 16% 8%, color-mix(in srgb, var(--cyan) 16%, transparent), transparent 28rem),
+        radial-gradient(circle at 82% 3%, color-mix(in srgb, var(--violet) 14%, transparent), transparent 26rem),
+        linear-gradient(180deg, #05070d 0%, var(--bg) 44%, #05070d 100%);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
       overflow-x: hidden;
     }
 
@@ -65,31 +91,27 @@
       overflow: hidden;
     }
 
-    body[data-view="recruiter"] #fx,
-    body[data-view="recruiter"] .cursor,
-    body[data-view="recruiter"] .scan {
-      display: none;
+    body::before,
+    body::after {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      content: "";
     }
 
-    body[data-view="recruiter"] .grid {
-      opacity: .16;
+    body::before {
+      z-index: -3;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(#000 0%, transparent 88%);
     }
 
-    body[data-view="recruiter"] .hud,
-    body[data-view="recruiter"] .project,
-    body[data-view="recruiter"] .card,
-    body[data-view="recruiter"] .value,
-    body[data-view="recruiter"] .panel {
-      box-shadow: 0 14px 42px rgba(0,0,0,.28);
-    }
-
-    body[data-view="technical"] .project,
-    body[data-view="technical"] .card {
-      border-color: color-mix(in srgb, var(--cyan) 38%, var(--line));
-    }
-
-    body[data-view="redteam"] .project[data-cat*="redteam"] {
-      border-color: color-mix(in srgb, var(--pink) 42%, var(--line));
+    body::after {
+      z-index: -2;
+      opacity: .045;
+      background: repeating-linear-gradient(to bottom, transparent 0, transparent 7px, rgba(255,255,255,.22) 8px);
     }
 
     a {
@@ -99,1095 +121,851 @@
 
     button,
     input {
-      font: inherit;
       color: inherit;
+      font: inherit;
     }
 
     button {
       cursor: pointer;
     }
 
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--cyan) 74%, transparent);
+      outline-offset: 3px;
+    }
+
     .wrap {
-      width: min(1180px, calc(100% - 40px));
-      margin: auto;
+      width: min(var(--max), calc(100% - 40px));
+      margin-inline: auto;
     }
 
-    #fx,
-    .grid,
-    .cursor,
-    .scan {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
+    .mono {
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
     }
 
-    #fx {
-      z-index: -5;
-    }
-
-    .grid {
-      z-index: -4;
-      background-image:
-        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
-      background-size: 46px 46px;
-      mask-image: linear-gradient(#000, transparent 92%);
-    }
-
-    .cursor {
-      z-index: -3;
-      background: radial-gradient(
-        430px circle at var(--x,50%) var(--y,50%),
-        color-mix(in srgb, var(--pink) 13%, transparent),
-        transparent 40%
-      );
-    }
-
-    .scan {
-      z-index: -2;
-      opacity: .045;
-      background: repeating-linear-gradient(
-        to bottom,
-        transparent 0,
-        transparent 6px,
-        rgba(255,255,255,.16) 7px
-      );
-    }
-
-    .loader {
-      position: fixed;
-      inset: 0;
-      z-index: 50;
-      display: grid;
-      place-items: center;
-      background: #05030a;
-      transition: .55s;
-    }
-
-    .loader.done {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .loader > div {
-      width: min(650px, calc(100% - 32px));
-      border: 1px solid var(--line2);
-      border-radius: 24px;
-      background: rgba(12,8,22,.92);
-      box-shadow: var(--shadow);
-      padding: 26px;
-      font-family: "JetBrains Mono", monospace;
-    }
-
-    .loader h2 {
-      font-size: 2rem;
-    }
-
-    .loader h2 span {
-      color: var(--pink);
-    }
-
-    #log {
-      min-height: 125px;
-      margin: 18px 0;
+    .muted {
       color: var(--muted);
     }
 
-    #log p {
-      margin: 7px 0;
+    .small {
+      color: var(--soft);
+      font-size: .92rem;
     }
 
-    #log b {
-      color: var(--green);
+    .skip-link {
+      position: fixed;
+      left: 18px;
+      top: 14px;
+      z-index: 200;
+      transform: translateY(-170%);
+      padding: 10px 14px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: var(--panel-2);
     }
 
-    .bar {
-      height: 8px;
-      border-radius: 99px;
-      background: rgba(255,255,255,.08);
-      overflow: hidden;
+    .skip-link:focus {
+      transform: translateY(0);
     }
 
-    .bar span {
-      display: block;
-      height: 100%;
-      background: linear-gradient(90deg, var(--pink), var(--cyan));
-      animation: load 1.5s forwards;
-    }
-
-    @keyframes load {
-      from { transform: scaleX(0); }
-      to { transform: scaleX(1); }
-    }
-
-    header {
+    .site-header {
       position: sticky;
       top: 0;
-      z-index: 10;
-      padding-top: 14px;
+      z-index: 30;
+      padding-block: 14px;
     }
 
-    .nav {
-      min-height: 74px;
+    .nav-shell {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      min-height: 70px;
       gap: 16px;
-      padding: 0 18px;
+      padding: 0 16px;
       border: 1px solid var(--line);
-      border-radius: 20px;
-      background: rgba(10,7,18,.72);
-      backdrop-filter: blur(18px);
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--panel-2) 86%, transparent);
       box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
+      min-width: max-content;
     }
 
-    .logo {
+    .brand-mark {
+      display: grid;
       width: 42px;
       height: 42px;
-      display: grid;
       place-items: center;
-      border-radius: 14px;
-      border: 1px solid var(--line2);
-      background: linear-gradient(
-        135deg,
-        color-mix(in srgb, var(--pink) 20%, transparent),
-        color-mix(in srgb, var(--cyan) 18%, transparent)
-      );
+      border: 1px solid var(--line-strong);
+      border-radius: 13px;
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--cyan) 18%, transparent), color-mix(in srgb, var(--violet) 18%, transparent)),
+        rgba(255,255,255,.03);
       color: var(--cyan);
-      font: 800 1rem "JetBrains Mono", monospace;
+      font-weight: 800;
     }
 
     .brand small {
       display: block;
-      color: var(--muted);
-      font-size: .78rem;
+      color: var(--soft);
+      font-size: .77rem;
     }
 
-    nav {
+    .nav-links {
       display: flex;
-      gap: 6px;
+      align-items: center;
+      gap: 4px;
     }
 
-    nav a,
+    .nav-links a,
     .btn,
-    .filter,
-    .lab button,
-    .stealth,
-    .quick,
-    .terminal-form button,
-    .terminal-shortcuts button,
-    .project-actions button,
-    .project-actions a,
-    .mode,
-    .skill-node,
-    .drawer-tab,
-    .drawer-actions button,
-    .drawer-actions a {
+    .chip-button,
+    .icon-button,
+    .filter-button,
+    .project-action,
+    .terminal-shortcut,
+    .workflow-step,
+    .detail-tab {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
       padding: 10px 13px;
       border: 1px solid transparent;
-      border-radius: 99px;
-      color: var(--muted);
-      transition: .18s;
+      border-radius: 999px;
       background: transparent;
+      color: var(--muted);
+      transition: transform .16s ease, border-color .16s ease, background .16s ease, color .16s ease;
     }
 
-    nav a:hover,
+    .nav-links a:hover,
     .btn:hover,
-    .filter:hover,
-    .lab button:hover,
-    .quick:hover,
-    .terminal-form button:hover,
-    .terminal-shortcuts button:hover,
-    .project-actions button:hover,
-    .project-actions a:hover,
-    .mode:hover,
-    .skill-node:hover,
-    .drawer-tab:hover,
-    .drawer-actions button:hover,
-    .drawer-actions a:hover {
-      background: rgba(255,255,255,.06);
-      border-color: var(--line2);
-      transform: translateY(-2px);
+    .chip-button:hover,
+    .icon-button:hover,
+    .filter-button:hover,
+    .project-action:hover,
+    .terminal-shortcut:hover,
+    .workflow-step:hover,
+    .detail-tab:hover {
+      transform: translateY(-1px);
+      border-color: var(--line-strong);
+      background: rgba(255,255,255,.055);
+      color: var(--text);
     }
 
-    .pill,
-    .stealth {
+    .btn,
+    .chip-button,
+    .filter-button,
+    .project-action,
+    .terminal-shortcut,
+    .detail-tab {
       border-color: var(--line);
+      background: rgba(255,255,255,.035);
+      font-weight: 700;
     }
 
-    .menu {
-      display: none;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: rgba(255,255,255,.04);
-      padding: 10px 12px;
+    .btn.primary,
+    .filter-button.active,
+    .workflow-step.active,
+    .detail-tab.active {
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--cyan), var(--green));
+      color: #061015;
     }
 
-    section {
-      padding: 108px 0;
-    }
-
-    .muted {
-      border-block: 1px solid rgba(255,255,255,.055);
-      background: linear-gradient(180deg, rgba(255,255,255,.026), rgba(255,255,255,.012));
-    }
-
-    .hero {
-      min-height: calc(100vh - 88px);
-      display: grid;
-      align-items: center;
-      padding-top: 80px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(360px, .95fr);
-      gap: 42px;
-      align-items: center;
-    }
-
-    .badge,
-    .kicker {
-      font: 800 .86rem "JetBrains Mono", monospace;
-      color: var(--pink);
-    }
-
-    .badge {
-      display: inline-flex;
-      gap: 10px;
-      align-items: center;
-      padding: 9px 12px;
-      margin-bottom: 24px;
-      border: 1px solid var(--line);
-      border-radius: 99px;
+    .icon-button {
+      width: 44px;
+      padding-inline: 0;
+      border-color: var(--line);
       background: rgba(255,255,255,.035);
     }
 
-    .dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 20px var(--green);
+    .menu-button {
+      display: none;
+    }
+
+    main {
+      position: relative;
+    }
+
+    section {
+      padding-block: 94px;
+    }
+
+    .section-band {
+      border-block: 1px solid rgba(255,255,255,.055);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.026), rgba(255,255,255,.012));
+    }
+
+    .section-head {
+      max-width: 820px;
+      margin-bottom: 34px;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--cyan);
+      font: 700 .82rem "JetBrains Mono", ui-monospace, monospace;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
     }
 
     h1,
     h2,
     h3 {
-      letter-spacing: -.065em;
-      line-height: 1.02;
+      line-height: 1.03;
+      letter-spacing: 0;
     }
 
     h1 {
-      font-size: clamp(3rem, 7vw, 6.4rem);
-      margin-bottom: 24px;
+      max-width: 950px;
+      margin-bottom: 20px;
+      font-size: clamp(3rem, 8vw, 6.9rem);
+      font-weight: 900;
     }
 
-    h1 em {
+    h1 span {
       display: block;
-      color: var(--violet);
-      font-style: normal;
+      color: var(--cyan);
     }
 
     h2 {
-      font-size: clamp(2.2rem, 5vw, 4.2rem);
-      margin-top: 10px;
+      margin-bottom: 16px;
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 900;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      font-size: 1.18rem;
     }
 
     p {
       color: var(--muted);
     }
 
-    .lead {
-      font-size: 1.08rem;
-      margin-bottom: 32px;
-      max-width: 760px;
+    .hero {
+      min-height: calc(100vh - 100px);
+      display: grid;
+      align-items: center;
+      padding-top: 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(360px, .96fr);
+      gap: 44px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-lead {
+      max-width: 770px;
+      margin-bottom: 28px;
+      font-size: 1.12rem;
     }
 
     .actions,
+    .status-row,
     .chips,
-    .tags,
     .filters,
     .terminal-shortcuts,
-    .project-actions,
-    .modebar,
-    .drawer-tabs,
-    .drawer-actions {
+    .detail-tabs,
+    .contact-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
 
-    .btn {
-      min-height: 48px;
-      display: inline-flex;
-      align-items: center;
-    }
-
-    .primary,
-    .filter.active,
-    .mode.active,
-    .skill-node.active,
-    .drawer-tab.active {
-      background: linear-gradient(135deg, var(--pink), var(--cyan));
-      color: #130d1f;
-      font-weight: 900;
-      border-color: transparent;
-    }
-
-    .chips {
+    .status-row {
       margin-top: 28px;
     }
 
-    .chips span,
-    .tags span {
-      padding: 7px 10px;
-      border: 1px solid var(--line);
-      border-radius: 99px;
-      background: rgba(255,255,255,.035);
-      color: var(--muted);
-      font: 700 .78rem "JetBrains Mono", monospace;
-    }
-
-    .card,
-    .hud,
+    .status-card,
     .panel,
-    .project,
-    .value,
-    .op,
-    .timeline article,
-    .contact,
-    .labbox,
-    .quick,
-    .matrix-output {
+    .project-card,
+    .skill-card,
+    .cert-card,
+    .education-card,
+    .terminal-panel,
+    .details-panel {
       border: 1px solid var(--line);
-      border-radius: var(--r);
-      background: linear-gradient(180deg, rgba(24,20,45,.88), rgba(12,9,24,.84));
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at var(--mx, 78%) var(--my, 10%), color-mix(in srgb, var(--cyan) 10%, transparent), transparent 16rem),
+        linear-gradient(180deg, var(--panel), var(--panel-2));
       box-shadow: var(--shadow);
       backdrop-filter: blur(18px);
     }
 
-    .hud {
-      overflow: hidden;
-      transform: rotate(.6deg);
+    .status-card {
+      min-width: 150px;
+      padding: 14px 15px;
     }
 
-    .window,
-    .labtop {
-      min-height: 52px;
+    .status-card strong {
+      display: block;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .status-card span {
+      color: var(--soft);
+      font-size: .82rem;
+    }
+
+    .hud {
+      transform: rotate(.35deg);
+      overflow: hidden;
+    }
+
+    .window-top {
       display: flex;
       align-items: center;
+      min-height: 52px;
       gap: 10px;
-      padding: 0 18px;
+      padding-inline: 16px;
       border-bottom: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      background: rgba(255,255,255,.035);
     }
 
-    .dots {
+    .window-dots {
       display: flex;
-      gap: 8px;
+      gap: 7px;
     }
 
-    .dots i {
+    .window-dots i {
       width: 10px;
       height: 10px;
       border-radius: 50%;
       background: var(--green);
     }
 
-    .dots i:nth-child(1) {
-      background: var(--danger);
+    .window-dots i:nth-child(1) {
+      background: var(--red);
     }
 
-    .dots i:nth-child(2) {
-      background: var(--yellow);
+    .window-dots i:nth-child(2) {
+      background: var(--amber);
     }
 
-    .window strong,
-    .labtop strong {
-      font: 700 .88rem "JetBrains Mono", monospace;
+    .window-title {
       color: var(--muted);
+      font-size: .86rem;
+      font-weight: 700;
     }
 
-    .window small {
+    .clock {
       margin-left: auto;
-      color: var(--muted);
-      font: 700 .82rem "JetBrains Mono", monospace;
+      color: var(--soft);
+      font-size: .78rem;
     }
 
-    .hudbody {
-      padding: 24px;
-      font-family: "JetBrains Mono", monospace;
+    .hud-body {
+      padding: 22px;
     }
 
-    .fetch {
+    .ascii-grid {
       display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 22px;
+      grid-template-columns: .86fr 1.14fr;
+      gap: 20px;
+      align-items: center;
     }
 
-    .fetch pre {
+    pre {
+      margin: 0;
       color: var(--cyan);
-      line-height: 1.25;
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: .88rem;
+      line-height: 1.2;
+      white-space: pre-wrap;
     }
 
-    .fetch b {
-      color: var(--pink);
-      display: inline-block;
-      min-width: 64px;
-    }
-
-    .terminal {
-      margin-top: 22px;
-      padding: 16px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: rgba(0,0,0,.16);
-    }
-
-    .terminal span {
-      color: var(--green);
-    }
-
-    .terminal i {
-      color: var(--pink);
-      font-style: normal;
-      animation: blink .9s infinite;
-    }
-
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
-
-    .interactive-terminal {
+    .profile-lines {
       display: grid;
-      gap: 12px;
+      gap: 6px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .profile-lines b {
+      display: inline-block;
+      min-width: 72px;
+      color: var(--green);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: .8rem;
+    }
+
+    .terminal-panel {
+      margin-top: 20px;
+      overflow: hidden;
     }
 
     .terminal-output {
-      min-height: 110px;
-      max-height: 190px;
+      min-height: 165px;
+      max-height: 250px;
       overflow: auto;
-      padding: 14px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
+      padding: 16px;
       background: rgba(0,0,0,.18);
     }
 
     .terminal-output p {
-      margin-bottom: 6px;
+      margin: 0 0 7px;
       color: var(--muted);
-      font-size: .88rem;
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: .86rem;
+    }
+
+    .terminal-output span {
+      color: var(--green);
     }
 
     .terminal-form {
       display: flex;
-      gap: 8px;
       align-items: center;
-      padding: 8px 10px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: rgba(255,255,255,.035);
+      gap: 8px;
+      padding: 10px 12px;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,.025);
+    }
+
+    .terminal-form label {
+      color: var(--green);
     }
 
     .terminal-form input {
-      flex: 1;
       min-width: 0;
+      flex: 1;
       border: 0;
       outline: 0;
       background: transparent;
       color: var(--text);
-      font-family: "JetBrains Mono", monospace;
+      font-family: "JetBrains Mono", ui-monospace, monospace;
     }
 
-    .terminal-form button,
-    .terminal-shortcuts button,
-    .project-actions button,
-    .project-actions a,
-    .drawer-actions button,
-    .drawer-actions a {
-      font: 700 .78rem "JetBrains Mono", monospace;
-      border-color: var(--line);
-      background: rgba(255,255,255,.04);
+    .terminal-shortcuts {
+      padding: 0 12px 14px;
     }
 
-    .signals {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 18px;
+    .terminal-shortcut {
+      min-height: 34px;
+      padding: 7px 10px;
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: .74rem;
     }
 
-    .signals article {
+    .terminal-submit {
+      min-height: 34px;
+      padding: 7px 10px;
       border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 12px;
-      background: rgba(255,255,255,.03);
-    }
-
-    .signals span {
-      font-size: .72rem;
+      border-radius: 8px;
+      background: rgba(255,255,255,.05);
       color: var(--muted);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-weight: 700;
     }
 
-    .grid3,
-    .valuegrid,
-    .arsenal,
-    .ops,
-    .projects,
-    .quickgrid,
-    .skill-matrix {
-      display: grid;
-      gap: 18px;
-    }
-
-    .grid3 {
-      grid-template-columns: repeat(3, 1fr);
-      margin-top: 42px;
-    }
-
-    .grid3 article,
-    .value,
-    .op,
-    .quick,
-    .skill-node {
-      padding: 20px;
-      border-radius: 22px;
-      border: 1px solid var(--line);
-      background:
-        radial-gradient(circle at var(--mx,50%) var(--my,20%), color-mix(in srgb, var(--cyan) 10%, transparent), transparent 14rem),
-        rgba(255,255,255,.028);
-    }
-
-    .grid3 span,
-    .value span,
-    .op span,
-    .quick span,
-    .skill-node span,
-    .matrix-output span {
-      font-family: "JetBrains Mono", monospace;
-      color: var(--pink);
-      font-weight: 800;
-    }
-
-    .quick {
-      display: block;
-      width: 100%;
-      text-align: left;
-      color: var(--text);
-      min-height: 190px;
-    }
-
-    .quick span,
-    .skill-node span {
-      display: inline-flex;
-      margin-bottom: 38px;
-      text-transform: uppercase;
-      font-size: .78rem;
-    }
-
-    .quick strong,
-    .skill-node strong {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 1.15rem;
-    }
-
-    .quickgrid {
-      grid-template-columns: repeat(3, 1fr);
+    .panel {
+      padding: clamp(22px, 4vw, 34px);
     }
 
     .split {
       display: grid;
-      grid-template-columns: .82fr 1.18fr;
-      gap: 48px;
+      grid-template-columns: .78fr 1.22fr;
+      gap: 44px;
+      align-items: start;
     }
 
-    .panel {
-      padding: 30px;
-    }
-
-    .identity {
+    .identity-grid,
+    .skills-grid,
+    .cert-grid,
+    .education-grid,
+    .contact-grid {
       display: grid;
+      gap: 16px;
+    }
+
+    .identity-grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      margin-top: 26px;
-    }
-
-    .identity article {
-      padding: 16px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: rgba(255,255,255,.03);
-    }
-
-    .identity span {
-      color: var(--muted);
-      font-size: .94rem;
-    }
-
-    .head {
-      max-width: 820px;
-      margin-bottom: 38px;
-    }
-
-    .modebar {
-      margin-bottom: 24px;
-    }
-
-    .skill-matrix {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .skill-node {
-      min-height: 220px;
-      text-align: left;
-      border-radius: 24px;
-    }
-
-    .skill-node.active span {
-      color: #130d1f;
-    }
-
-    .skill-node.active p {
-      color: rgba(19,13,31,.78);
-    }
-
-    .matrix-output {
-      margin-top: 18px;
-      padding: 24px;
-    }
-
-    .matrix-output span {
-      text-transform: uppercase;
-      font-size: .8rem;
-    }
-
-    .matrix-output h3 {
-      margin: 8px 0 10px;
-    }
-
-    .valuegrid,
-    .arsenal {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .card {
-      min-height: 350px;
-      padding: 24px;
-      transition: .2s;
-    }
-
-    .top {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 24px;
-      color: var(--muted);
-      font-family: "JetBrains Mono", monospace;
-    }
-
-    .top span {
-      color: var(--cyan);
-    }
-
-    .meters {
-      display: grid;
-      gap: 12px;
       margin-top: 24px;
     }
 
-    .meters label {
-      display: grid;
-      gap: 6px;
-      color: var(--muted);
-      font-size: .86rem;
+    .mini-card {
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,.03);
     }
 
-    .meters b {
-      height: 8px;
-      border-radius: 99px;
-      background: rgba(255,255,255,.08);
-      overflow: hidden;
-    }
-
-    .meters b:before {
-      content: "";
+    .mini-card strong {
       display: block;
-      width: var(--w);
-      height: 100%;
-      background: linear-gradient(90deg, var(--pink), var(--cyan));
-      animation: grow 1.2s both;
+      margin-bottom: 4px;
     }
 
-    @keyframes grow {
-      from { transform: scaleX(0); }
-    }
-
-    .filters {
-      margin-bottom: 22px;
-    }
-
-    .projects {
+    .skills-grid {
       grid-template-columns: repeat(3, 1fr);
     }
 
-    .project {
-      position: relative;
-      min-height: 360px;
-      padding: 24px;
+    .skill-card {
+      min-height: 255px;
+      padding: 21px;
+    }
+
+    .skill-card ul,
+    .project-meta,
+    .detail-list,
+    .cert-card ul {
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .skill-card li,
+    .project-meta li,
+    .detail-list li,
+    .cert-card li {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      overflow: hidden;
-      cursor: pointer;
-      transition: .22s;
-    }
-
-    .project.big {
-      grid-column: span 2;
-    }
-
-    .project:before {
-      content: "";
-      position: absolute;
-      inset: -1px;
-      background: radial-gradient(
-        circle at var(--mx,80%) var(--my,20%),
-        color-mix(in srgb, var(--cyan) 14%, transparent),
-        transparent 16rem
-      );
-      opacity: 0;
-      transition: .2s;
-    }
-
-    .project:hover:before {
-      opacity: 1;
-    }
-
-    .project > * {
-      position: relative;
-    }
-
-    .project.relevant {
-      outline: 2px solid color-mix(in srgb, var(--cyan) 62%, transparent);
-      box-shadow:
-        var(--shadow),
-        0 0 35px color-mix(in srgb, var(--cyan) 18%, transparent);
-    }
-
-    .project.dimmed {
-      opacity: .38;
-      filter: saturate(.65);
-    }
-
-    .status {
-      position: absolute !important;
-      right: 18px;
-      top: 18px;
-      padding: 5px 9px;
-      border: 1px solid var(--line);
-      border-radius: 99px;
-      color: var(--cyan);
-      font: 700 .7rem "JetBrains Mono", monospace;
-    }
-
-    .projecttop {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 16px;
-      padding-right: 78px;
-    }
-
-    .projecttop a {
+      gap: 8px;
+      margin-bottom: 9px;
       color: var(--muted);
     }
 
-    .hidden {
-      display: none;
+    .skill-card li::before,
+    .detail-list li::before,
+    .cert-card li::before {
+      color: var(--cyan);
+      content: ">";
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-weight: 700;
     }
 
-    .ops {
-      grid-template-columns: repeat(4, 1fr);
+    .level {
+      display: inline-flex;
+      margin-bottom: 20px;
+      padding: 5px 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--cyan);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
     }
 
-    .op h3 {
-      margin: 40px 0 12px;
-    }
-
-    .labgrid {
+    .project-toolbar {
       display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 40px;
+      grid-template-columns: minmax(230px, 1fr) auto;
+      gap: 14px;
+      align-items: start;
+      margin-bottom: 22px;
     }
 
-    .labbox {
+    .search-box {
+      display: flex;
+      align-items: center;
+      min-height: 48px;
+      gap: 10px;
+      padding-inline: 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .search-box input {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      background: transparent;
+    }
+
+    .filters {
+      justify-content: flex-end;
+    }
+
+    .filter-button {
+      min-height: 38px;
+      padding: 8px 11px;
+      font-size: .86rem;
+    }
+
+    .project-count {
+      margin: 0 0 18px;
+      color: var(--soft);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: .82rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .project-card {
+      position: relative;
+      display: flex;
+      min-height: 365px;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 21px;
       overflow: hidden;
     }
 
-    .labtop {
+    .project-card.hidden {
+      display: none;
+    }
+
+    .project-head {
+      display: flex;
+      align-items: flex-start;
       justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 20px;
     }
 
-    .labout {
-      min-height: 220px;
-      padding: 22px;
-      color: var(--cyan);
-      font-family: "JetBrains Mono", monospace;
-    }
-
-    .labout span {
+    .project-status {
+      min-width: max-content;
+      padding: 5px 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
       color: var(--green);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
     }
 
-    .timeline {
+    .project-category {
+      color: var(--cyan);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .chips {
+      margin-top: 18px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 9px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255,255,255,.03);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: .72rem;
+      font-weight: 700;
+    }
+
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 22px;
+    }
+
+    .project-action {
+      min-height: 38px;
+      border-radius: 10px;
+      font-size: .84rem;
+    }
+
+    .workflow-shell {
       display: grid;
-      gap: 18px;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 28px;
+      align-items: start;
     }
 
-    .timeline article {
+    .workflow-steps {
+      display: grid;
+      gap: 10px;
+    }
+
+    .workflow-step {
+      justify-content: flex-start;
+      width: 100%;
+      border-radius: var(--radius-sm);
+      text-align: left;
+    }
+
+    .workflow-output {
+      min-height: 310px;
+    }
+
+    .workflow-output h3 {
+      color: var(--cyan);
+    }
+
+    .cert-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cert-card,
+    .education-card {
+      padding: 22px;
+    }
+
+    .cert-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .education-grid {
+      grid-template-columns: 1.08fr .92fr;
+    }
+
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+
+    .contact-card {
       padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.03);
     }
 
-    .timeline span {
-      color: var(--pink);
-      font: 700 .86rem "JetBrains Mono", monospace;
+    .contact-card strong {
+      display: block;
+      margin-bottom: 6px;
     }
 
-    .contact {
-      text-align: center;
-      padding: clamp(30px,7vw,66px);
+    .footer {
+      padding: 30px 0;
+      border-top: 1px solid rgba(255,255,255,.07);
     }
 
-    .contact p {
-      max-width: 760px;
-      margin: 18px auto 28px;
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--soft);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: .82rem;
     }
 
-    .contact .actions {
-      justify-content: center;
-    }
-
-    .palette,
     .modal {
       position: fixed;
       inset: 0;
-      z-index: 30;
+      z-index: 80;
       display: grid;
       place-items: center;
-      padding: 20px;
-      background: rgba(5,3,11,.68);
+      padding: 18px;
+      background: rgba(2, 6, 12, .72);
       backdrop-filter: blur(18px);
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      transition: .18s;
+      transition: opacity .18s ease, visibility .18s ease;
     }
 
-    .palette.active,
     .modal.active {
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
     }
 
-    .box,
-    .modalbox {
-      width: min(720px,100%);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      background: rgba(15,11,28,.96);
-      box-shadow: var(--shadow);
-      overflow: hidden;
+    .details-panel {
+      width: min(880px, 100%);
+      max-height: min(780px, calc(100vh - 32px));
+      overflow: auto;
+      padding: 24px;
     }
 
-    .boxtop {
-      min-height: 56px;
+    .details-top {
       display: flex;
-      align-items: center;
-      padding: 0 18px;
-      border-bottom: 1px solid var(--line);
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 20px;
     }
 
-    .boxtop button,
-    #modalClose,
-    .drawer-close {
-      margin-left: auto;
-      width: 38px;
-      height: 38px;
+    .close-button {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
       border: 1px solid var(--line);
       border-radius: 50%;
-      background: rgba(255,255,255,.035);
-      font-size: 1.4rem;
-    }
-
-    .palette input {
-      width: 100%;
-      padding: 18px 20px;
-      border: 0;
-      border-bottom: 1px solid var(--line);
-      outline: none;
-      background: transparent;
-      color: var(--text);
-    }
-
-    .hint {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 18px 20px 8px;
-    }
-
-    .palette p {
-      padding: 0 20px 20px;
-    }
-
-    .modalbox {
-      position: relative;
-      padding: 30px;
-    }
-
-    #modalClose {
-      position: absolute;
-      right: 18px;
-      top: 18px;
-    }
-
-    #modalCat {
-      color: var(--pink);
-      font: 700 .86rem "JetBrains Mono", monospace;
-    }
-
-    #modalPoints {
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      gap: 12px;
-      margin: 22px 0;
-    }
-
-    #modalPoints span {
-      padding: 12px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
+      background: rgba(255,255,255,.04);
       color: var(--muted);
-      background: rgba(255,255,255,.03);
+      font-size: 1.35rem;
     }
 
-    .project-drawer {
-      position: fixed;
-      inset: 0;
-      z-index: 90;
-      display: flex;
-      justify-content: flex-end;
-      background: rgba(5,3,11,.65);
-      backdrop-filter: blur(18px);
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition: .2s;
+    .detail-tabs {
+      margin-bottom: 18px;
     }
 
-    .project-drawer.active {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
+    .detail-tab {
+      min-height: 38px;
+      padding: 8px 11px;
+      font-size: .82rem;
     }
 
-    .drawer-panel {
-      width: min(560px, 100%);
-      height: 100%;
-      overflow: auto;
-      padding: 30px;
-      border-left: 1px solid var(--line2);
-      background:
-        radial-gradient(circle at top right, color-mix(in srgb, var(--cyan) 12%, transparent), transparent 20rem),
-        rgba(12,9,24,.98);
-      box-shadow: var(--shadow);
-      transform: translateX(28px);
-      transition: .24s;
-    }
-
-    .project-drawer.active .drawer-panel {
-      transform: translateX(0);
-    }
-
-    .drawer-close {
-      float: right;
-    }
-
-    .drawer-panel h2 {
-      margin: 8px 52px 14px 0;
-    }
-
-    .drawer-tabs {
-      margin: 24px 0 16px;
-    }
-
-    .drawer-content {
+    .detail-body {
       display: grid;
-      gap: 12px;
-      margin-bottom: 22px;
+      gap: 14px;
     }
 
-    .drawer-content article {
-      padding: 15px;
+    .detail-block {
+      padding: 16px;
       border: 1px solid var(--line);
-      border-radius: 16px;
-      background: rgba(255,255,255,.035);
-    }
-
-    .drawer-content strong {
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .drawer-actions button,
-    .drawer-actions a {
-      border-radius: 14px;
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,.03);
     }
 
     .toast {
       position: fixed;
-      right: 20px;
-      bottom: 20px;
-      z-index: 100;
+      right: 18px;
+      bottom: 18px;
+      z-index: 120;
       max-width: 360px;
-      padding: 14px 16px;
-      border: 1px solid var(--line2);
-      border-radius: 16px;
-      background: rgba(15,11,28,.96);
-      color: var(--text);
+      padding: 13px 15px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-sm);
+      background: var(--panel-2);
       box-shadow: var(--shadow);
-      transform: translateY(20px);
+      color: var(--text);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: .82rem;
       opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .2s ease, transform .2s ease;
       pointer-events: none;
-      transition: .22s;
-      font: 700 .86rem "JetBrains Mono", monospace;
     }
 
     .toast.show {
-      transform: translateY(0);
       opacity: 1;
-    }
-
-    footer {
-      padding: 30px 0;
-      border-top: 1px solid rgba(255,255,255,.055);
-    }
-
-    .footer {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      color: var(--muted);
-      font: 700 .84rem "JetBrains Mono", monospace;
+      transform: translateY(0);
     }
 
     .reveal {
@@ -1195,37 +973,54 @@
       transform: translateY(18px);
     }
 
-    .show {
+    .reveal.show {
       opacity: 1;
       transform: translateY(0);
-      transition: opacity .7s, transform .7s cubic-bezier(.2,.8,.2,1);
+      transition: opacity .55s ease, transform .55s cubic-bezier(.2,.8,.2,1);
     }
 
-    @media(max-width:1100px) {
-      nav {
-        display: none;
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .001ms !important;
+        transition-duration: .001ms !important;
       }
 
-      .menu {
-        display: block;
+      .reveal {
+        opacity: 1;
+        transform: none;
       }
+    }
 
-      nav.active {
+    @media (max-width: 1120px) {
+      .nav-links {
         position: fixed;
-        display: grid;
+        top: 92px;
         left: 20px;
         right: 20px;
-        top: 92px;
-        padding: 16px;
+        display: none;
+        padding: 14px;
         border: 1px solid var(--line);
-        border-radius: 20px;
-        background: rgba(10,7,18,.96);
+        border-radius: var(--radius);
+        background: var(--panel-2);
         box-shadow: var(--shadow);
+      }
+
+      .nav-links.active {
+        display: grid;
+      }
+
+      .menu-button {
+        display: inline-flex;
       }
 
       .hero-grid,
       .split,
-      .labgrid {
+      .workflow-shell,
+      .education-grid,
+      .contact-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1233,1579 +1028,1130 @@
         transform: none;
       }
 
-      .arsenal,
-      .ops,
-      .valuegrid,
-      .projects,
-      .quickgrid,
-      .skill-matrix {
-        grid-template-columns: repeat(2,1fr);
-      }
-
-      .grid3 {
-        grid-template-columns: 1fr;
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    @media(max-width:760px) {
-      .stealth {
-        display: none;
+    @media (max-width: 760px) {
+      .wrap {
+        width: min(var(--max), calc(100% - 28px));
       }
 
       section {
-        padding: 82px 0;
+        padding-block: 74px;
       }
 
       .hero {
         min-height: auto;
-      }
-
-      .fetch,
-      .identity,
-      .arsenal,
-      .projects,
-      .ops,
-      .valuegrid,
-      .quickgrid,
-      .skill-matrix,
-      #modalPoints,
-      .signals {
-        grid-template-columns: 1fr;
-      }
-
-      .project.big {
-        grid-column: auto;
-      }
-
-      .footer {
-        flex-direction: column;
-      }
-    }
-
-    @media(max-width:500px) {
-      .wrap {
-        width: min(1180px, calc(100% - 28px));
+        padding-top: 48px;
       }
 
       .brand small {
         display: none;
       }
 
-      h1 {
-        font-size: clamp(2.55rem,15vw,4rem);
+      .ascii-grid,
+      .identity-grid,
+      .skills-grid,
+      .projects-grid,
+      .cert-grid,
+      .project-toolbar {
+        grid-template-columns: 1fr;
+      }
+
+      .filters {
+        justify-content: flex-start;
+      }
+
+      .project-card {
+        min-height: auto;
       }
 
       .btn,
-      .actions {
+      .actions .btn,
+      .contact-actions .btn,
+      .contact-actions button {
         width: 100%;
       }
 
-      .hudbody {
+      .footer-row {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 460px) {
+      h1 {
+        font-size: clamp(2.65rem, 16vw, 4rem);
+      }
+
+      .status-row {
+        display: grid;
+      }
+
+      .details-panel {
         padding: 18px;
-      }
-
-      .projecttop {
-        padding-right: 0;
-      }
-
-      .status {
-        position: static !important;
-        width: max-content;
-        margin-bottom: 12px;
-      }
-
-      .drawer-panel {
-        padding: 24px 18px;
       }
     }
   </style>
 </head>
 
-<body data-view="redteam">
-  <canvas id="fx"></canvas>
-  <div class="grid"></div>
-  <div class="cursor"></div>
-  <div class="scan"></div>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
 
-  <div class="loader" id="loader">
-    <div>
-      <h2>redteam<span>.profile</span></h2>
-      <div id="log"></div>
-      <div class="bar"><span></span></div>
-    </div>
-  </div>
-
-  <header>
-    <div class="wrap nav">
-      <a href="#home" class="brand">
-        <span class="logo">RT</span>
-        <div>
-          <strong>Henrique</strong>
-          <small>ethical hacker / red team</small>
-        </div>
+  <header class="site-header">
+    <div class="wrap nav-shell">
+      <a href="#home" class="brand" aria-label="Go to home">
+        <span class="brand-mark mono">HC</span>
+        <span>
+          <strong>Henrique Cunha</strong>
+          <small>ethical hacking / security tooling</small>
+        </span>
       </a>
 
-      <button class="menu" id="menuBtn">☰</button>
-
-      <nav id="navMenu">
-        <a href="#sobre">About</a>
-        <a href="#actions">Actions</a>
-        <a href="#valor">Value</a>
-        <a href="#matrix">Matrix</a>
-        <a href="#arsenal">Arsenal</a>
-        <a href="#projetos">Projects</a>
-        <a href="#operacao">Operation</a>
-        <a href="#roadmap">Roadmap</a>
-        <a href="#contato" class="pill">Contact</a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
       </nav>
 
-      <button class="stealth" id="stealth">stealth</button>
+      <div class="actions">
+        <button class="icon-button menu-button" id="menuButton" type="button" aria-label="Open navigation">☰</button>
+        <button class="icon-button" id="themeButton" type="button" aria-label="Toggle theme">◐</button>
+      </div>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <section id="home" class="hero">
       <div class="wrap hero-grid">
-        <div class="reveal">
-          <div class="badge"><i class="dot"></i> ethical hacking · red team · authorized labs only</div>
-
-          <h1>Henrique da Silva Cunha <em>Red Team focused Ethical Hacker.</em></h1>
-
-          <p class="lead">
-            Technical Electronics student, advanced Linux user, and developer focused on pentesting, Red Team,
-            web security, authorized offensive automation, OPSEC, detection awareness, and custom tooling.
+        <div class="hero-copy reveal">
+          <span class="kicker">Available for technical opportunities</span>
+          <h1>Henrique Cunha <span>Ethical Hacking, Red Team & Security Tooling.</span></h1>
+          <p class="hero-lead">
+            I build security-focused tools, automation workflows and technical projects combining cybersecurity,
+            Linux, software engineering, electronics and scientific thinking.
           </p>
 
-          <div class="actions">
-            <a class="btn primary" href="#projetos">View projects</a>
-            <a class="btn" href="https://github.com/lulz-lich" target="_blank">GitHub</a>
-            <a class="btn" href="https://www.linkedin.com/in/henrique-cunha-802305335/" target="_blank">LinkedIn</a>
-            <button class="btn" id="paletteOpen">Ctrl + K</button>
+          <div class="actions" aria-label="Primary actions">
+            <a class="btn primary" href="https://github.com/lulz-lich" target="_blank" rel="noopener">Open GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/henrique-cunha-802305335/" target="_blank" rel="noopener">Open LinkedIn</a>
+            <a class="btn" href="#certifications">View certificates</a>
+            <button class="btn" id="copyEmailHero" type="button">Copy email</button>
           </div>
 
-          <div class="chips">
-            <span>Web Pentest</span>
-            <span>Red Team</span>
-            <span>Python Tooling</span>
-            <span>Linux / CachyOS</span>
-            <span>OPSEC</span>
-            <span>Cisco Ethical Hacker</span>
+          <div class="status-row" aria-label="Quick indicators">
+            <article class="status-card"><strong>15</strong><span>official portfolio projects</span></article>
+            <article class="status-card"><strong>Red Team</strong><span>authorized labs and tooling</span></article>
+            <article class="status-card"><strong>Linux</strong><span>terminal-first workflow</span></article>
+            <article class="status-card"><strong>2026</strong><span>technical electronics path</span></article>
           </div>
         </div>
 
-        <aside class="hud reveal">
-          <div class="window">
-            <div class="dots"><i></i><i></i><i></i></div>
-            <strong>mrh@HENRICK:~/redteam</strong>
-            <small id="clock">00:06</small>
+        <aside class="panel hud reveal" aria-label="Interactive terminal">
+          <div class="window-top">
+            <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="window-title mono">henrique@portfolio:~/security</span>
+            <span class="clock mono" id="clock">00:00</span>
           </div>
 
-          <div class="hudbody">
-            <div class="fetch">
-<pre>       /\
-      /  \
-     / /\ \
-    / ____ \
-   /_/ RED\_\
-     TEAM</pre>
-              <div>
-                <p><b>Role</b> Ethical Hacker</p>
-                <p><b>OS</b> CachyOS</p>
-                <p><b>WM</b> Hyprland</p>
-                <p><b>Core</b> web · tooling · OPSEC</p>
-                <p><b>Rule</b> authorized only</p>
+          <div class="hud-body">
+            <div class="ascii-grid">
+<pre aria-hidden="true">    __  ______
+   / / / / __ \
+  / /_/ / /_/ /
+ / __  / _, _/
+/_/ /_/_/ |_|
+SECURITY TOOLING</pre>
+              <div class="profile-lines">
+                <p><b>Role</b> Technical student</p>
+                <p><b>Focus</b> Ethical hacking, Red Team</p>
+                <p><b>Stack</b> Linux, Python, C/C++, JS</p>
+                <p><b>Rule</b> Authorized labs only</p>
               </div>
             </div>
 
-            <div class="terminal interactive-terminal">
-              <div class="terminal-output" id="terminalOutput">
-                <p><span>➜</span> Type a command or click one below.</p>
+            <div class="terminal-panel" aria-label="Functional terminal">
+              <div class="terminal-output" id="terminalOutput" aria-live="polite">
+                <p><span>$</span> type help, projects, skills, certs, contact, filter redteam or open github</p>
               </div>
-
-              <form id="terminalForm" class="terminal-form">
-                <span>➜</span>
-                <input id="terminalInput" type="text" placeholder="help, focus redteam, mode recruiter, project capysuite" autocomplete="off">
-                <button type="submit">run</button>
+              <form class="terminal-form" id="terminalForm">
+                <label class="mono" for="terminalInput">$</label>
+                <input id="terminalInput" autocomplete="off" spellcheck="false" placeholder="help">
+                <button class="terminal-submit" type="submit">run</button>
               </form>
-
-              <div class="terminal-shortcuts">
-                <button type="button" data-terminal="help">help</button>
-                <button type="button" data-terminal="skills">skills</button>
-                <button type="button" data-terminal="projects">projects</button>
-                <button type="button" data-terminal="contact">contact</button>
-                <button type="button" data-terminal="roadmap">roadmap</button>
+              <div class="terminal-shortcuts" aria-label="Terminal shortcuts">
+                <button class="terminal-shortcut" type="button" data-command="help">help</button>
+                <button class="terminal-shortcut" type="button" data-command="projects">projects</button>
+                <button class="terminal-shortcut" type="button" data-command="skills">skills</button>
+                <button class="terminal-shortcut" type="button" data-command="certs">certs</button>
+                <button class="terminal-shortcut" type="button" data-command="contact">contact</button>
               </div>
-            </div>
-
-            <div class="signals">
-              <article><strong>Primary</strong><span>Red Team</span></article>
-              <article><strong>Tooling</strong><span>Python / CLI</span></article>
-              <article><strong>Workflow</strong><span>Linux / Git</span></article>
             </div>
           </div>
         </aside>
       </div>
-
-      <div class="wrap grid3 reveal">
-        <article>
-          <span>01</span>
-          <strong>Red Team direction</strong>
-          <p>Authorized attack-chain thinking, methodology, OPSEC, and documentation.</p>
-        </article>
-
-        <article>
-          <span>02</span>
-          <strong>Custom tooling</strong>
-          <p>Python automation, CLI tooling, crawling, parsing, evidence handling, and reports.</p>
-        </article>
-
-        <article>
-          <span>03</span>
-          <strong>Linux-native</strong>
-          <p>CachyOS, Hyprland, terminal workflow, Git, Docker, and isolated labs.</p>
-        </article>
-      </div>
     </section>
 
-    <section id="actions" class="muted">
-      <div class="wrap">
-        <div class="head reveal">
-          <span class="kicker">Quick Actions</span>
-          <h2>Useful interactions, not decorative suffering.</h2>
-          <p>Fast actions for recruiters, collaborators, and anyone who does not want to hunt links like a medieval peasant.</p>
-        </div>
-
-        <div class="quickgrid">
-          <button class="quick reveal" data-action="copy-email">
-            <span>copy</span>
-            <strong>Copy email</strong>
-            <p>Copy my professional email to the clipboard.</p>
-          </button>
-
-          <button class="quick reveal" data-action="copy-contact">
-            <span>vcard</span>
-            <strong>Copy contact card</strong>
-            <p>Copy email, GitHub, and LinkedIn in one clean block.</p>
-          </button>
-
-          <a class="quick reveal" href="https://github.com/lulz-lich" target="_blank">
-            <span>github</span>
-            <strong>Open GitHub</strong>
-            <p>See my repositories and technical projects.</p>
-          </a>
-
-          <a class="quick reveal" href="https://www.linkedin.com/in/henrique-cunha-802305335/" target="_blank">
-            <span>profile</span>
-            <strong>Open LinkedIn</strong>
-            <p>View my professional profile.</p>
-          </a>
-
-          <a class="quick reveal" href="#projetos">
-            <span>projects</span>
-            <strong>Jump to projects</strong>
-            <p>Go directly to my Red Team and tooling projects.</p>
-          </a>
-
-          <button class="quick reveal" data-action="terminal-help">
-            <span>terminal</span>
-            <strong>Show commands</strong>
-            <p>Display available terminal commands in the interactive HUD.</p>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <section id="sobre">
+    <section id="about" class="section-band">
       <div class="wrap split">
-        <div class="reveal">
-          <span class="kicker">01 · About</span>
-          <h2>Ethical Red Team with an engineering mindset.</h2>
+        <div class="section-head reveal">
+          <span class="kicker">About</span>
+          <h2>Security mindset with an engineering base.</h2>
         </div>
 
         <div class="panel reveal">
           <p>
-            My focus is Ethical Hacking and Red Team: understanding how environments are compromised in authorized scenarios,
-            simulating risk responsibly, documenting evidence, and turning findings into defensive improvement.
+            I am a technical Electronics student from Sao Paulo, Brazil, focused on pentest, Red Team methodology,
+            security tooling, Linux and programming. My work connects practical cybersecurity with automation,
+            embedded systems and scientific reasoning.
           </p>
-
           <p>
-            I have a strong foundation in Linux, programming, networking, automation, and electronics. My current direction
-            prioritizes Web Pentest, Active Directory, cloud security, OPSEC, technical reporting, authorized offensive automation,
-            and detection awareness.
+            I care about projects that can be tested, documented and improved. The direction is clear: build real
+            technical capability, communicate findings cleanly and keep offensive security inside authorized,
+            ethical and useful contexts.
           </p>
 
-          <div class="identity">
-            <article><strong>Red Team</strong><span>Recon, enumeration, controlled exploitation, OPSEC, and evidence.</span></article>
-            <article><strong>Web Security</strong><span>OWASP, APIs, authentication, sessions, and vulnerability validation.</span></article>
-            <article><strong>Automation</strong><span>Python, Bash, CLI tools, parsing, and structured outputs.</span></article>
-            <article><strong>Reporting</strong><span>Impact, severity, mitigation, and clear documentation.</span></article>
+          <div class="identity-grid">
+            <article class="mini-card"><strong>Security</strong><span class="small">Web security, vulnerability assessment, reporting and safe validation.</span></article>
+            <article class="mini-card"><strong>Engineering</strong><span class="small">Python, C/C++, JavaScript, Git, Docker and repeatable workflows.</span></article>
+            <article class="mini-card"><strong>Linux</strong><span class="small">Terminal-first workflow, Kali/CachyOS experience and lab environments.</span></article>
+            <article class="mini-card"><strong>Science</strong><span class="small">Interest in physics, math, systems thinking and careful experimentation.</span></article>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="valor" class="muted">
+    <section id="skills">
       <div class="wrap">
-        <div class="head reveal">
-          <span class="kicker">02 · Value</span>
-          <h2>What I bring as a strong junior profile.</h2>
-          <p>Organized technical growth, ethical security practice, and demonstrable projects.</p>
+        <div class="section-head reveal">
+          <span class="kicker">Skills</span>
+          <h2>Honest, practical and organized by domain.</h2>
+          <p>No inflated expert labels. Just the areas I am building, using and documenting with discipline.</p>
         </div>
 
-        <div class="valuegrid">
-          <article class="value reveal"><span>research</span><h3>Scoped research</h3><p>Organize hypotheses, separate noise from signal, and document discoveries.</p></article>
-          <article class="value reveal"><span>automation</span><h3>Repeatable automation</h3><p>Scripts and tools to standardize tasks and preserve evidence.</p></article>
-          <article class="value reveal"><span>reporting</span><h3>Technical communication</h3><p>Impact, evidence, severity, mitigation, and next steps.</p></article>
-          <article class="value reveal"><span>detection</span><h3>Defense-aware mindset</h3><p>Awareness of logs, traces, monitoring, and response.</p></article>
-        </div>
+        <div class="skills-grid" id="skillsGrid"></div>
       </div>
     </section>
 
-    <section id="matrix">
+    <section id="projects" class="section-band">
       <div class="wrap">
-        <div class="head reveal">
-          <span class="kicker">Interactive Skill Matrix</span>
-          <h2>Click a skill to reshape the portfolio.</h2>
-          <p>This matrix connects skills, projects, roadmap and terminal output. Finally, the site behaves like an interface instead of glowing furniture.</p>
+        <div class="section-head reveal">
+          <span class="kicker">Projects</span>
+          <h2>The core of the portfolio.</h2>
+          <p>Official project set with honest status labels. Search and filters use the project data below, not decorative buttons.</p>
         </div>
 
-        <div class="modebar reveal">
-          <button class="mode active" data-mode="redteam">Red Team Mode</button>
-          <button class="mode" data-mode="technical">Technical Mode</button>
-          <button class="mode" data-mode="recruiter">Recruiter Mode</button>
+        <div class="project-toolbar reveal">
+          <label class="search-box" for="projectSearch">
+            <span class="mono">search</span>
+            <input id="projectSearch" type="search" placeholder="name, stack, status, category...">
+          </label>
+          <div class="filters" id="projectFilters" aria-label="Project filters"></div>
         </div>
 
-        <div class="skill-matrix reveal">
-          <button class="skill-node active" data-skill="redteam">
-            <span>core</span>
-            <strong>Red Team</strong>
-            <p>Authorized attack chains, OPSEC, evidence and reporting.</p>
-          </button>
-
-          <button class="skill-node" data-skill="web">
-            <span>attack surface</span>
-            <strong>Web Pentest</strong>
-            <p>OWASP, APIs, auth, sessions, route mapping and validation.</p>
-          </button>
-
-          <button class="skill-node" data-skill="tooling">
-            <span>builder</span>
-            <strong>Offensive Tooling</strong>
-            <p>Python, CLI workflows, structured output and automation.</p>
-          </button>
-
-          <button class="skill-node" data-skill="linux">
-            <span>workflow</span>
-            <strong>Linux</strong>
-            <p>CachyOS, Hyprland, shell, Git, Docker and local labs.</p>
-          </button>
-
-          <button class="skill-node" data-skill="detection">
-            <span>defense-aware</span>
-            <strong>Detection</strong>
-            <p>Logs, traces, monitoring, evidence quality and blue team value.</p>
-          </button>
-
-          <button class="skill-node" data-skill="reporting">
-            <span>deliverable</span>
-            <strong>Reporting</strong>
-            <p>Impact, severity, mitigation, executive clarity and technical detail.</p>
-          </button>
-        </div>
-
-        <div class="matrix-output reveal" id="matrixOutput">
-          <span>selected focus</span>
-          <h3>Red Team</h3>
-          <p>Highlighting projects and sections related to authorized operations, OPSEC, evidence and reporting.</p>
-        </div>
+        <p class="project-count" id="projectCount"></p>
+        <div class="projects-grid" id="projectsGrid"></div>
       </div>
     </section>
 
-    <section id="arsenal">
+    <section id="workflow">
       <div class="wrap">
-        <div class="head reveal">
-          <span class="kicker">03 · Arsenal</span>
-          <h2>Skills aligned with Red Team work.</h2>
-          <p>This portfolio communicates Red Team direction, not just “I know computers,” a phrase that should probably come with a fine.</p>
+        <div class="section-head reveal">
+          <span class="kicker">Workflow</span>
+          <h2>How I approach technical work.</h2>
+          <p>Security work only matters when it is scoped, reproducible, documented and useful for improvement.</p>
         </div>
 
-        <div class="arsenal">
-          <article class="card reveal">
-            <div class="top"><span>RT</span><small>01</small></div>
-            <h3>Red Team Foundations</h3>
-            <p>Reconnaissance, enumeration, lab-based attack chains, OPSEC, and detection.</p>
-            <div class="meters">
-              <label>Recon<b style="--w:90%"></b></label>
-              <label>OPSEC<b style="--w:78%"></b></label>
-              <label>Method<b style="--w:86%"></b></label>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="top"><span>WEB</span><small>02</small></div>
-            <h3>Web & API Pentest</h3>
-            <p>OWASP Top 10, Burp Suite, authentication, sessions, APIs, and reporting.</p>
-            <div class="meters">
-              <label>OWASP<b style="--w:86%"></b></label>
-              <label>Burp<b style="--w:82%"></b></label>
-              <label>Reports<b style="--w:88%"></b></label>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="top"><span>OPS</span><small>03</small></div>
-            <h3>Linux, AD & Cloud Path</h3>
-            <p>Advanced Linux, shell, Docker, Git, networking, AD, and cloud security.</p>
-            <div class="meters">
-              <label>Linux<b style="--w:92%"></b></label>
-              <label>Networks<b style="--w:80%"></b></label>
-              <label>Labs<b style="--w:84%"></b></label>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <div class="top"><span>DEV</span><small>04</small></div>
-            <h3>Offensive Tooling</h3>
-            <p>Python, Bash, C/C++, JavaScript, CLI tools, and documentation.</p>
-            <div class="meters">
-              <label>Python<b style="--w:88%"></b></label>
-              <label>CLI<b style="--w:84%"></b></label>
-              <label>Docs<b style="--w:86%"></b></label>
-            </div>
-          </article>
+        <div class="workflow-shell">
+          <div class="workflow-steps reveal" id="workflowSteps"></div>
+          <div class="panel workflow-output reveal" id="workflowOutput"></div>
         </div>
       </div>
     </section>
 
-    <section id="projetos" class="muted">
+    <section id="certifications" class="section-band">
       <div class="wrap">
-        <div class="head reveal">
-          <span class="kicker">04 · Projects</span>
-          <h2>Projects for a Red Team resume.</h2>
-          <p>Click the cards to open a technical side panel with tabs, stack, value and roadmap.</p>
+        <div class="section-head reveal">
+          <span class="kicker">Certifications</span>
+          <h2>Documented learning and security foundations.</h2>
         </div>
 
-        <div class="filters reveal">
-          <button class="filter active" data-filter="all">All</button>
-          <button class="filter" data-filter="redteam">Red Team</button>
-          <button class="filter" data-filter="web">Web</button>
-          <button class="filter" data-filter="tooling">Tooling</button>
-          <button class="filter" data-filter="docs">Reports</button>
-        </div>
-
-        <div class="projects">
-          <article class="project big reveal" data-cat="redteam tooling docs" data-id="capysuite">
-            <div class="status">flagship</div>
-            <div class="projecttop"><span class="kicker">Main Tool</span><a href="https://github.com/lulz-lich" target="_blank">repo ↗</a></div>
-            <h3>CapySuite</h3>
-            <p>Modular suite for authorized labs: enumeration, automation, evidence handling, and technical reporting.</p>
-            <div class="tags"><span>Python</span><span>CLI</span><span>Red Team</span></div>
-            <div class="project-actions">
-              <button type="button" class="project-info-btn">Open panel</button>
-              <a href="https://github.com/lulz-lich" target="_blank">Repository</a>
+        <div class="cert-grid">
+          <article class="cert-card reveal">
+            <span class="level">Cisco Networking Academy</span>
+            <h3>Ethical Hacker</h3>
+            <p>
+              Student-level credential covering legal and compliance requirements, vulnerability assessment scoping,
+              execution, reporting and mitigation recommendations, with hands-on activities using Kali Linux,
+              WebSploit and related tools.
+            </p>
+            <ul>
+              <li>Legal and compliance requirements</li>
+              <li>Assessment scope, execution and reporting</li>
+              <li>Mitigation recommendations and safe lab work</li>
+            </ul>
+            <div class="cert-actions">
+              <a class="btn" href="assets/docs/Ethical_Hacker_certificate.pdf" target="_blank" rel="noopener">View PDF</a>
             </div>
           </article>
 
-          <article class="project reveal" data-cat="web tooling docs" data-id="crawler">
-            <div class="status">web</div>
-            <div class="projecttop"><span class="kicker">Web Recon</span><a href="https://github.com/lulz-lich" target="_blank">repo ↗</a></div>
-            <h3>Security Crawler</h3>
-            <p>Crawler for mapping routes, organizing discoveries, and generating structured output.</p>
-            <div class="tags"><span>Python</span><span>Web</span><span>Recon</span></div>
-            <div class="project-actions">
-              <button type="button" class="project-info-btn">Open panel</button>
-              <a href="https://github.com/lulz-lich" target="_blank">Repository</a>
-            </div>
-          </article>
-
-          <article class="project reveal" data-cat="redteam docs" data-id="writeups">
-            <div class="status">method</div>
-            <div class="projecttop"><span class="kicker">Writeups</span><a href="https://github.com/lulz-lich" target="_blank">repo ↗</a></div>
-            <h3>Red Team Writeups</h3>
-            <p>Writeups with methodology, evidence, impact, mitigation, and technical reasoning.</p>
-            <div class="tags"><span>Labs</span><span>Evidence</span><span>Docs</span></div>
-            <div class="project-actions">
-              <button type="button" class="project-info-btn">Open panel</button>
-              <a href="https://github.com/lulz-lich" target="_blank">Repository</a>
-            </div>
-          </article>
-
-          <article class="project reveal" data-cat="redteam tooling" data-id="opsec">
-            <div class="status">ops</div>
-            <div class="projecttop"><span class="kicker">Operations</span><a href="https://github.com/lulz-lich" target="_blank">repo ↗</a></div>
-            <h3>OPSEC Lab Notes</h3>
-            <p>Studies on traces, logs, operational hygiene, and detection in lab environments.</p>
-            <div class="tags"><span>OPSEC</span><span>Detection</span><span>Logs</span></div>
-            <div class="project-actions">
-              <button type="button" class="project-info-btn">Open panel</button>
-              <a href="https://github.com/lulz-lich" target="_blank">Repository</a>
-            </div>
-          </article>
-
-          <article class="project reveal" data-cat="tooling docs" data-id="gsm">
-            <div class="status">software</div>
-            <div class="projecttop"><span class="kicker">Engineering</span><a href="https://github.com/lulz-lich" target="_blank">repo ↗</a></div>
-            <h3>GSM</h3>
-            <p>Backup, restore, cloud sync, cross-platform support, and automation.</p>
-            <div class="tags"><span>Python</span><span>Cloud</span><span>Linux</span></div>
-            <div class="project-actions">
-              <button type="button" class="project-info-btn">Open panel</button>
-              <a href="https://github.com/lulz-lich" target="_blank">Repository</a>
-            </div>
-          </article>
-
-          <article class="project reveal" data-cat="tooling" data-id="blackcapy">
-            <div class="status">bonus</div>
-            <div class="projecttop"><span class="kicker">Technical Bonus</span><a href="https://github.com/lulz-lich" target="_blank">repo ↗</a></div>
-            <h3>BlackCapy</h3>
-            <p>ESP32, modularity, logs, and physical UI as a secondary technical differentiator.</p>
-            <div class="tags"><span>ESP32</span><span>C++</span><span>Open Source</span></div>
-            <div class="project-actions">
-              <button type="button" class="project-info-btn">Open panel</button>
-              <a href="https://github.com/lulz-lich" target="_blank">Repository</a>
+          <article class="cert-card reveal">
+            <span class="level">Cisco Networking Academy</span>
+            <h3>Junior Cybersecurity Analyst Career Path</h3>
+            <p>
+              Cybersecurity learning path focused on security fundamentals, networking concepts, threat awareness,
+              defensive thinking and practical foundations for analyst-level growth.
+            </p>
+            <ul>
+              <li>Security fundamentals and networking basics</li>
+              <li>Threat awareness and defensive reasoning</li>
+              <li>Structured path toward cybersecurity roles</li>
+            </ul>
+            <div class="cert-actions">
+              <a class="btn" href="assets/docs/Junior_Cybersecurity_Analyst_Career_Path_certificate.pdf" target="_blank" rel="noopener">View PDF</a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="operacao">
+    <section id="education">
+      <div class="wrap education-grid">
+        <div class="section-head reveal">
+          <span class="kicker">Education</span>
+          <h2>Technical Electronics with software and security direction.</h2>
+        </div>
+
+        <div class="education-card reveal">
+          <span class="level">Expected completion: 2026</span>
+          <h3>ETEC Carolina Carinhato Sampaio</h3>
+          <p>Technical course in Electronics with practical focus on embedded systems, programming, electronics, documentation and technical projects.</p>
+          <ul class="detail-list">
+            <li>Electronics and embedded foundations</li>
+            <li>Programming and automation practice</li>
+            <li>Hardware/software integration</li>
+            <li>Project documentation and technical communication</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section-band">
       <div class="wrap">
-        <div class="head reveal">
-          <span class="kicker">05 · Operation</span>
-          <h2>How I want to operate in Red Team.</h2>
-          <p>The goal is to generate useful evidence for defense, not roleplay as a villain with a terminal open.</p>
+        <div class="section-head reveal">
+          <span class="kicker">Contact</span>
+          <h2>Open to technical opportunities and collaboration.</h2>
+          <p>Available for cybersecurity learning opportunities, internships, technical programs, open-source projects and serious project conversations.</p>
         </div>
 
-        <div class="ops">
-          <article class="op reveal"><span>scope</span><h3>Scope</h3><p>Authorization, limits, objectives, and rules.</p></article>
-          <article class="op reveal"><span>recon</span><h3>Reconnaissance</h3><p>Map exposed surface and testable hypotheses.</p></article>
-          <article class="op reveal"><span>validate</span><h3>Validation</h3><p>Confirm risk in a controlled way.</p></article>
-          <article class="op reveal"><span>report</span><h3>Reporting</h3><p>Impact, evidence, and mitigation.</p></article>
-        </div>
-      </div>
-    </section>
+        <div class="contact-grid">
+          <article class="contact-card reveal">
+            <strong>Email</strong>
+            <p><a href="mailto:mrh.ofici@gmail.com">mrh.ofici@gmail.com</a></p>
+            <button class="btn primary" type="button" id="copyEmailContact">Copy email</button>
+          </article>
 
-    <section id="laboratorio" class="muted">
-      <div class="wrap labgrid">
-        <div class="head reveal">
-          <span class="kicker">06 · Lab</span>
-          <h2>Interactive methodology panel.</h2>
-          <p>Shows reasoning without becoming a public chaos manual.</p>
-        </div>
-
-        <div class="labbox reveal">
-          <div class="labtop">
-            <strong>redteamctl --authorized-lab</strong>
-            <span id="labStatus">idle</span>
-          </div>
-
-          <div class="lab lab-actions">
-            <button data-cmd="workflow">workflow</button>
-            <button data-cmd="ethics">ethics</button>
-            <button data-cmd="tools">tools</button>
-            <button data-cmd="detection">detection</button>
-            <button data-cmd="cert">cert</button>
-          </div>
-
-          <div id="labOutput" class="labout">
-            <p><span>$</span> choose a command</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="roadmap">
-      <div class="wrap split">
-        <div class="reveal">
-          <span class="kicker">07 · Roadmap</span>
-          <h2>Next professional evolution.</h2>
-        </div>
-
-        <div class="timeline reveal">
-          <article><span>Now</span><h3>Web Pentest + Tooling</h3><p>Custom projects, labs, crawler, CapySuite, and reports.</p></article>
-          <article><span>Next</span><h3>Active Directory</h3><p>Domain fundamentals, enumeration, and defense.</p></article>
-          <article><span>Later</span><h3>Cloud Security</h3><p>AWS/Azure, IAM, misconfigurations, logs, and detection.</p></article>
-          <article><span>Continuous</span><h3>OPSEC + Detection</h3><p>Tracing, evidence, monitoring, and reporting.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="contato">
-      <div class="wrap contact reveal">
-        <span class="kicker">08 · Contact</span>
-        <h2>Ethical Red Team, custom tooling, and clear documentation.</h2>
-        <p>Open to opportunities, collaboration, and projects involving ethical pentesting, Red Team, automation, Linux, web security, and tool development.</p>
-
-        <div class="actions">
-          <a class="btn primary" href="mailto:mrh.ofici@gmail.com">mrh.ofici@gmail.com</a>
-          <a class="btn" href="https://github.com/lulz-lich" target="_blank">GitHub</a>
-          <a class="btn" href="https://www.linkedin.com/in/henrique-cunha-802305335/" target="_blank">LinkedIn</a>
+          <article class="contact-card reveal">
+            <strong>Location</strong>
+            <p>Sao Paulo, Brazil</p>
+            <div class="contact-actions">
+              <a class="btn" href="https://github.com/lulz-lich" target="_blank" rel="noopener">GitHub</a>
+              <a class="btn" href="https://www.linkedin.com/in/henrique-cunha-802305335/" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
   </main>
 
-  <aside class="project-drawer" id="projectDrawer" aria-hidden="true">
-    <div class="drawer-panel">
-      <button class="drawer-close" id="drawerClose">×</button>
-
-      <span class="kicker" id="drawerCategory">Project</span>
-      <h2 id="drawerTitle">Project title</h2>
-      <p id="drawerSummary">Project summary</p>
-
-      <div class="drawer-tabs">
-        <button class="drawer-tab active" data-tab="overview">Overview</button>
-        <button class="drawer-tab" data-tab="stack">Stack</button>
-        <button class="drawer-tab" data-tab="value">Red Team Value</button>
-        <button class="drawer-tab" data-tab="roadmap">Next Steps</button>
+  <div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <article class="details-panel">
+      <div class="details-top">
+        <div>
+          <span class="kicker" id="modalCategory">Project</span>
+          <h2 id="modalTitle">Project</h2>
+          <p id="modalSummary"></p>
+          <div class="chips" id="modalChips"></div>
+        </div>
+        <button class="close-button" type="button" id="closeModal" aria-label="Close project details">×</button>
       </div>
 
-      <div class="drawer-content" id="drawerContent"></div>
-
-      <div class="drawer-actions">
-        <button id="copyProjectSummary">Copy summary</button>
-        <button id="focusProjectSkills">Focus related skills</button>
-        <a id="drawerRepo" href="https://github.com/lulz-lich" target="_blank" rel="noopener">Open repository</a>
-      </div>
-    </div>
-  </aside>
-
-  <div class="palette" id="palette">
-    <div class="box">
-      <div class="boxtop">
-        <strong>Command Palette</strong>
-        <button id="paletteClose">×</button>
-      </div>
-
-      <input id="paletteInput" placeholder="about, actions, value, matrix, projects, operation, lab, roadmap, contact, stealth">
-
-      <div class="hint">
-        <button data-go="sobre">about</button>
-        <button data-go="actions">actions</button>
-        <button data-go="valor">value</button>
-        <button data-go="matrix">matrix</button>
-        <button data-go="projetos">projects</button>
-        <button data-go="laboratorio">lab</button>
-        <button data-go="stealth">stealth</button>
-      </div>
-
-      <p>Shortcut: Ctrl + K. The mouse survives, but the keyboard reigns.</p>
-    </div>
+      <div class="detail-tabs" id="detailTabs"></div>
+      <div class="detail-body" id="detailBody"></div>
+    </article>
   </div>
 
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <footer>
-    <div class="wrap footer">
-      <p>© 2026 Henrique da Silva Cunha · ethical hacking and terminal-shaped stubbornness.</p>
-      <a href="#home">Back to top ↑</a>
+  <footer class="footer">
+    <div class="wrap footer-row">
+      <span>© 2026 Henrique Cunha. Ethical hacking, Linux and security tooling.</span>
+      <a href="#home">Back to top</a>
     </div>
   </footer>
 
   <script>
-    const $ = s => document.querySelector(s);
-    const $$ = s => document.querySelectorAll(s);
-
-    const EMAIL = "mrh.ofici@gmail.com";
-    const GITHUB = "https://github.com/lulz-lich";
-    const LINKEDIN = "https://www.linkedin.com/in/henrique-cunha-802305335/";
-
-    const body = document.body;
-    const log = $("#log");
-    const loader = $("#loader");
-    const cursor = $(".cursor");
-    const nav = $("#navMenu");
-
-    const portfolioState = {
-      mode: localStorage.getItem("portfolioMode") || "redteam",
-      skill: "redteam",
-      activeProject: null,
-      activeTab: "overview"
+    const profile = {
+      name: "Henrique Cunha",
+      email: "mrh.ofici@gmail.com",
+      github: "https://github.com/lulz-lich",
+      linkedin: "https://www.linkedin.com/in/henrique-cunha-802305335/",
+      location: "Sao Paulo, Brazil"
     };
 
-    [
-      "loading red team profile",
-      "checking authorization-first mindset",
-      "indexing pentest projects",
-      "mounting linux workflow",
-      "loading reporting module",
-      "rendering portfolio"
-    ].forEach((m, i) => {
-      setTimeout(() => {
-        const p = document.createElement("p");
-        p.innerHTML = `<b>[ok]</b> ${m}`;
-        log.appendChild(p);
-      }, i * 150);
-    });
+    const skills = [
+      {
+        category: "Cybersecurity",
+        level: "Foundations + practice",
+        items: ["Vulnerability assessment", "Web security", "OWASP basics", "Security documentation", "Ethics and scope"]
+      },
+      {
+        category: "Red Team / Pentest",
+        level: "Lab-focused growth",
+        items: ["Recon methodology", "Enumeration", "Safe validation", "Evidence handling", "Report writing"]
+      },
+      {
+        category: "Programming",
+        level: "Builder workflow",
+        items: ["Python", "C", "C++", "C#", "JavaScript", "Ruby", "HTML", "CSS"]
+      },
+      {
+        category: "Linux & Dev Tools",
+        level: "Daily technical stack",
+        items: ["Linux", "Kali Linux", "Git", "Docker", "Shell workflow", "Automation", "Technical documentation"]
+      },
+      {
+        category: "Electronics / Embedded",
+        level: "Technical course base",
+        items: ["Arduino", "ESP32", "PlatformIO", "Embedded systems", "Hardware/software integration"]
+      },
+      {
+        category: "Physics & Math",
+        level: "Scientific thinking",
+        items: ["Classical mechanics interest", "Problem decomposition", "Modeling mindset", "Measurement and experimentation"]
+      }
+    ];
 
-    setTimeout(() => loader.classList.add("done"), 1600);
+    const projects = [
+      {
+        id: "webphantom",
+        name: "WebPhantom",
+        category: "Web Security",
+        status: "Concept",
+        stack: ["Python", "Web", "Automation", "Reporting"],
+        tags: ["web", "tooling", "automation", "concept"],
+        summary: "Concept for a web security mapping assistant focused on authorized route discovery, notes and report-ready output.",
+        problem: "Early web recon can become scattered across tabs, notes and terminal output.",
+        features: ["Authorized route mapping concept", "Structured findings notes", "Export-oriented workflow", "Scope-first positioning"],
+        next: ["Define safe crawler boundaries", "Design output schema", "Create first prototype with local targets"],
+        learnings: ["Web surface mapping", "Data organization", "Safe automation boundaries"],
+        ethics: "Designed only for owned, lab or explicitly authorized targets.",
+        links: [{ label: "GitHub profile", url: profile.github }]
+      },
+      {
+        id: "cipherhound",
+        name: "CipherHound",
+        category: "Tooling",
+        status: "Concept",
+        stack: ["Python", "CLI", "Cryptography basics"],
+        tags: ["tooling", "automation", "concept"],
+        summary: "Concept for a CLI learning tool around encoding, decoding and basic cryptography workflows for CTF-style study.",
+        problem: "Security learners often jump between small scripts and online utilities without preserving process.",
+        features: ["CLI workflow concept", "Encoding and decoding helpers", "Reproducible command history", "Learning-oriented outputs"],
+        next: ["Scope safe educational operations", "Implement basic transforms", "Document examples"],
+        learnings: ["CLI design", "Parsing", "Cryptography fundamentals"],
+        ethics: "Educational tooling for study, labs and defensive understanding.",
+        links: [{ label: "GitHub profile", url: profile.github }]
+      },
+      {
+        id: "reconforge",
+        name: "ReconForge",
+        category: "Red Team",
+        status: "Planned",
+        stack: ["Python", "Linux", "JSON", "CLI"],
+        tags: ["redteam", "tooling", "automation", "planned"],
+        summary: "Planned recon organizer for authorized labs, focused on repeatable notes, assets, commands and evidence references.",
+        problem: "Recon becomes weak when outputs are not tied to hypotheses, scope and evidence.",
+        features: ["Workspace structure plan", "Command notes", "Evidence references", "Report-friendly summaries"],
+        next: ["Create workspace format", "Add command templates", "Add export flow"],
+        learnings: ["Recon discipline", "Linux workflow", "Evidence organization"],
+        ethics: "Built around explicit scope and authorized environments.",
+        links: [{ label: "GitHub profile", url: profile.github }]
+      },
+      {
+        id: "vulnforge",
+        name: "VulnForge",
+        category: "Web Security",
+        status: "Planned",
+        stack: ["Python", "Markdown", "OWASP"],
+        tags: ["web", "reporting", "planned"],
+        summary: "Planned vulnerability note builder for turning validated findings into consistent technical writeups.",
+        problem: "Findings lose value when impact, evidence and mitigation are not written clearly.",
+        features: ["Finding template plan", "Severity and impact fields", "Evidence checklist", "Mitigation notes"],
+        next: ["Design finding schema", "Create Markdown templates", "Test on lab writeups"],
+        learnings: ["Report writing", "OWASP basics", "Technical communication"],
+        ethics: "Focused on responsible disclosure style documentation and mitigation.",
+        links: [{ label: "GitHub profile", url: profile.github }]
+      },
+      {
+        id: "ghosttrail",
+        name: "GhostTrail",
+        category: "Red Team",
+        status: "Concept",
+        stack: ["Linux", "Logs", "Documentation"],
+        tags: ["redteam", "linux", "concept"],
+        summary: "Concept for OPSEC and trace-awareness notes in lab environments, showing what actions leave behind.",
+        problem: "Offensive learning without detection awareness is incomplete.",
+        features: ["Trace notes concept", "Lab action logging", "Detection observation cards", "Defender-facing summaries"],
+        next: ["Pick lab scenarios", "Map actions to logs", "Write detection notes"],
+        learnings: ["OPSEC", "Logs", "Detection awareness"],
+        ethics: "Defender-aware learning for authorized labs and blue-team value.",
+        links: [{ label: "GitHub profile", url: profile.github }]
+      },
+      {
+        id: "nightwatch",
+        name: "NightWatch",
+        category: "Automation",
+        status: "Concept",
+        stack: ["Python", "Monitoring", "Linux"],
+        tags: ["automation", "linux", "concept"],
+        summary: "Concept for a small monitoring dashboard for lab services, logs and project checks.",
+        problem: "Local labs and tooling benefit from quick visibility into running services and outputs.",
+        features: ["Lab status concept", "Service checks", "Log pointers", "Simple dashboard output"],
+        next: ["Define monitored signals", "Build CLI prototype", "Add terminal UI"],
+        learnings: ["Monitoring basics", "Linux services", "Automation"],
+        ethics: "Benign local monitoring for owned lab environments.",
+        links: [{ label: "GitHub profile", url: profile.github }]
+      },
+      {
+        id: "masktrace",
+        name: "MaskTrace",
+        category: "Red Team",
+        status: "Research",
+        stack: ["Linux", "OPSEC", "Documentation"],
+        tags: ["redteam", "linux", "research"],
+        summary: "Research notes around privacy, operational hygiene and trace reduction in legal lab workflows.",
+        problem: "Students need to understand privacy and traces without turning that into unsafe claims.",
+        features: ["Research-only positioning", "Hygiene checklist", "Lab trace notes", "Risk-aware documentation"],
+        next: ["Define safe scope", "Document lab-only examples", "Add defender perspective"],
+        learnings: ["Privacy basics", "OPSEC vocabulary", "Documentation discipline"],
+        ethics: "No evasion claims, malware behavior or real-world abuse guidance.",
+        links: [{ label: "GitHub profile", url: profile.github }]
+      },
+      {
+        id: "cloudspecter",
+        name: "CloudSpecter",
+        category: "Cloud",
+        status: "Planned",
+        stack: ["Cloud Security", "IAM", "Documentation"],
+        tags: ["cloud", "security", "planned"],
+        summary: "Planned cloud security learning project around IAM, misconfiguration notes and defensive recommendations.",
+        problem: "Cloud mistakes are often configuration and identity problems, not just code problems.",
+        features: ["IAM study notes", "Misconfiguration checklist", "Mitigation mapping", "Report-style summaries"],
+        next: ["Choose provider labs", "Document IAM basics", "Create safe checklist"],
+        learnings: ["Cloud IAM", "Misconfiguration analysis", "Security reporting"],
+        ethics: "Focused on owned training accounts and defensive recommendations.",
+        links: [{ label: "GitHub profile", url: profile.github }]
+      },
+      {
+        id: "reportforge",
+        name: "ReportForge",
+        category: "Reporting",
+        status: "Prototype",
+        stack: ["Markdown", "Python", "Templates"],
+        tags: ["reporting", "tooling", "automation", "prototype"],
+        summary: "Prototype direction for reusable security report templates with impact, evidence, mitigation and next steps.",
+        problem: "Good technical work needs a deliverable that other people can understand and act on.",
+        features: ["Report template structure", "Evidence sections", "Mitigation sections", "Executive and technical split"],
+        next: ["Create reusable templates", "Add sample lab report", "Connect to CapySuite ideas"],
+        learnings: ["Security writing", "Information design", "Repeatable documentation"],
+        ethics: "Designed to make findings clearer and more useful for remediation.",
+        links: [{ label: "GitHub profile", url: profile.github }]
+      },
+      {
+        id: "shellscope",
+        name: "ShellScope",
+        category: "Linux",
+        status: "Concept",
+        stack: ["Bash", "Linux", "CLI"],
+        tags: ["linux", "automation", "tooling", "concept"],
+        summary: "Concept for a Linux workflow helper that documents commands, environment checks and project context.",
+        problem: "Terminal-heavy work becomes hard to reproduce when context is not recorded.",
+        features: ["Command note concept", "Environment summary", "Project context output", "Markdown-friendly logs"],
+        next: ["Design CLI commands", "Implement environment summary", "Add export examples"],
+        learnings: ["Shell workflow", "Linux internals basics", "Documentation automation"],
+        ethics: "Productivity and documentation helper for local systems.",
+        links: [{ label: "GitHub profile", url: profile.github }]
+      },
+      {
+        id: "phishforge",
+        name: "PhishForge",
+        category: "Security Awareness",
+        status: "Concept",
+        stack: ["Awareness", "Documentation", "Web"],
+        tags: ["security", "reporting", "concept"],
+        summary: "Concept for ethical phishing-awareness education materials, focused on recognition, prevention and reporting.",
+        problem: "Awareness training should teach recognition and response without enabling abuse.",
+        features: ["Awareness templates", "Red-flag checklist", "Reporting guidance", "Defensive framing"],
+        next: ["Define safe content policy", "Create examples without credential capture", "Add reporting checklist"],
+        learnings: ["Social engineering defense", "Security education", "Risk communication"],
+        ethics: "Defensive education only; no credential harvesting, impersonation kit or real campaign tooling.",
+        links: [{ label: "GitHub profile", url: profile.github }]
+      },
+      {
+        id: "chronobreak",
+        name: "ChronoBreak",
+        category: "Physics",
+        status: "Concept",
+        stack: ["Physics", "Math", "Simulation"],
+        tags: ["physics", "math", "concept"],
+        summary: "Concept for a physics/math exploration project connecting simulation, visualization and technical writing.",
+        problem: "Scientific ideas become stronger when modeled, tested and explained clearly.",
+        features: ["Simulation concept", "Math notes", "Visualization plan", "Technical explanation"],
+        next: ["Pick first model", "Build simple simulation", "Write assumptions and limitations"],
+        learnings: ["Modeling", "Numerical thinking", "Scientific documentation"],
+        ethics: "Non-security scientific learning project.",
+        links: [{ label: "GitHub profile", url: profile.github }]
+      },
+      {
+        id: "quantumnoir",
+        name: "Quantum Noir",
+        category: "Physics",
+        status: "Concept",
+        stack: ["Physics", "Math", "Visualization"],
+        tags: ["physics", "math", "concept"],
+        summary: "Concept for a visual study project around modern physics ideas, math intuition and elegant technical presentation.",
+        problem: "Advanced science topics are easier to study when broken into visual and testable pieces.",
+        features: ["Concept notes", "Visual explanations", "Math intuition cards", "Experiment-style documentation"],
+        next: ["Choose first topic", "Create visual prototype", "Add references and limitations"],
+        learnings: ["Physics communication", "Math structure", "Technical design"],
+        ethics: "Non-security scientific learning project.",
+        links: [{ label: "GitHub profile", url: profile.github }]
+      },
+      {
+        id: "blackcapy",
+        name: "BlackCapy",
+        category: "Embedded",
+        status: "Active",
+        stack: ["ESP32", "C++", "PlatformIO", "Electronics"],
+        tags: ["embedded", "electronics", "tooling", "active"],
+        summary: "Embedded project direction with ESP32, modularity, logs and physical interaction as a technical differentiator.",
+        problem: "A strong technical profile benefits from proof across software, hardware and documentation.",
+        features: ["ESP32-based architecture", "Modular firmware direction", "Logs and UI ideas", "Electronics course alignment"],
+        next: ["Improve module structure", "Document hardware/software decisions", "Publish clearer project notes"],
+        learnings: ["Embedded systems", "C++", "Hardware/software integration"],
+        ethics: "General embedded and electronics project, positioned as breadth rather than offensive capability.",
+        links: [{ label: "GitHub profile", url: profile.github }]
+      },
+      {
+        id: "capysuite",
+        name: "CapySuite",
+        category: "Red Team",
+        status: "In Progress",
+        stack: ["Python", "CLI", "Linux", "Reporting"],
+        tags: ["redteam", "tooling", "automation", "reporting", "in progress"],
+        summary: "Flagship security-tooling direction for authorized labs: enumeration organization, evidence handling and report-ready workflow.",
+        problem: "Red Team lab work needs repeatable structure, clean evidence and clear outputs.",
+        features: ["Modular toolkit direction", "CLI-first workflow", "Evidence organization", "ReportForge integration path"],
+        next: ["Define modules", "Create workspace format", "Add sample report export", "Publish repository-specific docs"],
+        learnings: ["Tool architecture", "Security workflow design", "Technical reporting"],
+        ethics: "Built around authorized labs, scope discipline and responsible documentation.",
+        links: [{ label: "GitHub profile", url: profile.github }]
+      }
+    ];
 
-    addEventListener("mousemove", e => {
-      cursor.style.setProperty("--x", e.clientX + "px");
-      cursor.style.setProperty("--y", e.clientY + "px");
-    });
+    const workflow = [
+      {
+        id: "scope",
+        title: "Scope",
+        command: "scope --define-boundaries",
+        text: "Start with permission, objective, constraints and what should not be touched. Security without scope is not professional work."
+      },
+      {
+        id: "research",
+        title: "Research",
+        command: "research --map-context",
+        text: "Understand the system, technology, assumptions and risks before touching tools. Notes matter as much as commands."
+      },
+      {
+        id: "build",
+        title: "Build",
+        command: "build --repeatable-workflow",
+        text: "Create small tools, templates or scripts when they make the workflow clearer, repeatable and easier to review."
+      },
+      {
+        id: "validate",
+        title: "Validate",
+        command: "validate --safe-evidence",
+        text: "Confirm findings safely, preserve evidence and avoid exaggerated claims. If it cannot be explained, it is not finished."
+      },
+      {
+        id: "document",
+        title: "Document",
+        command: "document --impact-mitigation",
+        text: "Write impact, evidence, reproduction limits, mitigation and next steps in a way another technical person can use."
+      },
+      {
+        id: "iterate",
+        title: "Improve",
+        command: "iterate --learn-publish",
+        text: "Refine the project, remove noise, publish responsibly and turn feedback into better engineering."
+      }
+    ];
 
-    $("#menuBtn").onclick = () => nav.classList.toggle("active");
-    $$("nav a").forEach(a => a.onclick = () => nav.classList.remove("active"));
+    const $ = selector => document.querySelector(selector);
+    const $$ = selector => Array.from(document.querySelectorAll(selector));
 
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add("show"), index * 45);
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: .12 });
+    const state = {
+      filter: "All",
+      search: "",
+      activeProject: null,
+      activeTab: "Overview"
+    };
 
-    $$(".reveal").forEach(e => obs.observe(e));
+    const filters = ["All", "Red Team", "Web Security", "Tooling", "Automation", "Physics", "Embedded", "In Progress", "Concept"];
+    const detailTabs = ["Overview", "Features", "Roadmap", "Learning", "Ethics"];
 
-    function clock() {
-      $("#clock").textContent = new Date().toLocaleTimeString("en-US", {
-        hour: "2-digit",
-        minute: "2-digit"
-      });
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
     }
 
-    clock();
-    setInterval(clock, 20000);
+    function chip(text) {
+      return `<span class="chip">${escapeHtml(text)}</span>`;
+    }
 
     function showToast(message) {
       const toast = $("#toast");
       toast.textContent = message;
       toast.classList.add("show");
-
-      clearTimeout(window.__toastTimer);
-      window.__toastTimer = setTimeout(() => {
-        toast.classList.remove("show");
-      }, 2600);
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
     }
 
-    async function copyText(text, successMessage) {
+    async function copyText(text, message) {
       try {
         await navigator.clipboard.writeText(text);
-        showToast(successMessage);
+        showToast(message);
       } catch {
-        showToast("Clipboard blocked by browser. Humanity suffers again.");
+        showToast("Clipboard blocked by browser.");
       }
     }
 
-    function terminalPrint(lines) {
-      const output = $("#terminalOutput");
-      output.innerHTML = "";
-
-      lines.forEach((line, index) => {
-        const p = document.createElement("p");
-        p.innerHTML = `<span>$</span> ${line}`;
-        p.style.opacity = "0";
-        p.style.transform = "translateY(6px)";
-        output.appendChild(p);
-
-        setTimeout(() => {
-          p.style.transition = "opacity .22s ease, transform .22s ease";
-          p.style.opacity = "1";
-          p.style.transform = "translateY(0)";
-        }, index * 70);
-      });
+    function scrollToSection(id) {
+      const target = document.querySelector(id);
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
-    const skillData = {
-      redteam: {
-        title: "Red Team",
-        text: "Highlighting authorized operations, OPSEC, evidence, reporting and attack-chain methodology.",
-        projectMatch: ["capysuite", "writeups", "opsec"],
-        terminal: [
-          "focus: Red Team",
-          "highlighting CapySuite, Red Team Writeups and OPSEC Lab Notes",
-          "core value: authorized operations, evidence and reporting"
-        ]
-      },
-      web: {
-        title: "Web Pentest",
-        text: "Highlighting web reconnaissance, route mapping, OWASP thinking, APIs and validation workflows.",
-        projectMatch: ["crawler", "writeups", "capysuite"],
-        terminal: [
-          "focus: Web Pentest",
-          "highlighting Security Crawler and writeups",
-          "core value: attack surface mapping and validation"
-        ]
-      },
-      tooling: {
-        title: "Offensive Tooling",
-        text: "Highlighting Python, CLI design, repeatable workflows, structured output and automation.",
-        projectMatch: ["capysuite", "crawler", "gsm", "blackcapy"],
-        terminal: [
-          "focus: Offensive Tooling",
-          "highlighting Python, CLI, automation and structured output",
-          "core value: repeatable workflows"
-        ]
-      },
-      linux: {
-        title: "Linux Workflow",
-        text: "Highlighting CachyOS, Hyprland, terminal usage, Git, Docker and local security labs.",
-        projectMatch: ["capysuite", "gsm", "opsec"],
-        terminal: [
-          "focus: Linux Workflow",
-          "highlighting local labs, shell workflow and environment control",
-          "core value: practical operational environment"
-        ]
-      },
-      detection: {
-        title: "Detection Awareness",
-        text: "Highlighting logs, traces, defensive visibility, monitoring and evidence quality.",
-        projectMatch: ["opsec", "writeups", "capysuite"],
-        terminal: [
-          "focus: Detection Awareness",
-          "highlighting logs, traces and defender-facing evidence",
-          "core value: useful findings for blue team response"
-        ]
-      },
-      reporting: {
-        title: "Technical Reporting",
-        text: "Highlighting impact, evidence, mitigation, executive clarity and technical depth.",
-        projectMatch: ["writeups", "capysuite", "crawler"],
-        terminal: [
-          "focus: Technical Reporting",
-          "highlighting evidence, impact, severity and mitigation",
-          "core value: turning findings into decisions"
-        ]
-      }
-    };
-
-    const drawerProjects = {
-      capysuite: {
-        category: "Main Red Team Tool",
-        title: "CapySuite",
-        summary: "Modular Red Team operations toolkit for authorized labs, focused on enumeration, evidence organization, automation and reporting.",
-        repo: GITHUB,
-        skills: ["redteam", "tooling", "reporting"],
-        tabs: {
-          overview: [
-            ["Purpose", "Centralize Red Team lab workflow into a modular, repeatable toolkit."],
-            ["Problem", "Manual workflows get messy: scattered outputs, weak evidence and inconsistent reporting."],
-            ["Status", "Flagship portfolio project."]
-          ],
-          stack: [
-            ["Language", "Python"],
-            ["Interface", "CLI-first workflow"],
-            ["Output", "Structured logs, JSON-friendly data and report-ready summaries."]
-          ],
-          value: [
-            ["Red Team Value", "Improves repeatability, evidence handling and operational consistency."],
-            ["Professional Signal", "Shows tooling mindset, methodology and security maturity."]
-          ],
-          roadmap: [
-            ["Next", "Add modules for recon, reporting templates and evidence export."],
-            ["Later", "Add workspace profiles, engagement notes and report generation."]
-          ]
-        }
-      },
-
-      crawler: {
-        category: "Web Recon Tool",
-        title: "Security Crawler",
-        summary: "Web reconnaissance tool for mapping routes, organizing discoveries and generating structured output in owned or authorized environments.",
-        repo: GITHUB,
-        skills: ["web", "tooling", "reporting"],
-        tabs: {
-          overview: [
-            ["Purpose", "Map web surfaces and help organize discovered endpoints."],
-            ["Problem", "Recon output is often noisy and hard to convert into useful reporting."],
-            ["Status", "Good web security portfolio project."]
-          ],
-          stack: [
-            ["Language", "Python"],
-            ["Focus", "Crawling, parsing, route mapping and structured output."],
-            ["Use", "Authorized environments only."]
-          ],
-          value: [
-            ["Red Team Value", "Supports early-stage recon and evidence organization."],
-            ["Professional Signal", "Shows web security, automation and disciplined scope."]
-          ],
-          roadmap: [
-            ["Next", "Improve output formats and add project-based scan sessions."],
-            ["Later", "Add report templates and integration with CapySuite."]
-          ]
-        }
-      },
-
-      writeups: {
-        category: "Methodology & Reporting",
-        title: "Red Team Writeups",
-        summary: "Writeups focused on methodology, evidence, impact, mitigation and technical reasoning.",
-        repo: GITHUB,
-        skills: ["redteam", "reporting", "detection"],
-        tabs: {
-          overview: [
-            ["Purpose", "Prove reasoning, not just final answers."],
-            ["Problem", "Many beginners show screenshots but fail to explain impact or mitigation."],
-            ["Status", "Essential credibility project."]
-          ],
-          stack: [
-            ["Format", "Markdown, screenshots, structured notes."],
-            ["Method", "Scope, steps, evidence, impact and mitigation."],
-            ["Focus", "Clarity and reproducibility."]
-          ],
-          value: [
-            ["Red Team Value", "Shows communication, evidence quality and maturity."],
-            ["Professional Signal", "Good reports are what make findings useful."]
-          ],
-          roadmap: [
-            ["Next", "Publish lab writeups with consistent format."],
-            ["Later", "Add executive summaries and detection notes."]
-          ]
-        }
-      },
-
-      opsec: {
-        category: "Operations & Detection",
-        title: "OPSEC Lab Notes",
-        summary: "Operational security notes focused on traces, logs, lab discipline, detection awareness and defensive value.",
-        repo: GITHUB,
-        skills: ["redteam", "detection", "linux"],
-        tabs: {
-          overview: [
-            ["Purpose", "Study how actions leave traces and how defenders can detect them."],
-            ["Problem", "Offensive learning without detection awareness becomes shallow."],
-            ["Status", "Differentiator for Red Team direction."]
-          ],
-          stack: [
-            ["Environment", "Linux labs, logs, Docker and controlled environments."],
-            ["Focus", "Traces, logs, operational hygiene and defensive visibility."],
-            ["Output", "Notes and detection-aware summaries."]
-          ],
-          value: [
-            ["Red Team Value", "Improves operational discipline and defender-aware thinking."],
-            ["Professional Signal", "Shows maturity beyond just running tools."]
-          ],
-          roadmap: [
-            ["Next", "Document common traces in lab workflows."],
-            ["Later", "Map actions to detection opportunities."]
-          ]
-        }
-      },
-
-      gsm: {
-        category: "Software Engineering",
-        title: "GSM",
-        summary: "Game Save Manager focused on backup, restore, cloud sync, cross-platform support and automation.",
-        repo: GITHUB,
-        skills: ["tooling", "linux"],
-        tabs: {
-          overview: [
-            ["Purpose", "Manage game save backups and restoration across platforms."],
-            ["Problem", "Data loss and poor restore flows are annoying, apparently humanity needed help there too."],
-            ["Status", "Software engineering proof project."]
-          ],
-          stack: [
-            ["Language", "Python"],
-            ["Platforms", "Linux and Windows"],
-            ["Integrations", "Cloud sync and backup tooling."]
-          ],
-          value: [
-            ["Portfolio Value", "Shows product thinking, automation and data handling."],
-            ["Security Adjacent", "Good proof of engineering discipline."]
-          ],
-          roadmap: [
-            ["Next", "Improve UI and restore validation."],
-            ["Later", "Add safer sync conflict handling."]
-          ]
-        }
-      },
-
-      blackcapy: {
-        category: "Technical Bonus",
-        title: "BlackCapy",
-        summary: "Open-source ESP32-based project with modularity, logs and physical UI as a secondary technical differentiator.",
-        repo: GITHUB,
-        skills: ["tooling", "linux"],
-        tabs: {
-          overview: [
-            ["Purpose", "Portable technical toolkit with embedded architecture and modularity."],
-            ["Positioning", "Secondary technical differentiator, not the main Red Team focus."],
-            ["Status", "Open-source TCC-level project."]
-          ],
-          stack: [
-            ["Hardware", "ESP32"],
-            ["Language", "C/C++"],
-            ["Focus", "Logs, UI, modules and local interaction."]
-          ],
-          value: [
-            ["Portfolio Value", "Shows low-level understanding and systems thinking."],
-            ["Professional Signal", "Useful as proof of breadth, but not the central career focus."]
-          ],
-          roadmap: [
-            ["Next", "Improve UI, logs and module structure."],
-            ["Later", "Keep it secondary while Red Team portfolio grows."]
-          ]
-        }
-      }
-    };
-
-    function setPortfolioMode(mode) {
-      portfolioState.mode = mode;
-      localStorage.setItem("portfolioMode", mode);
-      document.body.dataset.view = mode;
-
-      $$(".mode").forEach(button => {
-        button.classList.toggle("active", button.dataset.mode === mode);
-      });
-
-      const modeLines = {
-        redteam: [
-          "mode: Red Team",
-          "prioritizing operations, OPSEC, evidence and reporting"
-        ],
-        technical: [
-          "mode: Technical",
-          "prioritizing stack, architecture, automation and implementation detail"
-        ],
-        recruiter: [
-          "mode: Recruiter",
-          "prioritizing clarity, contact, main projects and professional value"
-        ]
-      };
-
-      terminalPrint(modeLines[mode]);
-    }
-
-    function selectSkill(skill) {
-      const data = skillData[skill];
-      if (!data) return;
-
-      portfolioState.skill = skill;
-
-      $$(".skill-node").forEach(node => {
-        node.classList.toggle("active", node.dataset.skill === skill);
-      });
-
-      $$(".project").forEach(project => {
-        const id = project.dataset.id;
-        const relevant = data.projectMatch.includes(id);
-
-        project.classList.toggle("relevant", relevant);
-        project.classList.toggle("dimmed", !relevant);
-      });
-
-      $("#matrixOutput").innerHTML = `
-        <span>selected focus</span>
-        <h3>${data.title}</h3>
-        <p>${data.text}</p>
-      `;
-
-      terminalPrint(data.terminal);
-    }
-
-    function renderDrawerTab(tab) {
-      const project = drawerProjects[portfolioState.activeProject];
-      if (!project) return;
-
-      portfolioState.activeTab = tab;
-
-      $$(".drawer-tab").forEach(button => {
-        button.classList.toggle("active", button.dataset.tab === tab);
-      });
-
-      $("#drawerContent").innerHTML = project.tabs[tab].map(([title, text]) => `
-        <article>
-          <strong>${title}</strong>
-          <p>${text}</p>
+    function renderSkills() {
+      $("#skillsGrid").innerHTML = skills.map(skill => `
+        <article class="skill-card reveal">
+          <span class="level">${escapeHtml(skill.level)}</span>
+          <h3>${escapeHtml(skill.category)}</h3>
+          <ul>${skill.items.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
         </article>
       `).join("");
     }
 
-    function openProjectDrawer(id) {
-      const project = drawerProjects[id];
-      if (!project) return;
+    function matchesProject(project) {
+      const filter = state.filter.toLowerCase();
+      const haystack = [
+        project.name,
+        project.category,
+        project.status,
+        project.summary,
+        project.stack.join(" "),
+        project.tags.join(" ")
+      ].join(" ").toLowerCase();
 
-      portfolioState.activeProject = id;
-      portfolioState.activeTab = "overview";
+      const searchOk = !state.search || haystack.includes(state.search.toLowerCase());
+      const filterOk = state.filter === "All"
+        || project.category.toLowerCase() === filter
+        || project.status.toLowerCase() === filter
+        || project.tags.includes(filter.replace(" ", ""));
 
-      $("#drawerCategory").textContent = project.category;
-      $("#drawerTitle").textContent = project.title;
-      $("#drawerSummary").textContent = project.summary;
-      $("#drawerRepo").href = project.repo;
-
-      renderDrawerTab("overview");
-
-      const drawer = $("#projectDrawer");
-      drawer.classList.add("active");
-      drawer.setAttribute("aria-hidden", "false");
-      body.classList.add("lock");
+      return searchOk && filterOk;
     }
 
-    function closeProjectDrawer() {
-      const drawer = $("#projectDrawer");
-      drawer.classList.remove("active");
-      drawer.setAttribute("aria-hidden", "true");
-      body.classList.remove("lock");
+    function renderFilters() {
+      $("#projectFilters").innerHTML = filters.map(filter => `
+        <button class="filter-button ${filter === state.filter ? "active" : ""}" type="button" data-filter="${escapeHtml(filter)}">
+          ${escapeHtml(filter)}
+        </button>
+      `).join("");
+
+      $$(".filter-button").forEach(button => {
+        button.addEventListener("click", () => {
+          state.filter = button.dataset.filter;
+          renderProjects();
+          terminalPrint([`filter: ${state.filter}`, `${filteredProjects().length} project(s) visible`]);
+        });
+      });
     }
 
-    $$(".mode").forEach(button => {
-      button.onclick = () => setPortfolioMode(button.dataset.mode);
-    });
+    function filteredProjects() {
+      return projects.filter(matchesProject);
+    }
 
-    $$(".skill-node").forEach(node => {
-      node.onclick = () => selectSkill(node.dataset.skill);
+    function renderProjects() {
+      renderFilters();
+      const visible = filteredProjects();
+      $("#projectCount").textContent = `${visible.length} of ${projects.length} projects visible`;
 
-      node.onmousemove = event => {
-        const rect = node.getBoundingClientRect();
-        node.style.setProperty("--mx", ((event.clientX - rect.left) / rect.width) * 100 + "%");
-        node.style.setProperty("--my", ((event.clientY - rect.top) / rect.height) * 100 + "%");
-      };
-    });
+      $("#projectsGrid").innerHTML = visible.map(project => `
+        <article class="project-card reveal" data-project-id="${escapeHtml(project.id)}">
+          <div>
+            <div class="project-head">
+              <span class="project-category">${escapeHtml(project.category)}</span>
+              <span class="project-status">${escapeHtml(project.status)}</span>
+            </div>
+            <h3>${escapeHtml(project.name)}</h3>
+            <p>${escapeHtml(project.summary)}</p>
+            <div class="chips">${project.stack.map(chip).join("")}</div>
+          </div>
+          <div class="project-actions">
+            <button class="project-action" type="button" data-open-project="${escapeHtml(project.id)}">View details</button>
+            ${project.links.map(link => `<a class="project-action" href="${escapeHtml(link.url)}" target="_blank" rel="noopener">${escapeHtml(link.label)}</a>`).join("")}
+          </div>
+        </article>
+      `).join("");
 
-    $$(".project,.value,.op,.quick").forEach(el => {
-      el.onmousemove = e => {
-        const r = el.getBoundingClientRect();
-        el.style.setProperty("--mx", ((e.clientX - r.left) / r.width) * 100 + "%");
-        el.style.setProperty("--my", ((e.clientY - r.top) / r.height) * 100 + "%");
-      };
-    });
-
-    $$(".filter").forEach(button => {
-      button.onclick = () => {
-        const filter = button.dataset.filter;
-
-        $$(".filter").forEach(x => x.classList.remove("active"));
-        button.classList.add("active");
-
-        $$(".project").forEach(project => {
-          project.classList.toggle("hidden", !(filter === "all" || project.dataset.cat.includes(filter)));
+      $$("#projectsGrid .project-card").forEach(card => {
+        card.addEventListener("mousemove", event => setPointerVars(card, event));
+        card.addEventListener("click", event => {
+          if (event.target.closest("a") || event.target.closest("button")) return;
+          openProject(card.dataset.projectId);
         });
-      };
-    });
+      });
 
-    $$(".project").forEach(project => {
-      project.onclick = event => {
-        if (event.target.closest("a") || event.target.closest("button")) return;
-        openProjectDrawer(project.dataset.id);
-      };
-    });
+      $$("[data-open-project]").forEach(button => {
+        button.addEventListener("click", () => openProject(button.dataset.openProject));
+      });
 
-    $$(".project-info-btn").forEach(button => {
-      button.onclick = event => {
-        event.stopPropagation();
-        const project = button.closest(".project");
-        openProjectDrawer(project.dataset.id);
-      };
-    });
+      observeReveals();
+    }
 
-    $("#drawerClose").onclick = closeProjectDrawer;
-
-    $("#projectDrawer").onclick = event => {
-      if (event.target.id === "projectDrawer") closeProjectDrawer();
-    };
-
-    $$(".drawer-tab").forEach(button => {
-      button.onclick = () => renderDrawerTab(button.dataset.tab);
-    });
-
-    $("#copyProjectSummary").onclick = () => {
-      const project = drawerProjects[portfolioState.activeProject];
+    function openProject(id) {
+      const project = projects.find(item => item.id === id);
       if (!project) return;
 
-      const text = `${project.title}
-${project.summary}
+      state.activeProject = project;
+      state.activeTab = "Overview";
+      document.body.classList.add("lock");
+      $("#projectModal").classList.add("active");
+      $("#projectModal").setAttribute("aria-hidden", "false");
+      $("#modalCategory").textContent = `${project.category} / ${project.status}`;
+      $("#modalTitle").textContent = project.name;
+      $("#modalSummary").textContent = project.summary;
+      $("#modalChips").innerHTML = project.stack.map(chip).join("");
+      renderDetailTabs();
+      renderDetailBody();
+      $("#closeModal").focus();
+    }
 
-Category: ${project.category}
-Repository: ${project.repo}`;
+    function closeProject() {
+      document.body.classList.remove("lock");
+      $("#projectModal").classList.remove("active");
+      $("#projectModal").setAttribute("aria-hidden", "true");
+      state.activeProject = null;
+    }
 
-      copyText(text, "Project summary copied.");
-    };
+    function renderDetailTabs() {
+      $("#detailTabs").innerHTML = detailTabs.map(tab => `
+        <button class="detail-tab ${tab === state.activeTab ? "active" : ""}" type="button" data-detail-tab="${tab}">
+          ${tab}
+        </button>
+      `).join("");
 
-    $("#focusProjectSkills").onclick = () => {
-      const project = drawerProjects[portfolioState.activeProject];
+      $$("[data-detail-tab]").forEach(button => {
+        button.addEventListener("click", () => {
+          state.activeTab = button.dataset.detailTab;
+          renderDetailTabs();
+          renderDetailBody();
+        });
+      });
+    }
+
+    function renderList(title, items) {
+      return `
+        <section class="detail-block">
+          <h3>${escapeHtml(title)}</h3>
+          <ul class="detail-list">${items.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+        </section>
+      `;
+    }
+
+    function renderDetailBody() {
+      const project = state.activeProject;
       if (!project) return;
 
-      closeProjectDrawer();
-      $("#matrix").scrollIntoView({ behavior: "smooth" });
-
-      setTimeout(() => {
-        selectSkill(project.skills[0]);
-      }, 350);
-    };
-
-    const lab = {
-      workflow: [
-        "confirm written scope",
-        "perform reconnaissance",
-        "enumerate exposed services",
-        "validate findings safely",
-        "document evidence, impact and mitigation"
-      ],
-      ethics: [
-        "only owned or authorized environments",
-        "no abuse of real systems",
-        "no persistence outside labs",
-        "respect privacy and data boundaries"
-      ],
-      tools: [
-        "linux + shell + git",
-        "python automation",
-        "burp / nmap / docker labs",
-        "custom tooling for repeatable workflows"
-      ],
-      detection: [
-        "think like attacker and defender",
-        "understand logs and traces",
-        "study detection opportunities",
-        "document what defenders should monitor"
-      ],
-      cert: [
-        "Cisco Networking Academy: Ethical Hacker",
-        "legal and compliance scope",
-        "vulnerability assessment process",
-        "mitigation recommendations"
-      ]
-    };
-
-    $$(".lab-actions button").forEach(button => {
-      button.onclick = () => {
-        const output = $("#labOutput");
-        const status = $("#labStatus");
-        const lines = lab[button.dataset.cmd];
-
-        output.innerHTML = "";
-        status.textContent = "running";
-
-        lines.forEach((line, i) => {
-          setTimeout(() => {
-            output.innerHTML += `<p><span>$</span> ${line}</p>`;
-            if (i === lines.length - 1) status.textContent = "done";
-          }, i * 110);
-        });
+      const views = {
+        Overview: `
+          <section class="detail-block">
+            <h3>Problem</h3>
+            <p>${escapeHtml(project.problem)}</p>
+          </section>
+          <section class="detail-block">
+            <h3>Status</h3>
+            <p>${escapeHtml(project.status)}. This label is intentionally conservative and avoids presenting ideas as finished releases.</p>
+          </section>
+        `,
+        Features: renderList("Main features or intended capabilities", project.features),
+        Roadmap: renderList("Next steps", project.next),
+        Learning: renderList("Technical learning", project.learnings),
+        Ethics: `
+          <section class="detail-block">
+            <h3>Security and ethics</h3>
+            <p>${escapeHtml(project.ethics)}</p>
+          </section>
+        `
       };
-    });
 
-    const terminalCommands = {
-      skills: [
-        "Red Team Foundations",
-        "Web & API Pentest",
-        "Linux / CachyOS / Hyprland",
-        "Python offensive tooling",
-        "OPSEC and detection awareness",
-        "Technical reporting"
-      ],
-      projects: [
-        "CapySuite          flagship Red Team toolkit",
-        "Security Crawler   web recon and route mapping",
-        "Red Team Writeups  methodology and evidence",
-        "OPSEC Lab Notes    logs, traces and detection",
-        "GSM                software engineering proof",
-        "BlackCapy          embedded technical bonus"
-      ],
-      contact: [
-        `Email: ${EMAIL}`,
-        `GitHub: ${GITHUB}`,
-        `LinkedIn: ${LINKEDIN}`
-      ],
-      roadmap: [
-        "Now: Web Pentest + Python tooling",
-        "Next: Active Directory labs",
-        "Then: Cloud security and IAM",
-        "Continuous: OPSEC, detection, reporting"
-      ]
-    };
+      $("#detailBody").innerHTML = views[state.activeTab];
+    }
 
-    function runTerminalCommand(command) {
-      const cmd = command.trim().toLowerCase();
-      if (!cmd) return;
+    function renderWorkflow() {
+      $("#workflowSteps").innerHTML = workflow.map((step, index) => `
+        <button class="workflow-step ${index === 0 ? "active" : ""}" type="button" data-workflow="${escapeHtml(step.id)}">
+          <span class="mono">${String(index + 1).padStart(2, "0")}</span>
+          <span>${escapeHtml(step.title)}</span>
+        </button>
+      `).join("");
 
-      if (cmd === "clear") {
-        $("#terminalOutput").innerHTML = `<p><span>➜</span> terminal cleared</p>`;
+      $$("[data-workflow]").forEach(button => {
+        button.addEventListener("click", () => selectWorkflow(button.dataset.workflow));
+      });
+
+      selectWorkflow(workflow[0].id);
+    }
+
+    function selectWorkflow(id) {
+      const step = workflow.find(item => item.id === id) || workflow[0];
+      $$("[data-workflow]").forEach(button => button.classList.toggle("active", button.dataset.workflow === id));
+      $("#workflowOutput").innerHTML = `
+        <span class="kicker">method step</span>
+        <h3>${escapeHtml(step.title)}</h3>
+        <p class="mono muted">$ ${escapeHtml(step.command)}</p>
+        <p>${escapeHtml(step.text)}</p>
+      `;
+      terminalPrint([step.command, step.text]);
+    }
+
+    function terminalPrint(lines) {
+      const output = $("#terminalOutput");
+      output.innerHTML = lines.map(line => `<p><span>$</span> ${escapeHtml(line)}</p>`).join("");
+      output.scrollTop = output.scrollHeight;
+    }
+
+    function normalizeFilterName(filter) {
+      const compact = filter.toLowerCase().replace(/[\s-]+/g, "");
+      const aliases = {
+        all: "All",
+        redteam: "Red Team",
+        web: "Web Security",
+        websecurity: "Web Security",
+        tooling: "Tooling",
+        automation: "Automation",
+        physics: "Physics",
+        embedded: "Embedded",
+        progress: "In Progress",
+        inprogress: "In Progress",
+        concept: "Concept"
+      };
+
+      return aliases[compact] || filters.find(item => item.toLowerCase() === filter.toLowerCase());
+    }
+
+    function setFilter(filter) {
+      const normalized = normalizeFilterName(filter);
+      if (!normalized) {
+        terminalPrint([`unknown filter: ${filter}`, `available: ${filters.join(", ")}`]);
         return;
       }
+      state.filter = normalized;
+      scrollToSection("#projects");
+      renderProjects();
+      terminalPrint([`filter: ${normalized}`, `${filteredProjects().length} project(s) visible`]);
+    }
 
-      if (cmd === "help") {
+    function runCommand(value) {
+      const command = value.trim().toLowerCase();
+      if (!command) return;
+
+      const routes = {
+        about: "#about",
+        projects: "#projects",
+        skills: "#skills",
+        certs: "#certifications",
+        certifications: "#certifications",
+        contact: "#contact",
+        workflow: "#workflow",
+        education: "#education"
+      };
+
+      if (command === "help") {
         terminalPrint([
-          "Available commands:",
-          "skills, projects, contact, roadmap, clear",
-          "open github, open linkedin",
-          "focus redteam, focus web, focus tooling, focus linux, focus detection, focus reporting",
-          "mode redteam, mode technical, mode recruiter",
-          "project capysuite, project crawler, project writeups, project opsec, project gsm, project blackcapy",
-          "copy email, copy contact"
+          "commands: help, about, projects, skills, certs, workflow, education, contact",
+          "open github, open linkedin, copy email",
+          "filter red team, filter web security, filter tooling, filter physics, filter embedded, filter concept",
+          "project capysuite, project blackcapy, project webphantom",
+          "theme, clear"
         ]);
         return;
       }
 
-      if (terminalCommands[cmd]) {
-        terminalPrint(terminalCommands[cmd]);
+      if (command === "clear") {
+        $("#terminalOutput").innerHTML = "";
         return;
       }
 
-      if (cmd.startsWith("open ")) {
-        const target = cmd.replace("open ", "").trim();
+      if (routes[command]) {
+        scrollToSection(routes[command]);
+        terminalPrint([`navigating to ${command}`]);
+        return;
+      }
 
-        const routes = {
-          github: GITHUB,
-          linkedin: LINKEDIN,
-          capysuite: GITHUB,
-          crawler: GITHUB
-        };
+      if (command === "open github") {
+        window.open(profile.github, "_blank", "noopener");
+        terminalPrint(["opening GitHub"]);
+        return;
+      }
 
-        if (routes[target]) {
-          terminalPrint([`opening ${target}...`]);
-          window.open(routes[target], "_blank", "noopener");
+      if (command === "open linkedin") {
+        window.open(profile.linkedin, "_blank", "noopener");
+        terminalPrint(["opening LinkedIn"]);
+        return;
+      }
+
+      if (command === "copy email") {
+        copyText(profile.email, "Email copied.");
+        terminalPrint(["email copied"]);
+        return;
+      }
+
+      if (command === "theme") {
+        toggleTheme();
+        terminalPrint(["theme toggled"]);
+        return;
+      }
+
+      if (command.startsWith("filter ")) {
+        setFilter(command.replace("filter ", ""));
+        return;
+      }
+
+      if (command.startsWith("project ")) {
+        const id = command.replace("project ", "").replace(/\s+/g, "");
+        const project = projects.find(item => item.id === id || item.name.toLowerCase().replace(/\s+/g, "") === id);
+        if (project) {
+          openProject(project.id);
+          terminalPrint([`opening project: ${project.name}`]);
           return;
         }
-
-        terminalPrint([`unknown open target: ${target}`, "try: open github, open linkedin"]);
+        terminalPrint([`unknown project: ${id}`]);
         return;
       }
 
-      if (cmd.startsWith("focus ")) {
-        const skill = cmd.replace("focus ", "").trim();
-
-        if (skillData[skill]) {
-          $("#matrix").scrollIntoView({ behavior: "smooth" });
-          selectSkill(skill);
-          return;
-        }
-
-        terminalPrint([`unknown focus: ${skill}`, "try: focus redteam, focus web, focus tooling, focus detection"]);
-        return;
-      }
-
-      if (cmd.startsWith("mode ")) {
-        const mode = cmd.replace("mode ", "").trim();
-
-        if (["redteam", "technical", "recruiter"].includes(mode)) {
-          setPortfolioMode(mode);
-          return;
-        }
-
-        terminalPrint([`unknown mode: ${mode}`, "try: mode redteam, mode technical, mode recruiter"]);
-        return;
-      }
-
-      if (cmd.startsWith("project ")) {
-        const id = cmd.replace("project ", "").trim();
-
-        if (drawerProjects[id]) {
-          openProjectDrawer(id);
-          return;
-        }
-
-        terminalPrint([`unknown project: ${id}`, "try: project capysuite, project crawler, project writeups, project opsec"]);
-        return;
-      }
-
-      if (cmd === "copy email") {
-        copyText(EMAIL, "Email copied.");
-        return;
-      }
-
-      if (cmd === "copy contact") {
-        copyText(
-          `Henrique da Silva Cunha
-Email: ${EMAIL}
-GitHub: ${GITHUB}
-LinkedIn: ${LINKEDIN}`,
-          "Contact card copied."
-        );
-        return;
-      }
-
-      terminalPrint([
-        `Unknown command: ${cmd}`,
-        "Try: help, skills, projects, contact, roadmap, clear"
-      ]);
+      terminalPrint([`unknown command: ${command}`, "try: help"]);
     }
 
-    $("#terminalForm").addEventListener("submit", e => {
-      e.preventDefault();
-
-      const input = $("#terminalInput");
-      runTerminalCommand(input.value);
-      input.value = "";
-    });
-
-    $$("[data-terminal]").forEach(button => {
-      button.onclick = () => runTerminalCommand(button.dataset.terminal);
-    });
-
-    $$("[data-action]").forEach(button => {
-      button.onclick = () => {
-        const action = button.dataset.action;
-
-        if (action === "copy-email") {
-          copyText(EMAIL, "Email copied.");
-          return;
-        }
-
-        if (action === "copy-contact") {
-          copyText(
-            `Henrique da Silva Cunha
-Email: ${EMAIL}
-GitHub: ${GITHUB}
-LinkedIn: ${LINKEDIN}`,
-            "Contact card copied."
-          );
-          return;
-        }
-
-        if (action === "terminal-help") {
-          $("#home").scrollIntoView({ behavior: "smooth" });
-          runTerminalCommand("help");
-        }
-      };
-    });
-
-    function openPalette() {
-      $("#palette").classList.add("active");
-      body.classList.add("lock");
-      setTimeout(() => $("#paletteInput").focus(), 40);
+    function toggleTheme() {
+      const next = document.documentElement.dataset.theme === "stealth" ? "" : "stealth";
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem("portfolioTheme", next);
     }
 
-    function closePalette() {
-      $("#palette").classList.remove("active");
-      body.classList.remove("lock");
-      $("#paletteInput").value = "";
+    function setPointerVars(element, event) {
+      const rect = element.getBoundingClientRect();
+      element.style.setProperty("--mx", `${((event.clientX - rect.left) / rect.width) * 100}%`);
+      element.style.setProperty("--my", `${((event.clientY - rect.top) / rect.height) * 100}%`);
     }
 
-    $("#paletteOpen").onclick = openPalette;
-    $("#paletteClose").onclick = closePalette;
-
-    $("#palette").onclick = e => {
-      if (e.target === $("#palette")) closePalette();
-    };
-
-    function toggleStealth() {
-      body.classList.toggle("stealth");
-      localStorage.setItem("stealth", body.classList.contains("stealth") ? "1" : "0");
-    }
-
-    if (localStorage.getItem("stealth") === "1") body.classList.add("stealth");
-    $("#stealth").onclick = toggleStealth;
-
-    function runPaletteCommand(command) {
-      const cmd = command.trim().toLowerCase();
-
-      const routes = {
-        about: "#sobre",
-        actions: "#actions",
-        value: "#valor",
-        matrix: "#matrix",
-        arsenal: "#arsenal",
-        projects: "#projetos",
-        operation: "#operacao",
-        lab: "#laboratorio",
-        roadmap: "#roadmap",
-        contact: "#contato",
-        sobre: "#sobre",
-        valor: "#valor",
-        projetos: "#projetos",
-        operacao: "#operacao",
-        contato: "#contato"
-      };
-
-      if (routes[cmd]) {
-        closePalette();
-        document.querySelector(routes[cmd]).scrollIntoView({ behavior: "smooth" });
-        return;
+    let observer;
+    function observeReveals() {
+      if (!observer) {
+        observer = new IntersectionObserver(entries => {
+          entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+              setTimeout(() => entry.target.classList.add("show"), index * 35);
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: .11 });
       }
 
-      if (cmd === "stealth") {
-        toggleStealth();
-        closePalette();
-        return;
-      }
-
-      $("#paletteInput").value = "Invalid command.";
+      $$(".reveal:not(.show)").forEach(element => observer.observe(element));
     }
 
-    $("#paletteInput").onkeydown = e => {
-      if (e.key === "Enter") runPaletteCommand(e.target.value);
-    };
-
-    $$(".hint button").forEach(button => {
-      button.onclick = () => runPaletteCommand(button.dataset.go);
-    });
-
-    addEventListener("keydown", e => {
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
-        e.preventDefault();
-        openPalette();
-      }
-
-      if (e.key === "Escape") {
-        closePalette();
-        closeProjectDrawer();
-      }
-    });
-
-    const canvas = $("#fx");
-    const ctx = canvas.getContext("2d");
-
-    let W;
-    let H;
-    let particles = [];
-
-    function resize() {
-      W = canvas.width = innerWidth * devicePixelRatio;
-      H = canvas.height = innerHeight * devicePixelRatio;
-
-      canvas.style.width = innerWidth + "px";
-      canvas.style.height = innerHeight + "px";
-
-      particles = Array.from({ length: Math.min(85, Math.floor(innerWidth / 18)) }, () => ({
-        x: Math.random() * W,
-        y: Math.random() * H,
-        vx: (Math.random() - .5) * .25 * devicePixelRatio,
-        vy: (Math.random() - .5) * .25 * devicePixelRatio,
-        r: (Math.random() * 1.3 + .6) * devicePixelRatio
-      }));
+    function updateClock() {
+      $("#clock").textContent = new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
     }
 
-    function draw() {
-      ctx.clearRect(0, 0, W, H);
+    function init() {
+      document.documentElement.dataset.theme = localStorage.getItem("portfolioTheme") || "";
+      renderSkills();
+      renderProjects();
+      renderWorkflow();
+      observeReveals();
+      updateClock();
+      setInterval(updateClock, 20000);
 
-      ctx.fillStyle = body.classList.contains("stealth")
-        ? "rgba(128,255,187,.45)"
-        : "rgba(200,182,255,.42)";
+      $("#projectSearch").addEventListener("input", event => {
+        state.search = event.target.value;
+        renderProjects();
+      });
 
-      ctx.strokeStyle = body.classList.contains("stealth")
-        ? "rgba(128,255,187,.12)"
-        : "rgba(145,217,255,.11)";
+      $("#terminalForm").addEventListener("submit", event => {
+        event.preventDefault();
+        const input = $("#terminalInput");
+        runCommand(input.value);
+        input.value = "";
+      });
 
-      particles.forEach((p, i) => {
-        p.x += p.vx;
-        p.y += p.vy;
+      $$("[data-command]").forEach(button => {
+        button.addEventListener("click", () => runCommand(button.dataset.command));
+      });
 
-        if (p.x < 0 || p.x > W) p.vx *= -1;
-        if (p.y < 0 || p.y > H) p.vy *= -1;
+      $("#copyEmailHero").addEventListener("click", () => copyText(profile.email, "Email copied."));
+      $("#copyEmailContact").addEventListener("click", () => copyText(profile.email, "Email copied."));
+      $("#themeButton").addEventListener("click", toggleTheme);
 
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fill();
+      $("#menuButton").addEventListener("click", () => {
+        $("#navLinks").classList.toggle("active");
+      });
 
-        for (let j = i + 1; j < particles.length; j++) {
-          const q = particles[j];
-          const d = Math.hypot(p.x - q.x, p.y - q.y);
-          const max = 128 * devicePixelRatio;
+      $$("#navLinks a").forEach(link => {
+        link.addEventListener("click", () => $("#navLinks").classList.remove("active"));
+      });
 
-          if (d < max) {
-            ctx.globalAlpha = 1 - d / max;
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(q.x, q.y);
-            ctx.stroke();
-            ctx.globalAlpha = 1;
-          }
+      $("#closeModal").addEventListener("click", closeProject);
+      $("#projectModal").addEventListener("click", event => {
+        if (event.target.id === "projectModal") closeProject();
+      });
+
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape") {
+          closeProject();
+          $("#navLinks").classList.remove("active");
         }
       });
 
-      requestAnimationFrame(draw);
+      $$(".panel, .skill-card, .cert-card, .education-card, .contact-card, .status-card").forEach(element => {
+        element.addEventListener("mousemove", event => setPointerVars(element, event));
+      });
     }
 
-    resize();
-    draw();
-    addEventListener("resize", resize);
-
-    setPortfolioMode(portfolioState.mode);
-    selectSkill(portfolioState.skill);
+    init();
   </script>
 </body>
 </html>
