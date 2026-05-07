@@ -717,6 +717,29 @@
       font-size: .82rem;
     }
 
+    .featured-block {
+      margin-bottom: 34px;
+    }
+
+    .featured-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .featured-head h3 {
+      margin-bottom: 4px;
+      font-size: clamp(1.35rem, 3vw, 2rem);
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -735,6 +758,11 @@
 
     .project-card.hidden {
       display: none;
+    }
+
+    .featured-card {
+      min-height: 320px;
+      border-color: color-mix(in srgb, var(--cyan) 42%, var(--line));
     }
 
     .project-head {
@@ -1029,6 +1057,7 @@
       }
 
       .skills-grid,
+      .featured-grid,
       .projects-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -1055,6 +1084,7 @@
       .ascii-grid,
       .identity-grid,
       .skills-grid,
+      .featured-grid,
       .projects-grid,
       .cert-grid,
       .project-toolbar {
@@ -1141,6 +1171,7 @@
           <div class="actions" aria-label="Primary actions">
             <a class="btn primary" href="https://github.com/lulz-lich" target="_blank" rel="noopener">Open GitHub</a>
             <a class="btn" href="https://www.linkedin.com/in/henrique-cunha-802305335/" target="_blank" rel="noopener">Open LinkedIn</a>
+            <a class="btn" href="assets/docs/henrique-cunha-resume.html" target="_blank" rel="noopener">View resume</a>
             <a class="btn" href="#certifications">View certificates</a>
             <button class="btn" id="copyEmailHero" type="button">Copy email</button>
           </div>
@@ -1245,6 +1276,18 @@ ETHICAL HACKING</pre>
           <span class="kicker">Projects</span>
           <h2>The core of the portfolio.</h2>
           <p>Official project set with honest status labels. Search and filters use the project data below, not decorative buttons.</p>
+        </div>
+
+        <div class="featured-block reveal">
+          <div class="featured-head">
+            <div>
+              <span class="kicker">Featured</span>
+              <h3>Best projects to inspect first.</h3>
+              <p>These are the strongest signals for ethical hacking, Red Team methodology, reporting, web security and electronics.</p>
+            </div>
+            <button class="btn" type="button" data-command="filter featured">Filter featured</button>
+          </div>
+          <div class="featured-grid" id="featuredProjects"></div>
         </div>
 
         <div class="project-toolbar reveal">
@@ -1462,43 +1505,43 @@ ETHICAL HACKING</pre>
         id: "webphantom",
         name: "WebPhantom",
         category: "Web Security",
-        status: "Concept",
-        stack: ["Python", "Web", "Automation", "Reporting"],
-        tags: ["web", "tooling", "automation", "concept"],
-        summary: "Concept for a web security mapping assistant focused on authorized route discovery, notes and report-ready output.",
-        problem: "Early web recon can become scattered across tabs, notes and terminal output.",
-        features: ["Authorized route mapping concept", "Structured findings notes", "Export-oriented workflow", "Scope-first positioning"],
-        next: ["Define safe crawler boundaries", "Design output schema", "Create first prototype with local targets"],
-        learnings: ["Web surface mapping", "Data organization", "Safe automation boundaries"],
+        status: "Prototype",
+        stack: ["Python", "Headless Browser", "Web Security", "Reporting"],
+        tags: ["web", "tooling", "automation", "prototype"],
+        summary: "Headless browser security automation toolkit for authorized web assessments, screenshots, headers, cookies, forms, navigation flows and application state capture.",
+        problem: "Web assessments need repeatable visibility into pages, headers, cookies, forms and interesting states without losing scope or evidence.",
+        features: ["Headless browser assessment workflow", "Screenshots and application state capture", "Header, cookie and form collection", "Report-friendly evidence output"],
+        next: ["Improve target scoping", "Add richer output templates", "Document safe lab examples"],
+        learnings: ["Web surface mapping", "Browser automation", "Safe evidence capture"],
         ethics: "Designed only for owned, lab or explicitly authorized targets.",
         links: [{ label: "Repository", url: repos.webphantom }]
       },
       {
         id: "cipherhound",
         name: "CipherHound",
-        category: "Tooling",
-        status: "Concept",
-        stack: ["Python", "CLI", "Cryptography basics"],
-        tags: ["tooling", "automation", "concept"],
-        summary: "Concept for a CLI learning tool around encoding, decoding and basic cryptography workflows for CTF-style study.",
-        problem: "Security learners often jump between small scripts and online utilities without preserving process.",
-        features: ["CLI workflow concept", "Encoding and decoding helpers", "Reproducible command history", "Learning-oriented outputs"],
-        next: ["Scope safe educational operations", "Implement basic transforms", "Document examples"],
-        learnings: ["CLI design", "Parsing", "Cryptography fundamentals"],
-        ethics: "Educational tooling for study, labs and defensive understanding.",
+        category: "Code Security",
+        status: "Prototype",
+        stack: ["Python", "Secrets Detection", "CLI", "Pattern Analysis"],
+        tags: ["security", "tooling", "automation", "prototype"],
+        summary: "Secrets, tokens and crypto artifact analyzer for detecting exposed API keys, JWTs, private keys, high-entropy strings and sensitive patterns in authorized codebases.",
+        problem: "Sensitive tokens and credentials can leak into repositories, logs and artifacts if review workflows are weak.",
+        features: ["Sensitive pattern detection", "High-entropy string analysis", "JWT and key artifact checks", "Authorized codebase/log review workflow"],
+        next: ["Expand pattern coverage", "Improve false-positive handling", "Add report exports"],
+        learnings: ["Static analysis basics", "Secret detection", "Responsible handling of sensitive findings"],
+        ethics: "Designed for owned, internal or explicitly authorized code and log review.",
         links: [{ label: "Repository", url: repos.cipherhound }]
       },
       {
         id: "reconforge",
         name: "ReconForge",
         category: "Red Team",
-        status: "Planned",
-        stack: ["Python", "Linux", "JSON", "CLI"],
-        tags: ["redteam", "tooling", "automation", "planned"],
-        summary: "Planned recon organizer for authorized labs, focused on repeatable notes, assets, commands and evidence references.",
-        problem: "Recon becomes weak when outputs are not tied to hypotheses, scope and evidence.",
-        features: ["Workspace structure plan", "Command notes", "Evidence references", "Report-friendly summaries"],
-        next: ["Create workspace format", "Add command templates", "Add export flow"],
+        status: "Prototype",
+        stack: ["Python", "Recon", "DNS", "Structured Reports"],
+        tags: ["redteam", "tooling", "automation", "prototype"],
+        summary: "External reconnaissance and attack surface mapping toolkit for authorized assessments across domains, subdomains, DNS records, exposed services and certificates.",
+        problem: "Recon becomes weak when domains, services, certificates and notes are scattered without structure.",
+        features: ["Domain and subdomain mapping", "DNS and certificate collection", "Exposed service inventory", "Structured report output"],
+        next: ["Improve source correlation", "Add cleaner engagement workspaces", "Connect outputs to ReportForge"],
         learnings: ["Recon discipline", "Linux workflow", "Evidence organization"],
         ethics: "Built around explicit scope and authorized environments.",
         links: [{ label: "Repository", url: repos.reconforge }]
@@ -1507,14 +1550,14 @@ ETHICAL HACKING</pre>
         id: "vulnforge",
         name: "VulnForge",
         category: "Web Security",
-        status: "Planned",
-        stack: ["Python", "Markdown", "OWASP"],
-        tags: ["web", "reporting", "planned"],
-        summary: "Planned vulnerability note builder for turning validated findings into consistent technical writeups.",
-        problem: "Findings lose value when impact, evidence and mitigation are not written clearly.",
-        features: ["Finding template plan", "Severity and impact fields", "Evidence checklist", "Mitigation notes"],
-        next: ["Design finding schema", "Create Markdown templates", "Test on lab writeups"],
-        learnings: ["Report writing", "OWASP basics", "Technical communication"],
+        status: "Prototype",
+        stack: ["Python", "OWASP", "APIs", "Docker"],
+        tags: ["web", "reporting", "prototype"],
+        summary: "OWASP-aligned web and API security assessment toolkit for headers, cookies, CORS, authentication flows, sessions, endpoint exposure and reportable findings.",
+        problem: "Web findings are more useful when validation, evidence and remediation are organized around clear assessment categories.",
+        features: ["Header, cookie and CORS checks", "Authentication and session review workflow", "Endpoint exposure notes", "Reportable finding structure"],
+        next: ["Expand checks", "Add richer examples", "Improve remediation mapping"],
+        learnings: ["OWASP basics", "API assessment", "Technical communication"],
         ethics: "Focused on responsible disclosure style documentation and mitigation.",
         links: [{ label: "Repository", url: repos.vulnforge }]
       },
@@ -1522,14 +1565,14 @@ ETHICAL HACKING</pre>
         id: "ghosttrail",
         name: "GhostTrail",
         category: "Red Team",
-        status: "Concept",
-        stack: ["Linux", "Logs", "Documentation"],
-        tags: ["redteam", "linux", "concept"],
-        summary: "Concept for OPSEC and trace-awareness notes in lab environments, showing what actions leave behind.",
-        problem: "Offensive learning without detection awareness is incomplete.",
-        features: ["Trace notes concept", "Lab action logging", "Detection observation cards", "Defender-facing summaries"],
-        next: ["Pick lab scenarios", "Map actions to logs", "Write detection notes"],
-        learnings: ["OPSEC", "Logs", "Detection awareness"],
+        status: "Prototype",
+        stack: ["Python", "MITRE ATT&CK", "Evidence", "OPSEC"],
+        tags: ["redteam", "linux", "prototype"],
+        summary: "Visual Red Team attack-chain builder for modeling authorized operations with MITRE ATT&CK techniques, evidence, OPSEC notes, detections and mitigations.",
+        problem: "Attack chains are hard to explain when each step, evidence item and defensive implication lives in a different place.",
+        features: ["Attack-chain modeling", "MITRE ATT&CK mapping", "Evidence and OPSEC notes", "Detection and mitigation paths"],
+        next: ["Add more technique mappings", "Improve visual exports", "Connect to report workflows"],
+        learnings: ["OPSEC", "MITRE ATT&CK structure", "Detection-aware storytelling"],
         ethics: "Defender-aware learning for authorized labs and blue-team value.",
         links: [{ label: "Repository", url: repos.ghosttrail }]
       },
@@ -1537,14 +1580,14 @@ ETHICAL HACKING</pre>
         id: "nightwatch",
         name: "NightWatch",
         category: "Automation",
-        status: "Concept",
-        stack: ["Python", "Monitoring", "Linux"],
-        tags: ["automation", "linux", "concept"],
-        summary: "Concept for a small monitoring dashboard for lab services, logs and project checks.",
-        problem: "Local labs and tooling benefit from quick visibility into running services and outputs.",
-        features: ["Lab status concept", "Service checks", "Log pointers", "Simple dashboard output"],
-        next: ["Define monitored signals", "Build CLI prototype", "Add terminal UI"],
-        learnings: ["Monitoring basics", "Linux services", "Automation"],
+        status: "Prototype",
+        stack: ["Python", "Monitoring", "Timelines", "Detection"],
+        tags: ["automation", "linux", "prototype"],
+        summary: "Detection-aware recon monitor that tracks authorized testing activity, estimates operational noise, builds timelines and documents defensive visibility.",
+        problem: "Authorized testing should consider what activity looks like from the defender side.",
+        features: ["Activity tracking", "Operational-noise notes", "Testing timeline output", "Defensive visibility summaries"],
+        next: ["Improve timeline exports", "Add more visibility scenarios", "Document sample lab runs"],
+        learnings: ["Monitoring basics", "Detection awareness", "Automation"],
         ethics: "Benign local monitoring for owned lab environments.",
         links: [{ label: "Repository", url: repos.nightwatch }]
       },
@@ -1552,28 +1595,28 @@ ETHICAL HACKING</pre>
         id: "masktrace",
         name: "MaskTrace",
         category: "Red Team",
-        status: "Research",
-        stack: ["Linux", "OPSEC", "Documentation"],
-        tags: ["redteam", "linux", "research"],
-        summary: "Research notes around privacy, operational hygiene and trace reduction in legal lab workflows.",
-        problem: "Students need to understand privacy and traces without turning that into unsafe claims.",
-        features: ["Research-only positioning", "Hygiene checklist", "Lab trace notes", "Risk-aware documentation"],
-        next: ["Define safe scope", "Document lab-only examples", "Add defender perspective"],
-        learnings: ["Privacy basics", "OPSEC vocabulary", "Documentation discipline"],
-        ethics: "No evasion claims, malware behavior or real-world abuse guidance.",
+        status: "Prototype",
+        stack: ["Python", "OSINT", "Identity Exposure", "Jinja"],
+        tags: ["redteam", "linux", "prototype"],
+        summary: "Identity and exposure correlation toolkit for authorized Red Team reconnaissance across public usernames, emails, repositories, naming patterns and human attack-surface risks.",
+        problem: "Human and identity exposure can be missed when public signals are not correlated responsibly.",
+        features: ["Public identity correlation", "Repository and naming-pattern mapping", "Technology exposure notes", "Human attack-surface risk summaries"],
+        next: ["Improve correlation logic", "Add safer reporting language", "Document authorized use cases"],
+        learnings: ["OSINT boundaries", "Identity exposure", "Documentation discipline"],
+        ethics: "Authorized reconnaissance only, with privacy-aware reporting and no harassment or abuse workflows.",
         links: [{ label: "Repository", url: repos.masktrace }]
       },
       {
         id: "cloudspecter",
         name: "CloudSpecter",
         category: "Cloud",
-        status: "Planned",
-        stack: ["Cloud Security", "IAM", "Documentation"],
-        tags: ["cloud", "security", "planned"],
-        summary: "Planned cloud security learning project around IAM, misconfiguration notes and defensive recommendations.",
-        problem: "Cloud mistakes are often configuration and identity problems, not just code problems.",
-        features: ["IAM study notes", "Misconfiguration checklist", "Mitigation mapping", "Report-style summaries"],
-        next: ["Choose provider labs", "Document IAM basics", "Create safe checklist"],
+        status: "Prototype",
+        stack: ["Python", "Cloud Security", "IAM", "Attack Paths"],
+        tags: ["cloud", "security", "prototype"],
+        summary: "Cloud exposure and identity attack-path mapper for IAM policies, public resources, risky permissions, trust relationships, secrets and hardening opportunities.",
+        problem: "Cloud mistakes are often identity, permission and exposure problems rather than single isolated bugs.",
+        features: ["IAM policy analysis direction", "Public resource and risky permission mapping", "Trust relationship review", "Hardening opportunity notes"],
+        next: ["Add provider-specific examples", "Improve attack-path explanations", "Expand remediation guidance"],
         learnings: ["Cloud IAM", "Misconfiguration analysis", "Security reporting"],
         ethics: "Focused on owned training accounts and defensive recommendations.",
         links: [{ label: "Repository", url: repos.cloudspecter }]
@@ -1582,13 +1625,13 @@ ETHICAL HACKING</pre>
         id: "reportforge",
         name: "ReportForge",
         category: "Reporting",
-        status: "Prototype",
-        stack: ["Markdown", "Python", "Templates"],
-        tags: ["reporting", "tooling", "automation", "prototype"],
-        summary: "Prototype direction for reusable security report templates with impact, evidence, mitigation and next steps.",
+        status: "Active",
+        stack: ["Python", "Jinja", "HTML/PDF", "Markdown"],
+        tags: ["reporting", "tooling", "automation", "active"],
+        summary: "Professional bilingual pentest reporting engine for executive summaries, technical findings, evidence sections, severity ratings, remediation guidance and Markdown/HTML/PDF exports.",
         problem: "Good technical work needs a deliverable that other people can understand and act on.",
-        features: ["Report template structure", "Evidence sections", "Mitigation sections", "Executive and technical split"],
-        next: ["Create reusable templates", "Add sample lab report", "Connect to CapySuite ideas"],
+        features: ["Executive and technical report structure", "Evidence and severity sections", "Remediation guidance", "Markdown/HTML/PDF export direction"],
+        next: ["Add more templates", "Improve bilingual output polish", "Connect to CapySuite evidence flows"],
         learnings: ["Security writing", "Information design", "Repeatable documentation"],
         ethics: "Designed to make findings clearer and more useful for remediation.",
         links: [{ label: "Repository", url: repos.reportforge }]
@@ -1597,13 +1640,13 @@ ETHICAL HACKING</pre>
         id: "shellscope",
         name: "ShellScope",
         category: "Linux",
-        status: "Concept",
-        stack: ["Bash", "Linux", "CLI"],
-        tags: ["linux", "automation", "tooling", "concept"],
-        summary: "Concept for a Linux workflow helper that documents commands, environment checks and project context.",
+        status: "Prototype",
+        stack: ["Python", "Linux", "CLI", "Evidence Timelines"],
+        tags: ["linux", "automation", "tooling", "prototype"],
+        summary: "Operator workflow tracker that turns shell history, notes, timestamps, screenshots and command outputs into clean evidence timelines for authorized pentest and Red Team work.",
         problem: "Terminal-heavy work becomes hard to reproduce when context is not recorded.",
-        features: ["Command note concept", "Environment summary", "Project context output", "Markdown-friendly logs"],
-        next: ["Design CLI commands", "Implement environment summary", "Add export examples"],
+        features: ["Shell-history and note organization", "Timestamped evidence timeline", "Command-output context", "Markdown-friendly exports"],
+        next: ["Improve import options", "Add timeline filtering", "Document engagement examples"],
         learnings: ["Shell workflow", "Linux internals basics", "Documentation automation"],
         ethics: "Productivity and documentation helper for local systems.",
         links: [{ label: "Repository", url: repos.shellscope }]
@@ -1612,13 +1655,13 @@ ETHICAL HACKING</pre>
         id: "phishforge",
         name: "PhishForge",
         category: "Security Awareness",
-        status: "Concept",
-        stack: ["Awareness", "Documentation", "Web"],
-        tags: ["security", "reporting", "concept"],
-        summary: "Concept for ethical phishing-awareness education materials, focused on recognition, prevention and reporting.",
+        status: "Prototype",
+        stack: ["Python", "Awareness", "HTML/CSS", "Reporting"],
+        tags: ["security", "reporting", "prototype"],
+        summary: "Authorized phishing simulation toolkit for security awareness training, safe campaign templates, local demo landing pages, click metrics and defensive recommendations.",
         problem: "Awareness training should teach recognition and response without enabling abuse.",
-        features: ["Awareness templates", "Red-flag checklist", "Reporting guidance", "Defensive framing"],
-        next: ["Define safe content policy", "Create examples without credential capture", "Add reporting checklist"],
+        features: ["Safe campaign templates", "Local demo landing pages", "Awareness metrics", "Defensive recommendation output"],
+        next: ["Keep examples non-abusive", "Improve defensive reporting", "Add more awareness scenarios"],
         learnings: ["Social engineering defense", "Security education", "Risk communication"],
         ethics: "Defensive education only; no credential harvesting, impersonation kit or real campaign tooling.",
         links: [{ label: "Repository", url: repos.phishforge }]
@@ -1627,13 +1670,13 @@ ETHICAL HACKING</pre>
         id: "chronobreak",
         name: "ChronoBreak",
         category: "Physics",
-        status: "Concept",
-        stack: ["Physics", "Math", "Simulation"],
-        tags: ["physics", "math", "concept"],
-        summary: "Concept for a physics/math exploration project connecting simulation, visualization and technical writing.",
+        status: "Research",
+        stack: ["TypeScript", "Physics", "Relativity", "Visualization"],
+        tags: ["physics", "math", "research"],
+        summary: "Interactive black-hole relativity lab for event horizons, gravitational time dilation, light-cone distortion, photon paths, redshift and observer communication.",
         problem: "Scientific ideas become stronger when modeled, tested and explained clearly.",
-        features: ["Simulation concept", "Math notes", "Visualization plan", "Technical explanation"],
-        next: ["Pick first model", "Build simple simulation", "Write assumptions and limitations"],
+        features: ["Relativity visualization", "Event-horizon and redshift concepts", "Observer communication scenarios", "Technical explanation through interaction"],
+        next: ["Improve model notes", "Add assumptions and limitations", "Refine visual explanations"],
         learnings: ["Modeling", "Numerical thinking", "Scientific documentation"],
         ethics: "Non-security scientific learning project.",
         links: [{ label: "Repository", url: repos.chronobreak }]
@@ -1642,13 +1685,13 @@ ETHICAL HACKING</pre>
         id: "quantumnoir",
         name: "Quantum Noir",
         category: "Physics",
-        status: "Concept",
-        stack: ["Physics", "Math", "Visualization"],
-        tags: ["physics", "math", "concept"],
-        summary: "Concept for a visual study project around modern physics ideas, math intuition and elegant technical presentation.",
+        status: "Research",
+        stack: ["TypeScript", "Physics", "Quantum", "Visualization"],
+        tags: ["physics", "math", "research"],
+        summary: "Visual quantum investigation engine for measurement, interference, entanglement, delayed choice, observer effects, Hawking radiation and the black-hole information paradox.",
         problem: "Advanced science topics are easier to study when broken into visual and testable pieces.",
-        features: ["Concept notes", "Visual explanations", "Math intuition cards", "Experiment-style documentation"],
-        next: ["Choose first topic", "Create visual prototype", "Add references and limitations"],
+        features: ["Quantum concept visualization", "Entanglement and measurement scenarios", "Black-hole information themes", "Experiment-style documentation"],
+        next: ["Add references", "Clarify assumptions", "Improve topic navigation"],
         learnings: ["Physics communication", "Math structure", "Technical design"],
         ethics: "Non-security scientific learning project.",
         links: [{ label: "Repository", url: repos.quantumnoir }]
@@ -1658,12 +1701,12 @@ ETHICAL HACKING</pre>
         name: "BlackCapy",
         category: "Embedded",
         status: "Active",
-        stack: ["ESP32", "C++", "PlatformIO", "Electronics"],
+        stack: ["ESP32", "C++", "C", "Embedded Security"],
         tags: ["embedded", "electronics", "tooling", "active"],
-        summary: "Embedded project direction with ESP32, modularity, logs and physical interaction as a technical differentiator.",
+        summary: "Modular embedded device for studying wireless protocols, embedded systems and security testing, with plugin-based firmware, expandable hardware and a pixel-art interface.",
         problem: "A strong technical profile benefits from proof across software, hardware and documentation.",
-        features: ["ESP32-based architecture", "Modular firmware direction", "Logs and UI ideas", "Electronics course alignment"],
-        next: ["Improve module structure", "Document hardware/software decisions", "Publish clearer project notes"],
+        features: ["ESP32-based architecture", "Plugin-style firmware direction", "RF/RFID/NFC/IR study surface", "Expandable hardware and interface work"],
+        next: ["Improve module structure", "Document hardware/software decisions", "Keep positioning educational and authorized"],
         learnings: ["Embedded systems", "C++", "Hardware/software integration"],
         ethics: "General embedded and electronics project, positioned as breadth rather than offensive capability.",
         links: [{ label: "Repository", url: repos.blackcapy }]
@@ -1672,14 +1715,14 @@ ETHICAL HACKING</pre>
         id: "capysuite",
         name: "CapySuite",
         category: "Red Team",
-        status: "In Progress",
-        stack: ["Python", "CLI", "Linux", "Reporting"],
-        tags: ["redteam", "tooling", "automation", "reporting", "in progress"],
-        summary: "Flagship ethical hacking project direction for authorized labs: enumeration organization, evidence handling and report-ready workflow.",
+        status: "Active",
+        stack: ["TypeScript", "Red Team", "MITRE ATT&CK", "OPSEC"],
+        tags: ["redteam", "tooling", "automation", "reporting", "active"],
+        summary: "Flagship Red Team operations toolkit for authorized assessments, targets, evidence, attack chains, MITRE ATT&CK mapping, OPSEC notes and engagement workflows.",
         problem: "Red Team lab work needs repeatable structure, clean evidence and clear outputs.",
-        features: ["Modular toolkit direction", "CLI-first workflow", "Evidence organization", "ReportForge integration path"],
-        next: ["Define modules", "Create workspace format", "Add sample report export", "Publish repository-specific docs"],
-        learnings: ["Tool architecture", "Security workflow design", "Technical reporting"],
+        features: ["Authorized assessment workspace", "Target and evidence organization", "Attack-chain and MITRE mapping", "OPSEC notes and reporting workflow"],
+        next: ["Improve engagement workflow polish", "Add stronger examples", "Connect evidence exports to reporting"],
+        learnings: ["Red Team methodology", "Security workflow design", "Technical reporting"],
         ethics: "Built around authorized labs, scope discipline and responsible documentation.",
         links: [{ label: "Repository", url: repos.capysuite }]
       }
@@ -1734,7 +1777,8 @@ ETHICAL HACKING</pre>
       activeTab: "Overview"
     };
 
-    const filters = ["All", "Red Team", "Web Security", "Tooling", "Automation", "Physics", "Embedded", "In Progress", "Concept"];
+    const featuredProjectIds = ["capysuite", "webphantom", "reconforge", "vulnforge", "reportforge", "blackcapy"];
+    const filters = ["All", "Featured", "Red Team", "Web Security", "Code Security", "Cloud", "Reporting", "Tooling", "Linux", "Automation", "Security Awareness", "Physics", "Embedded", "Active", "Prototype", "Research"];
     const detailTabs = ["Overview", "Features", "Roadmap", "Learning", "Ethics"];
 
     function escapeHtml(value) {
@@ -1795,6 +1839,7 @@ ETHICAL HACKING</pre>
 
       const searchOk = !state.search || haystack.includes(state.search.toLowerCase());
       const filterOk = state.filter === "All"
+        || (state.filter === "Featured" && featuredProjectIds.includes(project.id))
         || project.category.toLowerCase() === filter
         || project.status.toLowerCase() === filter
         || project.tags.includes(filter.replace(" ", ""));
@@ -1822,16 +1867,12 @@ ETHICAL HACKING</pre>
       return projects.filter(matchesProject);
     }
 
-    function renderProjects() {
-      renderFilters();
-      const visible = filteredProjects();
-      $("#projectCount").textContent = `${visible.length} of ${projects.length} projects visible`;
-
-      $("#projectsGrid").innerHTML = visible.map(project => `
-        <article class="project-card reveal" data-project-id="${escapeHtml(project.id)}">
+    function projectCard(project, featured = false) {
+      return `
+        <article class="project-card ${featured ? "featured-card" : ""} reveal" data-project-id="${escapeHtml(project.id)}">
           <div>
             <div class="project-head">
-              <span class="project-category">${escapeHtml(project.category)}</span>
+              <span class="project-category">${featured ? "Featured / " : ""}${escapeHtml(project.category)}</span>
               <span class="project-status">${escapeHtml(project.status)}</span>
             </div>
             <h3>${escapeHtml(project.name)}</h3>
@@ -1843,9 +1884,13 @@ ETHICAL HACKING</pre>
             ${project.links.map(link => `<a class="project-action" href="${escapeHtml(link.url)}" target="_blank" rel="noopener">${escapeHtml(link.label)}</a>`).join("")}
           </div>
         </article>
-      `).join("");
+      `;
+    }
 
-      $$("#projectsGrid .project-card").forEach(card => {
+    function bindProjectCards() {
+      $$(".project-card").forEach(card => {
+        if (card.dataset.bound === "1") return;
+        card.dataset.bound = "1";
         card.addEventListener("mousemove", event => setPointerVars(card, event));
         card.addEventListener("click", event => {
           if (event.target.closest("a") || event.target.closest("button")) return;
@@ -1854,9 +1899,30 @@ ETHICAL HACKING</pre>
       });
 
       $$("[data-open-project]").forEach(button => {
+        if (button.dataset.bound === "1") return;
+        button.dataset.bound = "1";
         button.addEventListener("click", () => openProject(button.dataset.openProject));
       });
+    }
 
+    function renderFeaturedProjects() {
+      const featured = featuredProjectIds
+        .map(id => projects.find(project => project.id === id))
+        .filter(Boolean);
+
+      $("#featuredProjects").innerHTML = featured.map(project => projectCard(project, true)).join("");
+      bindProjectCards();
+      observeReveals();
+    }
+
+    function renderProjects() {
+      renderFilters();
+      const visible = filteredProjects();
+      $("#projectCount").textContent = `${visible.length} of ${projects.length} projects visible`;
+
+      $("#projectsGrid").innerHTML = visible.map(project => projectCard(project)).join("");
+
+      bindProjectCards();
       observeReveals();
     }
 
@@ -1981,16 +2047,24 @@ ETHICAL HACKING</pre>
       const compact = filter.toLowerCase().replace(/[\s-]+/g, "");
       const aliases = {
         all: "All",
+        featured: "Featured",
         redteam: "Red Team",
         web: "Web Security",
         websecurity: "Web Security",
+        codesecurity: "Code Security",
+        code: "Code Security",
+        cloud: "Cloud",
+        reporting: "Reporting",
+        linux: "Linux",
         tooling: "Tooling",
+        securityawareness: "Security Awareness",
+        awareness: "Security Awareness",
         automation: "Automation",
         physics: "Physics",
         embedded: "Embedded",
-        progress: "In Progress",
-        inprogress: "In Progress",
-        concept: "Concept"
+        active: "Active",
+        prototype: "Prototype",
+        research: "Research"
       };
 
       return aliases[compact] || filters.find(item => item.toLowerCase() === filter.toLowerCase());
@@ -2027,7 +2101,7 @@ ETHICAL HACKING</pre>
         terminalPrint([
           "commands: help, about, projects, skills, certs, workflow, education, contact",
           "open github, open linkedin, copy email",
-          "filter red team, filter web security, filter tooling, filter physics, filter embedded, filter concept",
+          "filter featured, filter redteam, filter web, filter cloud, filter physics, filter active, filter prototype",
           "project capysuite, project blackcapy, project webphantom",
           "theme, clear"
         ]);
@@ -2124,6 +2198,7 @@ ETHICAL HACKING</pre>
     function init() {
       document.documentElement.dataset.theme = localStorage.getItem("portfolioTheme") || "";
       renderSkills();
+      renderFeaturedProjects();
       renderProjects();
       renderWorkflow();
       observeReveals();

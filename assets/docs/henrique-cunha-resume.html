@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Henrique Cunha | Resume</title>
+  <meta name="robots" content="noindex">
+  <style>
+    :root {
+      --text: #101620;
+      --muted: #4b5563;
+      --line: #d7dde8;
+      --accent: #075985;
+      --bg: #f8fafc;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.55 Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    main {
+      width: min(880px, calc(100% - 28px));
+      margin: 28px auto;
+      padding: 38px;
+      border: 1px solid var(--line);
+      background: #fff;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, .08);
+    }
+
+    header {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 2px solid var(--line);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 4px;
+      font-size: 2rem;
+      line-height: 1.1;
+    }
+
+    h2 {
+      margin: 24px 0 10px;
+      color: var(--accent);
+      font-size: .92rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    p,
+    li {
+      color: var(--muted);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+    }
+
+    .meta,
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+    }
+
+    .chip {
+      padding: 4px 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .item {
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .item:last-child {
+      border-bottom: 0;
+    }
+
+    .role {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .print {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      padding: 10px 14px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      main {
+        width: auto;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        box-shadow: none;
+      }
+
+      .print {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>Henrique Cunha</h1>
+        <p class="role">Ethical Hacker & Red Team Student</p>
+      </div>
+
+      <div class="meta">
+        <span>Sao Paulo, Brazil</span>
+        <a href="mailto:mrh.ofici@gmail.com">mrh.ofici@gmail.com</a>
+        <a href="https://github.com/lulz-lich">github.com/lulz-lich</a>
+        <a href="https://www.linkedin.com/in/henrique-cunha-802305335/">LinkedIn</a>
+      </div>
+    </header>
+
+    <section>
+      <h2>Profile</h2>
+      <p>
+        Technical Electronics student focused on ethical hacking, Red Team methodology, Linux, automation,
+        programming, embedded systems and scientific thinking. Building public projects around authorized
+        assessments, web security, reporting, evidence organization and technical documentation.
+      </p>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <div class="item">
+        <h3>ETEC Carolina Carinhato Sampaio</h3>
+        <p>Technical course in Electronics. Expected completion: 2026.</p>
+        <p>Focus: embedded systems, programming, electronics, hardware/software integration and technical projects.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Core Skills</h2>
+      <div class="chips">
+        <span class="chip">Ethical Hacking</span>
+        <span class="chip">Red Team Methodology</span>
+        <span class="chip">Web Security</span>
+        <span class="chip">Linux</span>
+        <span class="chip">Python</span>
+        <span class="chip">C/C++</span>
+        <span class="chip">JavaScript/TypeScript</span>
+        <span class="chip">Docker</span>
+        <span class="chip">Git</span>
+        <span class="chip">ESP32</span>
+        <span class="chip">Report Writing</span>
+        <span class="chip">Technical Documentation</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Featured Projects</h2>
+      <div class="item">
+        <h3>CapySuite</h3>
+        <p>Flagship Red Team operations toolkit for authorized assessments, evidence, attack chains, OPSEC notes and professional engagement workflows.</p>
+        <a href="https://github.com/lulz-lich/CapySuite">https://github.com/lulz-lich/CapySuite</a>
+      </div>
+
+      <div class="item">
+        <h3>WebPhantom</h3>
+        <p>Headless browser security automation toolkit for authorized web assessments, screenshots, headers, cookies, forms and application state capture.</p>
+        <a href="https://github.com/lulz-lich/WebPhantom">https://github.com/lulz-lich/WebPhantom</a>
+      </div>
+
+      <div class="item">
+        <h3>ReconForge</h3>
+        <p>External reconnaissance and attack-surface mapping toolkit for authorized assessments across domains, DNS records, exposed services and certificates.</p>
+        <a href="https://github.com/lulz-lich/ReconForge">https://github.com/lulz-lich/ReconForge</a>
+      </div>
+
+      <div class="item">
+        <h3>ReportForge</h3>
+        <p>Bilingual pentest reporting engine for executive summaries, technical findings, evidence sections, remediation guidance and Markdown/HTML/PDF exports.</p>
+        <a href="https://github.com/lulz-lich/ReportForge">https://github.com/lulz-lich/ReportForge</a>
+      </div>
+
+      <div class="item">
+        <h3>BlackCapy</h3>
+        <p>ESP32/C++ embedded project for studying wireless protocols, embedded systems and security testing through expandable hardware and modular firmware.</p>
+        <a href="https://github.com/lulz-lich/BlackCapy">https://github.com/lulz-lich/BlackCapy</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Certifications</h2>
+      <ul>
+        <li>Cisco Networking Academy - Ethical Hacker</li>
+        <li>Cisco Networking Academy - Junior Cybersecurity Analyst Career Path</li>
+      </ul>
+    </section>
+  </main>
+
+  <button class="print" type="button" onclick="window.print()">Print / Save PDF</button>
+</body>
+</html>
