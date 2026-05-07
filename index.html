@@ -426,8 +426,18 @@
 
     .hero-lead {
       max-width: 770px;
-      margin-bottom: 28px;
+      margin-bottom: 16px;
       font-size: 1.12rem;
+    }
+
+    .objective {
+      max-width: 720px;
+      margin-bottom: 28px;
+      padding: 14px 16px;
+      border-left: 3px solid var(--cyan);
+      border-radius: 0 12px 12px 0;
+      background: rgba(255,255,255,.032);
+      color: var(--muted);
     }
 
     .actions,
@@ -972,6 +982,7 @@
     }
 
     .case-grid,
+    .learning-grid,
     .proof-grid {
       display: grid;
       gap: 16px;
@@ -985,9 +996,31 @@
       grid-template-columns: repeat(4, 1fr);
     }
 
+    .learning-grid {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
     .case-card,
+    .learning-card,
     .proof-card {
       padding: 22px;
+    }
+
+    .learning-card {
+      min-height: 185px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.03);
+    }
+
+    .learning-card span {
+      display: inline-flex;
+      margin-bottom: 22px;
+      color: var(--cyan);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: .76rem;
+      font-weight: 800;
+      text-transform: uppercase;
     }
 
     .case-card {
@@ -1242,6 +1275,7 @@
       .featured-grid,
       .projects-grid,
       .case-grid,
+      .learning-grid,
       .proof-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -1271,6 +1305,7 @@
       .featured-grid,
       .projects-grid,
       .case-grid,
+      .learning-grid,
       .proof-grid,
       .cert-grid,
       .project-toolbar {
@@ -1333,7 +1368,20 @@
       }
 
       h1 {
-        font-size: clamp(2.65rem, 16vw, 4rem);
+        font-size: clamp(2.35rem, 13.6vw, 3.45rem);
+      }
+
+      .hero {
+        padding-top: 36px;
+      }
+
+      .hero-lead {
+        font-size: 1rem;
+      }
+
+      .objective {
+        padding: 12px 13px;
+        font-size: .92rem;
       }
 
       .status-row {
@@ -1388,6 +1436,9 @@
           <p class="hero-lead" data-i18n="hero_lead">
             I study and practice ethical hacking through authorized labs, Red Team methodology, Linux,
             automation, electronics and scientific thinking.
+          </p>
+          <p class="objective" data-i18n="objective_text">
+            Looking for internship, mentorship and learning opportunities in ethical hacking, cybersecurity, Linux and technical projects.
           </p>
 
           <div class="actions" aria-label="Primary actions">
@@ -1492,6 +1543,24 @@ ETHICAL HACKING</pre>
       </div>
     </section>
 
+    <section id="learning-now" class="section-band">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker" data-i18n="learning_kicker">Learning Now</span>
+          <h2 data-i18n="learning_title">Current study direction.</h2>
+          <p data-i18n="learning_text">This is where I am putting focused effort right now, while keeping projects public and documented.</p>
+        </div>
+
+        <div class="learning-grid">
+          <article class="learning-card reveal"><span>01</span><h3>Web Pentest</h3><p data-i18n="learning_web">OWASP basics, APIs, authentication, sessions and reportable findings.</p></article>
+          <article class="learning-card reveal"><span>02</span><h3>Red Team</h3><p data-i18n="learning_redteam">Scope, recon, evidence, OPSEC notes and attack-chain thinking in authorized labs.</p></article>
+          <article class="learning-card reveal"><span>03</span><h3>Linux</h3><p data-i18n="learning_linux">Terminal workflow, automation, Docker, Git and reproducible environments.</p></article>
+          <article class="learning-card reveal"><span>04</span><h3>Reporting</h3><p data-i18n="learning_reporting">Turning technical findings into clear evidence, impact and mitigation.</p></article>
+          <article class="learning-card reveal"><span>05</span><h3>Cloud / AD</h3><p data-i18n="learning_cloud">Cloud IAM and Active Directory fundamentals as next security tracks.</p></article>
+        </div>
+      </div>
+    </section>
+
     <section id="projects" class="section-band">
       <div class="wrap">
         <div class="section-head reveal">
@@ -1540,8 +1609,8 @@ ETHICAL HACKING</pre>
     <section id="proof" class="section-band">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="kicker" data-i18n="proof_kicker">Proof of Work</span>
-          <h2 data-i18n="proof_title">Signals that can be checked quickly.</h2>
+          <span class="kicker" data-i18n="proof_kicker">Portfolio Signals</span>
+          <h2 data-i18n="proof_title">Simple things you can verify.</h2>
         </div>
 
         <div class="proof-grid">
@@ -1844,7 +1913,8 @@ ETHICAL HACKING</pre>
         nav_contact: "Contact",
         hero_kicker: "Available for technical opportunities",
         hero_title: "Ethical Hacker & Red Team Student.",
-        hero_lead: "I study and practice ethical hacking through authorized labs, Red Team methodology, Linux, automation, electronics and scientific thinking.",
+        hero_lead: "I study ethical hacking through authorized labs, Red Team methodology, Linux, automation, electronics and scientific thinking.",
+        objective_text: "Looking for internship, mentorship and learning opportunities in ethical hacking, cybersecurity, Linux and technical projects.",
         open_github: "Open GitHub",
         open_linkedin: "Open LinkedIn",
         view_resume: "View resume",
@@ -1858,28 +1928,36 @@ ETHICAL HACKING</pre>
         hud_focus: "Ethical hacking, Red Team",
         hud_rule: "Authorized labs only",
         about_kicker: "About",
-        about_title: "Security mindset with an engineering base.",
-        about_p1: "I am a technical Electronics student from Sao Paulo, Brazil, focused on pentest, Red Team methodology, ethical hacking, Linux and programming. My work connects practical cybersecurity with automation, embedded systems and scientific reasoning.",
-        about_p2: "I care about projects that can be tested, documented and improved. The direction is clear: build real technical capability, communicate findings cleanly and keep offensive security inside authorized, ethical and useful contexts.",
+        about_title: "Technical student building a path into ethical hacking.",
+        about_p1: "I am a technical Electronics student from Sao Paulo, Brazil, focused on pentest, Red Team methodology, Linux and programming. I like building small tools because they force me to understand the workflow instead of only reading about it.",
+        about_p2: "My goal is simple: keep learning in public, document what I build, and grow into cybersecurity work that is ethical, authorized and useful for people who need to defend systems.",
         skills_kicker: "Skills",
         skills_title: "Honest, practical and organized by domain.",
         skills_text: "No inflated expert labels. Just the areas I am building, using and documenting with discipline.",
         projects_kicker: "Projects",
-        projects_title: "The core of the portfolio.",
-        projects_text: "Official project set with honest status labels. Search and filters use the project data below, not decorative buttons.",
+        learning_kicker: "Learning Now",
+        learning_title: "Current study direction.",
+        learning_text: "This is where I am putting focused effort right now, while keeping projects public and documented.",
+        learning_web: "OWASP basics, APIs, authentication, sessions and reportable findings.",
+        learning_redteam: "Scope, recon, evidence, OPSEC notes and attack-chain thinking in authorized labs.",
+        learning_linux: "Terminal workflow, automation, Docker, Git and reproducible environments.",
+        learning_reporting: "Turning technical findings into clear evidence, impact and mitigation.",
+        learning_cloud: "Cloud IAM and Active Directory fundamentals as next security tracks.",
+        projects_title: "Projects, studies and prototypes.",
+        projects_text: "A practical project list with honest status labels. Some are active builds, some are prototypes, and some are research projects I use to learn in public.",
         featured_kicker: "Featured",
-        featured_title: "Best projects to inspect first.",
-        featured_text: "These are the strongest signals for ethical hacking, Red Team methodology, reporting, web security and electronics.",
+        featured_title: "Start here.",
+        featured_text: "These projects best show my current direction: ethical hacking, Red Team methodology, reporting, web security and electronics.",
         filter_featured: "Filter featured",
         cases_kicker: "Case Studies",
         cases_title: "A closer look at the strongest work.",
         cases_text: "Short technical narratives that explain the problem, the architecture decision and what each project proves.",
-        proof_kicker: "Proof of Work",
-        proof_title: "Signals that can be checked quickly.",
-        proof_projects: "public portfolio repositories",
-        proof_certs: "Cisco cybersecurity credentials",
-        proof_domains: "technical domains: web, Red Team, cloud, embedded and physics",
-        proof_education: "expected technical Electronics completion",
+        proof_kicker: "Portfolio Signals",
+        proof_title: "Simple things you can verify.",
+        proof_projects: "public repositories in this portfolio",
+        proof_certs: "Cisco cybersecurity certificates",
+        proof_domains: "study areas: web, Red Team, cloud, embedded and physics",
+        proof_education: "expected Electronics course completion",
         workflow_kicker: "Workflow",
         workflow_title: "How I approach technical work.",
         workflow_text: "Security work only matters when it is scoped, reproducible, documented and useful for improvement.",
@@ -1921,7 +1999,8 @@ ETHICAL HACKING</pre>
         nav_contact: "Contato",
         hero_kicker: "Disponível para oportunidades técnicas",
         hero_title: "Hacker Ético & Estudante de Red Team.",
-        hero_lead: "Estudo e pratico ethical hacking em laboratórios autorizados, com metodologia Red Team, Linux, automação, eletrônica e pensamento científico.",
+        hero_lead: "Estudo ethical hacking em laboratórios autorizados, com metodologia Red Team, Linux, automação, eletrônica e pensamento científico.",
+        objective_text: "Busco estágio, mentoria e oportunidades de aprendizado em ethical hacking, cybersecurity, Linux e projetos técnicos.",
         open_github: "Abrir GitHub",
         open_linkedin: "Abrir LinkedIn",
         view_resume: "Ver currículo",
@@ -1935,28 +2014,36 @@ ETHICAL HACKING</pre>
         hud_focus: "Ethical hacking, Red Team",
         hud_rule: "Somente labs autorizados",
         about_kicker: "Sobre",
-        about_title: "Mentalidade de segurança com base de engenharia.",
-        about_p1: "Sou estudante técnico em Eletrônica em São Paulo, Brasil, com foco em pentest, metodologia Red Team, ethical hacking, Linux e programação. Meu trabalho conecta cybersecurity prática com automação, sistemas embarcados e raciocínio científico.",
-        about_p2: "Eu me importo com projetos que podem ser testados, documentados e melhorados. A direção é clara: construir capacidade técnica real, comunicar achados com clareza e manter segurança ofensiva em contextos autorizados, éticos e úteis.",
+        about_title: "Estudante técnico construindo caminho em ethical hacking.",
+        about_p1: "Sou estudante técnico em Eletrônica em São Paulo, Brasil, com foco em pentest, metodologia Red Team, Linux e programação. Gosto de construir ferramentas pequenas porque isso me obriga a entender o fluxo, não só ler sobre ele.",
+        about_p2: "Meu objetivo é simples: aprender em público, documentar o que construo e evoluir para trabalhar com cybersecurity de forma ética, autorizada e útil para quem precisa defender sistemas.",
         skills_kicker: "Skills",
         skills_title: "Honesto, prático e organizado por domínio.",
         skills_text: "Sem rótulos inflados de expert. Só as áreas que estou construindo, usando e documentando com disciplina.",
         projects_kicker: "Projetos",
-        projects_title: "O coração do portfólio.",
-        projects_text: "Conjunto oficial de projetos com status honesto. Busca e filtros usam os dados reais abaixo, não botões decorativos.",
+        learning_kicker: "Estudando Agora",
+        learning_title: "Direção atual de estudo.",
+        learning_text: "É aqui que estou colocando esforço agora, mantendo projetos públicos e documentados.",
+        learning_web: "OWASP básico, APIs, autenticação, sessões e achados reportáveis.",
+        learning_redteam: "Escopo, recon, evidências, notas de OPSEC e cadeia de ataque em labs autorizados.",
+        learning_linux: "Workflow de terminal, automação, Docker, Git e ambientes reproduzíveis.",
+        learning_reporting: "Transformar achados técnicos em evidência, impacto e mitigação claros.",
+        learning_cloud: "Cloud IAM e fundamentos de Active Directory como próximas trilhas de segurança.",
+        projects_title: "Projetos, estudos e protótipos.",
+        projects_text: "Uma lista prática com status honesto. Alguns são builds ativos, outros são protótipos, e outros são projetos de pesquisa para aprender em público.",
         featured_kicker: "Destaques",
-        featured_title: "Projetos para ver primeiro.",
-        featured_text: "São os sinais mais fortes de ethical hacking, metodologia Red Team, reporting, web security e eletrônica.",
+        featured_title: "Comece por aqui.",
+        featured_text: "Esses projetos mostram melhor minha direção atual: ethical hacking, metodologia Red Team, reporting, web security e eletrônica.",
         filter_featured: "Filtrar destaques",
         cases_kicker: "Case Studies",
         cases_title: "Um olhar mais técnico sobre os melhores trabalhos.",
         cases_text: "Narrativas curtas explicando problema, decisão de arquitetura e o que cada projeto prova.",
-        proof_kicker: "Prova de Trabalho",
-        proof_title: "Sinais verificáveis rapidamente.",
-        proof_projects: "repositórios públicos do portfólio",
-        proof_certs: "credenciais Cisco em cybersecurity",
-        proof_domains: "domínios técnicos: web, Red Team, cloud, embarcados e física",
-        proof_education: "previsão de conclusão do técnico em Eletrônica",
+        proof_kicker: "Sinais do Portfólio",
+        proof_title: "Coisas simples de verificar.",
+        proof_projects: "repositórios públicos neste portfólio",
+        proof_certs: "certificados Cisco em cybersecurity",
+        proof_domains: "áreas de estudo: web, Red Team, cloud, embarcados e física",
+        proof_education: "previsão de conclusão do curso de Eletrônica",
         workflow_kicker: "Workflow",
         workflow_title: "Como abordo trabalho técnico.",
         workflow_text: "Segurança só importa quando tem escopo, reprodução, documentação e utilidade para melhoria.",
